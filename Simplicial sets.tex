@@ -1,0 +1,193 @@
+\section{Simplicial sets}
+
+\begin{defi}
+    The simplicial category $\Delta$ has objects $[n] \coloneqq \{ 0<1<2< \dotsc <n\}$ for $n \geq 0$ and morphisms $\Delta(m,n)\coloneqq \Hom_{\Delta}([m],[n]) \coloneqq \{ f \colon[m] \to [n], \text{order preserving} \}$.
+\end{defi}
+
+\begin{defi}
+    The \underline{category of simplicial sets} is given by $\Set_{\Delta}=\sSet=\widehat{\Delta}= \Fun(\Delta^{\op},\Set)$.
+\end{defi}
+
+\begin{rmk}
+    An alternative definiton of a simplicial set $X$ can be given as follows:
+    \begin{itemize}
+        \item 
+            For all $n\geq m$ a set $X_n$ called the \underline{n-simplices} of $X$.
+        \item 
+            For all $0 \leq i \leq n$ morphisms $d_i\colon X_n \to X_{n+1}$ called the \underline{face maps}.
+        \item 
+            For all $0 \leq i \leq n$ morphisms $s_i \colon X_n \to X_{n+1}$
+            called the \underline{degeneracy maps}.
+        \item 
+            The face and degeneracy maps satisfy the following identities:
+            \[
+            \begin{tabular}{ccc}
+                 $d_id_j=d_{j-1}d_i$ & $d_is_j=s_{j-1}d_i$ & $d_js_j=\id=d_{j+1}s_j$  
+                 \\
+                 $i<j$ & $i<j$ & 
+                 \\
+                 $d_is_j=s_jd_{i-1}$ & $s_is_j=s_{j+1}s_i$
+                 \\
+                 $i>j+1$ & $i \leq j$
+            \end{tabular}
+            \]
+    \end{itemize}
+\end{rmk}
+
+\begin{exmp}
+    \begin{enumerate}
+        \item 
+        For an arbitrary simplicial set we often write
+            \[
+            \begin{tikzcd}
+                X\colon \dotsc 
+                &
+                X_3
+                \arrow[r, altstackar=7]
+                &
+                X_2
+                \arrow[r, altstackar=5]
+                &
+                X_1
+                \arrow[r,altstackar=3]
+                &
+                X_0
+            \end{tikzcd}
+            \]
+        where the arrows correspond to the face and boundary maps.
+        \item 
+        \begin{tabular}{@{} lcl @{}}
+            [0]=\{0\}
+            \\
+            \relax
+            [1]=\{ 
+            \begin{tikzcd}
+                0
+                \arrow[loop left, "id"]
+                \arrow[r, "10"]
+                &
+                1
+                \arrow[loop right, "id"]
+            \end{tikzcd}
+            \}
+            \\
+            \relax
+            $[2]=\left\{
+            \begin{tikzcd}
+                &
+                1
+                \arrow[rd]
+                &
+                \\
+                0
+                \arrow[ru]
+                \arrow[rr]
+                &
+                &
+                2
+            \end{tikzcd}  
+            \right\}$
+        \end{tabular}
+    \end{enumerate}
+    \todo{dis all fucked up, ... dont like how this looks}
+\end{exmp}
+
+By Yoned we obtain an isomorphism $\Hom_{\Set_{\Delta}}(\Delta(-,n),X) \isomorphism X_n$. 
+Let $x \in X_n$ and let $\Delta^n \coloneqq \Delta(-,n)$ we obtain the following diagram
+\[
+\begin{tikzcd}
+    \Delta^n
+    \arrow[rr, "x"]
+    \arrow[rd, "\sigma_x"']
+    &
+    &
+    X
+    \\
+    &
+    \Delta^m
+    \arrow[ru , "\mu"']
+\end{tikzcd}
+\]
+\todo{unsure what all is happening here}
+
+Let $d^i\colon[n-1] \to [n]$ be the unique order preserving injective map not having $i \in [n]$ in its image for all $0 \leq i \leq n$ .
+\[
+\begin{tabular}{cc}
+     \begin{tikzcd}
+         \text{[}0]=\{0\}
+         \arrow[r, "d^0"]
+         &
+         \{0 \to \circled{1}\}=[1]
+     \end{tikzcd}
+     \\
+     \begin{tikzcd}
+         \text{[}0]=\{0\}
+         \arrow[r, "d^0"]
+         &
+         \{\circled{0} \to 1\}=[1]
+     \end{tikzcd}
+     \\
+     \begin{tikzcd}
+         \text{[}1]=\{ \encircled{0 \to 1}\}
+         \arrow[r, "d^0"]
+         &
+         {}
+     \end{tikzcd}
+     &
+     $\left\{
+     \begin{tikzcd}
+         &
+         1
+         \arrow[rd]
+         &
+         \\
+         0
+         \arrow[ru]
+         \arrow[rr]
+         &
+         &
+         2
+     \end{tikzcd}
+     \right\}=[2]$
+\end{tabular}
+\]
+
+\todo{more stuff missing cause dk yet how to tex this}
+
+\begin{defi}
+    The category $\Delta_{\txtbig}$ has as objects the finite non-empty total orders with order preserving maps between them
+    \[
+    \begin{tabular}{c}
+         \begin{tikzcd}
+             \Delta
+             \arrow[r, hook, shift right]
+             &
+             \Delta_{\txtbig} 
+             \arrow[l, shift right] \ni I = \{ i_0 < i_1 < \dotsc < i_n \}
+         \end{tikzcd}      
+    \end{tabular}
+    \]
+\end{defi}
+
+\todo{alotta diagrams i am too lazy for currently}
+
+\begin{exmp}{the nerve of a category}
+    Let $\mathcal{C}$ be a small category. 
+    We define $N(\mathcal{C}) \in \Set_{\Delta}$ as follows. 
+    Let $N(\mathcal{C})_0 \coloneqq \Ob(\mathcal{C})$, $N(\mathcal{C})_1=\Mor(\mathcal{C})\colon$ set of morphisms in $\mathcal{C}$ with the face and boundary maps given as follows
+    \todo{again to many arrows that I am too tired for right now}
+    
+\end{exmp}
+
+\begin{thm}
+    For all $X \in \Set_{\Delta}$ $\lvert X \rvert = \colim_{\substack{([n],x)\in \int_X^\Delta \\
+    X\colon \Delta^n \dashv X} }\lvert \Delta^n\rvert$ is a CW complex.
+\end{thm}
+
+\begin{defi}
+    An element $x$ of simplicial set $X$ is \underline{degenerate} if $x \in \im s_i$ for some $i$.
+\end{defi}
+
+\begin{thm}(Dold-Kan Correspondences)
+
+\end{thm}

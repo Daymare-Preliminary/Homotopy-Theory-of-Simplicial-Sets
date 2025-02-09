@@ -1,0 +1,76 @@
+For all $X,Y \in \SetD$ there exists a simplicial set $\underline{\Hom}_{\SetD}(X,Y)$ where $\underline{\Hom}_{\SetD}(X,Y)_n = \Hom_{\SetD}(\Delta^n \times X, Y)$ and for any $\sigma : \Delta^m \to \Delta^n$ we have 
+\[
+(\Delta^n \times X  \xrightarrow{\alpha} Y) \mapsto (\Delta^m \times X \xrightarrow{\sigma \times \id_X} \Delta^n \times X \xrightarrow{\alpha}Y)
+\]
+We have furthermore that 
+\[
+\Hom_{\Set_{\Delta}}(W \times X, Y) \isomorphism \Hom_{\Set_{\Delta}}(W,\underline{\Hom}_{\SetD}(X,Y))
+\]
+as well as 
+\[
+\underline{\Hom}_{\SetD}(\Delta^0,Y) \cong Y.
+\]
+Applying the above isomorphisms together yields
+\[
+\Hom_{\SetD}(Z, \underline{\Hom}_{\SetD}(\Delta^0,Y)) \cong \Hom_{\SetD}(Z\times \Delta^0,Y) \cong \Hom_{\SetD}(Z,Y)
+\]
+as well as 
+\[
+\underline{\Hom}_{\SetD}(\Delta^n,X)_0 = \Hom (\Delta^0 \times \Delta^n , X ) \cong \Hom(\Delta^n,X) \cong X_n.
+\]
+The adjunction isomorphisms are explicitely given as follows 
+\[
+\begin{tabular}{c}
+    $\Hom(W, \underline{\Hom}(X,Y))\isomorphism \Hom(W \times X, Y)$
+    \\
+    $ (W \xrightarrow{\sigma} \underline{\Hom}(X,Y)) \mapsto ((\Delta^n \xrightarrow{w} W, \Delta^n \xrightarrow{x} X) \xmapsto{\overline{\sigma}}(\Delta^n\xrightarrow{(\id,x)} \Delta^n \times X \xrightarrow{\sigma(w)}Y)$.  
+\end{tabular}
+\]
+Furthermore we have that 
+\[
+\begin{tabular}{c}
+    $\ev_x\colon \underline{\Hom}(X,Y) \times X \to Y$
+    \\
+    $(\Delta^n \times X \xrightarrow{f} Y, \Delta^n \xrightarrow{x} X) \xmapsto{\ev_x}( \Delta^n \xrightarrow{(\id,x)} \Delta^n \times X \xrightarrow{f} Y)$
+\end{tabular}
+\]
+
+We can turn this into the inner Hom-functor $\underline{\Hom}(X,-): \SetD \to \SetD$.
+Given $i\colon L\to K$ in $\SetD$ define 
+\[
+\begin{tabular}{c}
+    $i^*\colon \underline{\Hom}(K,X) \to \underline{\Hom}(L,X)$
+    \\
+    $(\Delta^n \times K \xrightarrow{f} X) \xmapsto{i^*}(\Delta^n \times L \xrightarrow{(\id, i)} \Delta^n \times K \xrightarrow{f} X)$   
+\end{tabular}
+\]
+such that 
+\[
+\begin{tikzcd}
+    \Delta^n 
+    &
+    \Delta^n \times L
+    \ar[r, "\id \times i"]
+    &
+    \Delta^n \times K
+    \ar[r, "f"]
+    &
+    X
+    \\
+    \Delta^m
+    \ar[u,"\sigma"]
+    &
+    \Delta^m \times L
+    \ar[r, "\id \times i"]
+    \ar[u,"\sigma \times \id_L"]
+    &
+    \Delta^m \times K
+    \ar[u, "\sigma \times \id"]
+    \ar[ru, "\sigma^*(f)"']
+\end{tikzcd}
+\]
+where $\sigma^*(\iota^*(f)) \coloneqq \iota^*(\sigma^*(f))$
+
+\todo{dont get what this diagram wants from me}
+
+

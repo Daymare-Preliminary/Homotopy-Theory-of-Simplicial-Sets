@@ -1,0 +1,263 @@
+\section{Whitehead's theorem for Kan complexes}
+
+\begin{lem}
+\label{homotopy inverses are pointed homotopy inverses}
+    Suppose that $f\colon (X,x) \to (Y,y)$ is a morphism for pointed Kan complexes, such that $f\colon X \to Y$ admits a left inverse up to homotopy (inverse in $\hKan$).
+    Then $f$ admits a pointed inverse up to homotopy (inverse in $\hKan_*$).
+\end{lem}
+
+\begin{proof}
+    Let $g\colon Y \to X$ be a homotopy left inverse to $f$, so there exists a homotopy $h\colon \id_X \to g\circ f$.
+    Let now $\alpha \colon \Delta^n \times X \to X$ and extend the homotopy diagram by the morphism associated to the selected point:
+    \[
+    \begin{tikzcd}
+        \Delta^{\{0\}} \times \Delta^0
+        \ar[r, "x"]
+        \ar[d]
+        &
+        \Delta^{\{0\}} \times X
+        \ar[d]
+        \ar[rd, bend left, "id_X"]
+        \\
+        e\colon\Delta^1 \times \Delta^0
+        \ar[r, "\id \times x"]
+        &
+        \Delta^1 \times X
+        \ar[r, "\alpha"]
+        &
+        X
+        \\
+        \Delta^{\{1\}} \times \Delta^0
+        \ar[u]
+        \ar[r, "\id \times x"]
+        &
+        \Delta^{\{1\}} \times X
+        \ar[u]
+        \ar[ru, bend right, "g \circ f"']
+    \end{tikzcd}
+    \]
+    Where $e\colon x \to g(f(x))=g(y)$ in $X$.
+    Take $\Delta^0 \xhookrightarrow{y} Y$ and the lifting diagram
+    \[
+    \begin{tikzcd}
+        \Lambda^1_1= \Delta^{\{1\}}
+        \ar[r, "g"]
+        \ar[d, hook]
+        &
+        \underline{\Hom}(Y,X)
+        \ar[d, "\ev_y"]
+        \\
+        \Delta^1
+        \ar[ru, dashed]
+        \ar[r, "e"]
+        &
+        \underline{\Hom}(\Delta^0,X) \cong X
+    \end{tikzcd}
+    \]
+    The lifting morphism together with the standard adjunction gives a homotopy $\beta \colon \Delta^1 \times Y \to  X$ from $g'$ to $g$ where $g'(y)=x$.
+    We can concetenate $\beta$ with $f$, to obtain $\beta_f \colon \Delta^1 \times X \xrightarrow{\id \times f} \Delta^1 \times Y \xrightarrow{ \beta}X$ which is a homotopy of the concetenation $\beta_f \colon g' \circ f \to g \circ f$.
+    We can now consider the homotopy diagram of $\beta$ extended by the selected point in $Y$:
+    \[
+    \begin{tikzcd}
+        \Delta^{\{0\}} \times \Delta^0
+        \ar[r, "\id \times y"]
+        \ar[d]
+        &
+        \Delta^{\{0\}} \times Y
+        \ar[d]
+        \ar[rd, bend left, "g'"]
+        \\
+        e\colon\Delta^1 \times \Delta^0
+        \ar[r, "\id \times y"]
+        &
+        \Delta^1 \times Y
+        \ar[r, "\beta"]
+        &
+        X
+        \\
+        \Delta^{\{1\}} \times \Delta^0
+        \ar[u]
+        \ar[r, "\id \times y"]
+        &
+        \Delta^{\{1\}} \times Y
+        \ar[u]
+        \ar[ru, bend right, "g"']
+    \end{tikzcd}
+    \]
+    \todo{Do not understand the rest of this proof rn}
+\end{proof}
+
+\begin{cor}
+\label{htpy_eq_then_pointed_htpy_eq}
+    Let $f\colon (X,x) \to (Y,y)$ be a morphism of Kan complexes such that $f \colon X \to Y$ is a homotopy equivalence then $f$ is also a pointed homotopy equivalence.
+\end{cor}
+
+\begin{proof}
+    By \cref{homotopy inverses are pointed homotopy inverses} $[f]$ admits a pointed left inverse 
+    $g\colon (Y,y) \to (X,x)$ and $[g] \circ [f] = [\id_X]$ in $\hKan_*$.
+    Then $g\colon Y \to X$ is a homotopy equivalence.
+    There exists a homotopy left inverse $h\colon (X,x) \to (Y,y)$, $[h]=[h]([g][f])=[f]$
+    \todo{don't see the argument here as well}
+\end{proof}
+
+\begin{cor}
+    Let $f\colon X \to Y$ be a homtopy equivalence. 
+    Then for all $x \in X$ and all $n \geq 0$, there is an isomorphism $\pi_n(f)\colon \pi_n(X,x) \xrightarrow{\sim} \pi_n(Y,f(x))$.
+\end{cor}
+
+\begin{proof}
+    By \cref{htpy_eq_then_pointed_htpy_eq} $f\colon (X,x) \to (Y,f(x))$ is a pointed homotopy equivalence.
+    Now $\pi_n(X,x) = \pi_n ( \underline{\Hom}((S^n,*),(X,x)))$, similarly for $(Y,f(x))$
+\end{proof}
+
+\begin{defi/prop}  
+\label{contractible Kan complex}
+    Let $X$ be a Kan complex, then the following are equivalent:
+    \begin{enumerate}
+        \item  
+        $X \to \Delta^0$ is a homotopy equivalence,
+        \item 
+        for all $x \in X$ and all $n \geq 0$, $\pi_n(X,x) = \{ *\}$,
+        \item 
+        $X \to \Delta^0$ is a trivial Kan fibration.
+    \end{enumerate}
+    In this case we say that $X$ is \underline{contractible}.
+\end{defi/prop}
+
+\begin{proof}
+    Exercise
+\end{proof}
+
+\begin{prop}
+    Let $p\colon X \to Y$ be a Kan fibration between Kan complexes, then the following are equivalent:
+    \begin{enumerate}
+        \item 
+        $p$ is a trivial Kan fibration,
+        \item 
+        $p$ is a homotopy equivalence,
+        \item 
+        for all $x \in X$ and for all $\pi_n(f)\colon \pi_n(X,x) \to \pi_n(Y,f(x))$ is bijective,
+        \item 
+        for all $y \in Y$ the fibre $X_y$ given by the pullback 
+        \[
+        \begin{tikzcd}
+            X_y
+            \ar[r]
+            \ar[d]
+            &
+            X
+            \ar[d,"p"]
+            \\
+            \Delta^0
+            \ar[r,"y"']
+            &
+            Y
+        \end{tikzcd}
+        \]
+        is contractible.
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+\leavevmode
+\begin{itemize}[label={}]
+    \item 
+    $1. \implies 2.$ Exercise
+    \item 
+    $2. \implies 3.$ homtopy inverse
+    \item 
+    $3. \implies 4.$ Serre long exact sequence
+    \item 
+    $4. \implies 1.$ Suppose that for all $y \in Y$ we have that $X_y \to \Delta^0$ is a trivial Kan fibration, which is by \cref{contractible Kan complex} equivalent to contractibility of $X_y$.
+    Take a boundary inclusion 
+    \[
+    \begin{tikzcd}
+        \partial \Delta^n
+        \ar[r, "\alpha"]
+        \ar[d, hook]
+        &
+        X
+        \ar[d, "p"]
+        \\
+        \Delta^n 
+        \ar[r, "\beta"]
+        &
+        Y
+    \end{tikzcd}
+    \]
+    and consider a homotopy $H$ from the constant map to the identity on $\Delta^n$, that is $H \colon \Delta^1 \times \Delta^n \to \Delta^n$, where $H\colon c(0) \to \id_{\Delta^n}$.
+    Putting together the diagram for the homotopy $H$ and the $n$-simplex $\beta$ we obtain:
+    \[
+    \begin{tikzcd}
+        \Delta^{\{0\}} \times \partial \Delta^n
+        \ar[r, "i"]
+        \ar[d]
+        &
+        \Delta^{\{0\}} \times \Delta^n
+        \ar[d]
+        \ar[rd, bend left, "c(0)"]
+        \ar[rrd,bend left, "c(y)"]
+        \\
+        e\colon\Delta^1 \times \partial \Delta^n
+        \ar[r, "\id \times i"]
+        &
+        \Delta^1 \times \Delta^n
+        \ar[r, "H"]
+        &
+        \Delta^n
+        \ar[r, "\beta"]
+        &
+        Y
+        \\
+        \Delta^{\{1\}} \times \partial \Delta^n
+        \ar[u]
+        \ar[r, "i"]
+        &
+        \Delta^{\{1\}} \times \Delta^n
+        \ar[u]
+        \ar[ru, bend right, "\id_{\Delta^n}"'] 
+        \ar[rru, bend right, "\beta"']
+    \end{tikzcd}
+    \]
+    \todo{ consult Goerss Jardine}
+\end{itemize}
+\end{proof}
+
+\begin{thm}{Whitehead's theorem}
+Let $f\colon X \to Y$ be a morphsim between Kan complexes. 
+Then the following are equivalent:
+    \begin{enumerate}
+        \item 
+        $f$ is a homotopy equivalence,
+        \item 
+        for all $x \in X$ and all $n \geq 0$, $\pi_n(f)\colon  \pi_n(X,x) \to \pi_n(Y,y)$ is a bijection.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+\leavevmode
+    \begin{itemize}[label={}]
+        \item 
+        $1. \implies 2.$ This is known.
+        \item 
+        $2. \implies 1.$
+        By the use of Quillen's small object argument \cref{Quillen's small object argument}, we obtain a factorisation of $f$
+        \[
+        \begin{tikzcd}
+            &
+            \Tilde{X}
+            \ar[rd, "p"]
+            &
+            \\
+            X
+            \ar[ru, "i"]
+            \ar[rr, "f"]
+            &&
+            Y
+        \end{tikzcd}
+        \]
+        where $i \in \An$ and $p \in \KanFib$. 
+        Since $i\colon X \to \Tilde{X}$ is anodyne, $i$ is a weak equivalence and by \cref{Homtopy eq. of Kan complexes are bij in pi_0(weak eq.)}, using that $X$ and $Y$ are Kan complexes, $i$ is also a homotopy equivalence and thus satisfies 2.
+        By \cref{2 out of 3 weak equivalences} $p$ also satisfies the property 2. and by the previous proposition $p$ is a homotopy equivalence.        
+    \end{itemize}    
+\end{proof}

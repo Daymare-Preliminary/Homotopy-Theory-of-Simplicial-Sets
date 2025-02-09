@@ -1,0 +1,687 @@
+\section{Adjunctions}
+
+Lecture 22.10
+
+Everytime you encounter some free object, in the sense that it is freely generated from some other object of some other category, like a free group on some set, you are most likely going to use the properties of the object stemming from an adjunction.
+
+\begin{defi}
+    \begin{tikzcd}
+        L \colon  \mathcal{C} 
+        \arrow[r, shift left]
+        &
+        \mathcal{D} \colon R
+        \arrow[l, shift left]
+    \end{tikzcd}
+    An adjunction $L \dashv R$ is a natural isomorphism $\phi_{c,d} \colon \Hom_\mathcal{D} (Lc,d) \isomorphism \Hom_\mathcal{C}(c,Rd)$ of functors $\mathcal{C}^{\op} \times \mathcal{D} \to \Set$.
+    \[
+    \begin{tikzcd}
+        \mathcal{C}^{\op} \times \mathcal{D}
+        \arrow[bend left]{rr}[above]{\Hom_{\mathcal{D}}(L(-),-)}[below,name=U]{}
+        \arrow[bend right]{rr}[below]{\Hom_{\mathcal{C}}(-,R(-))}[above,name=D]{}
+        \arrow[Rightarrow, from=U, to=D, right, "\phi"]
+        &
+        &
+        \Set
+    \end{tikzcd}
+    \]
+    That is explicitely, we have commutative squares for all pairs of morphisms:
+    \[
+    \begin{tikzcd}
+        (c,d) 
+        \arrow[d, shift left, "\id_d"]
+        &
+        \Hom_{\mathcal{D}}(Lc,d) 
+        \arrow[r, "\phi_{c,d}"]
+        \arrow[d, "g \circ ?"']
+        &
+        \Hom_{\mathcal{C}}(c,Rd)
+        \arrow[d, "R(g) \circ ?"]
+        \\
+        (c',d)
+        \arrow[u, shift left , "f"]
+        &
+        \Hom(Lc,d')
+        \arrow[r, "\phi_{c,d'}"']
+        &
+        \Hom_{\mathcal{C}}(c , Rd')
+    \end{tikzcd}
+    \]
+    which means that for all $f \colon Lc \to d$ and all $g \colon d \to d'$ we have that $R(g) \circ \Bar{f} = \overline{g \circ f}$, where the closure operator denotes the image of an element under $\phi$
+    \[
+    \begin{tikzcd}
+        (c,d) 
+        \arrow[d, shift left, "\id_g"]
+        &
+        \Hom_{\mathcal{D}}(Lc,d) 
+        \arrow[r, "\phi_{c,d}"]
+        \arrow[d, "? \circ Lf"']
+        &
+        \Hom_{\mathcal{C}}(c,Rd)
+        \arrow[l, "\Bar{(-)}"]
+        \arrow[d, "? \circ f ?"]
+        \\
+        (c',d)
+        \arrow[u, shift left , "f"]
+        &
+        \Hom(Lc',d)
+        &
+        \Hom_{\mathcal{C}}(c' , Rd)
+        \arrow[l, "\Bar{(-)}"]
+    \end{tikzcd}
+    \]
+    which means that for all $k \colon c \to Rd$ and all $f \colon c' \to c$ we have that $\Bar{k} \circ Lf = \overline{k \circ f}$.
+\end{defi}
+
+\begin{rmk}
+    For $c \in \mathcal{C}$ consider $\eta_c$ given as follows
+    \[
+    \begin{tikzcd}
+        \Hom_{\mathcal{D}}(Lc,Lc)
+        \arrow[r ,"\sim"]
+        &
+        \Hom_{\mathcal{C}}(c,RLc)
+        \\
+        \id_{Lc}
+        \arrow[r , mapsto]
+        &
+        \eta_c \coloneqq \overline{\id_{Lc}}
+    \end{tikzcd}
+    \]
+    as well as for any $d \in \mathcal{D}$ consider $\epsilon_d$ given as follows
+    \[
+    \begin{tikzcd}
+        \Hom_{\mathcal{C}}(Rc,Rc)
+        \arrow[r ,"\sim"]
+        &
+        \Hom_{\mathcal{D}}(LRd , d )
+        \\
+        \id_{Rc}
+        \arrow[r , mapsto]
+        &
+        \epsilon_d \coloneqq \overline{\id_{Rd}}
+    \end{tikzcd}
+    \]
+\end{rmk}
+
+\begin{prop}
+    Notice that $\eta=(\eta_c \colon c \to RLc \mid c \in \mathcal{C})$ is a natural transformation $\eta \colon \mathds{1}_{\mathcal{C}} \ RL $ we call this the \underline{unit} of the adjunction and similarly $\epsilon=(\epsilon_c \colon c \to LRd \mid d \in \mathcal{C})$ is a natural transformation $\epsilon\colon LR  \to \mathds{1}_{\mathcal{D}}$ and is a called the \underline{counit} of the adjunction.
+\end{prop}
+
+\begin{proof}
+    Consider the following square:
+    \[
+    \begin{tikzcd}
+        c 
+        \arrow[d, "f"]
+        &
+        c
+        \arrow[r, "\eta_{\mathcal{C}}"]
+        \arrow[d, "f"']
+        &
+        RLc
+        \arrow[d, "RLf"]
+        \\
+        c'
+        &
+        c'
+        \arrow[r, "\eta_{c'}"']
+        &
+        c'
+    \end{tikzcd}
+    \]
+    and the resulting equation
+    \begin{align}
+        & RLf \circ \eta_c 
+        = \eta_c' \circ f
+        \\
+        \iff& \overline{RLf \circ \eta_c} 
+        = \overline{\eta_{c'} \circ f}
+        \\
+        \iff& \overline{\overline{Lf}}
+        =\overline{\id_{c'} \circ Lf} 
+        \\
+        \iff&
+        Lf = \id_f \circ Lf
+    \end{align}
+\end{proof}
+
+\begin{prop}
+    The unit $\eta \colon \mathds{1}_{\mathcal{C}} \Rightarrow RL$ aand the counit $\epsilon \colon LR \Rightarrow \mathds{1}_{\mathcal{D}}$ satisfy the triangle identities:
+    \[
+    \begin{tikzcd}
+        &
+        LRLc
+        \arrow[rd, "\epsilon_{Lc}"]
+        &
+        \\
+        Lc
+        \arrow[ru, "L(\eta_c)"]
+        \arrow[rr, "\id_{Lc}"']
+        &
+        &
+        Lc
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+        &
+        RLRd
+        \arrow[rd, "R(\epsilon_{d})"]
+        &
+        \\
+        Rd
+        \arrow[ru, "\eta_{Rd}"]
+        \arrow[rr, "\id_{Rd}"']
+        &
+        &
+        Rd
+    \end{tikzcd}
+    \]
+    For all objects $c\in \mathcal{C}$ and $d \in \mathcal{D}$.
+\end{prop}
+
+\begin{proof}
+    If we take the triangle for the unit above and apply the bar-operator we obtain the following
+    \[
+    \begin{tikzcd}
+        &
+        LRLc
+        \arrow[rd, "\epsilon_{Lc}"]
+        &
+        \\
+        Lc
+        \arrow[ru, "L(\eta_c)"]
+        \arrow[rr, "\id_{Lc}"']
+        &
+        &
+        Lc  
+    \end{tikzcd}
+    \xleftrightarrow{\overline{(-)}}
+    \begin{tikzcd}
+        &
+        RLc
+        \arrow[rd, "\id_{RLc}"]
+        &
+        \\
+        c
+        \arrow[ru, "\eta_c"]
+        \arrow[rr, "\overline{\id_{c}}=\eta_c"']
+        &
+        &
+        RLc
+    \end{tikzcd}
+    \]
+    The second triangle clearly commutes, the argument for the counit is analogous.
+\end{proof}
+
+\begin{prop}
+    Let \begin{tikzcd}
+        L \colon  \mathcal{C} 
+        \arrow[r, shift left]
+        &
+        \mathcal{D} \colon R
+        \arrow[l, shift left]
+    \end{tikzcd}
+    be two functors between categories and suppose there exist natural transformations $\eta \colon \mathds{1}_{\mathcal{C}} \Rightarrow RL$ and $\eta\colon LR \Rightarrow \mathds{1}_{\mathcal{D}}$ that satisfy the triangle identities.
+    Then the following defines an adjunction $L \dashv R$
+    \[
+    \begin{tikzcd}
+        \phi \colon \Hom_{\mathcal{D}}(Lc,d)
+        \arrow[r, shift left]
+        &
+        \Hom_{\mathcal{C}}(c,Rd) \colon \psi
+        \arrow[l, shift left]
+        \\
+        Lc \xrightarrow{g} d
+        \arrow[r, mapsto ,shift left]
+        &
+        R(g)\circ \eta_c
+        \arrow[l, mapsto ,shift left]
+    \end{tikzcd}
+    \]
+\end{prop}
+
+\begin{proof}
+    For $g \colon Lc \to d$ we have that 
+    \[
+        g=(\psi\circ\phi)(g) = \psi(R(g) \circ \eta_c) = \epsilon_d \circ LR(g) \circ L(\eta_c)
+    \]
+    Now we have the following the diagram
+    \[
+    \begin{tikzcd}
+        &
+        LRLc
+        \arrow[rd, "\epsilon_{Lc}"]
+        \arrow[rr, "LRg"]
+        &
+        &
+        LRd
+        \arrow[rd, "\epsilon_d"]
+        \\
+        Lc 
+        \arrow[ru,"L(\eta_c)"]
+        \arrow[rr,"\id_{Lc}"']
+        &
+        &
+        Lc 
+        \arrow[rr,"g"']
+        &
+        &
+        d
+    \end{tikzcd}
+    \]
+    The triangle commutes due to the triangle identities and the square commutes by the naturality of the counit. thus the whole diagram commutes, which means that $\psi$ is an inverse to $\phi$ which yields the statement.    
+\end{proof}
+
+\begin{defi}
+    For $c \in \mathcal{C}$ and $R\colon \mathcal{D}\to\mathcal{C}$ a functor, define the category $c/R$ with objects given by tuples $(c,f)$
+    where $f\colon c \to R(d)$ is a morphism for some $d\in \mathcal{D}$ and morphisms are given by 
+    \[
+    \begin{tikzcd}
+        d \in \mathcal{D} 
+        \arrow[d,"g"]
+        &
+        c
+        \arrow[r,"f"]
+        \arrow[d, equal]
+        &
+        Rd
+        \arrow[d,"R(g)"]
+        \\
+        d' \in \mathcal{D}
+        &
+        c
+        \arrow[r,"f'"']
+        &
+        Rd'
+    \end{tikzcd}
+    \]
+    Dually for $L \colon \mathcal{C} \to \mathcal{D}$ and $d \in \mathcal{D}$ we define $L/d$ as tuples $(d,g)$ where $g\colon Lc \to g$ is a morphism and morphisms are given by 
+    \[
+    \begin{tikzcd}
+        c \in \mathcal{C} 
+        \arrow[d,"f"]
+        &
+        Lc
+        \arrow[r,"g"]
+        \arrow[d, "Lf"']
+        &
+        d
+        \arrow[d, equal]
+        \\
+        c' \in \mathcal{C}
+        &
+        Lc'
+        \arrow[r,"g'"']
+        &
+        d
+    \end{tikzcd}
+    \]
+    Notice that given an adjunction $ L \dashv R$ we have that $\forall c \in \mathcal{C} (c,c \xrightarrow{\eta_c} Rc)$ is in $c/R$ and $\forall \in \mathcal{D}(d, LR \xrightarrow{\epsilon_d} d)$ is in $L/d$.
+\end{defi}
+
+\begin{prop}
+\label{initial_final_comma_category}
+    The object $(c,c \xrightarrow{\eta_c} Rc)$ is initial in $c/R$ and
+    $(d, LR \xrightarrow{\epsilon_d} d)$ is final in $L/d$.
+\end{prop}
+
+\begin{proof}
+    Consider the following commutative triangle
+        \[
+        \begin{tikzcd}
+            c 
+            \arrow[r, " \eta_c "] 
+            \arrow[rd, "\overline{\overline{f}}=f"']
+            &
+            RLc
+            \arrow[d,"R(\overline{f})"]
+            \\
+            &
+            Rd
+        \end{tikzcd}
+        \]
+    where $\overline{\overline{f}}=\overline{R(\overline{f})\circ \eta_c}$. 
+    Thus the morphism $f$ of the object $(c,f)$ uniquely determines the morphism $R(\overline{f})$. 
+    The argument for final object is dual
+\end{proof}
+
+Lecture 24.10
+
+\begin{prop}
+    Let 
+    \[
+    \begin{tikzcd}
+        \mathcal{C}
+        \arrow[r, shift left, "L_1"]
+        &
+        \mathcal{D}
+        \arrow[l, shift left, "R_1"]
+        \arrow[r, shift left, "L_2"]
+        &
+        \mathcal{E}
+        \arrow[l, shift left, "R_2"]
+    \end{tikzcd}
+    \]
+    be adjunctions then their composition
+    \[
+    \begin{tikzcd}
+        \mathcal{C}
+        \arrow[r, shift left, "L_1\circ L_2"]
+        &
+        \mathcal{D}
+        \arrow[l, shift left, "R_1\circ R_2"]
+    \end{tikzcd}
+    \]
+    is an adjunction as well.
+\end{prop}
+
+\begin{proof}
+Consider the following transformations, given by the adjunction isomorphisms
+    \[
+    \Hom_{\mathcal{E}}(L_2L_1c,e) \isomorphism \Hom_{\mathcal{D}}(L_1c,R_2e) \isomorphism \Hom_{\mathcal{C}}(c,R_1R_2e)
+    \]
+\end{proof}
+
+\begin{rmk}
+    Given an adjunction 
+    \[
+    \begin{tikzcd}
+        \mathcal{C}
+        \arrow[r, shift left, "L"]
+        &
+        \mathcal{D}
+        \arrow[l, shift left, "R"]
+    \end{tikzcd}
+    \]
+    then the following is an adjunction as well
+    \[
+    \begin{tikzcd}
+        \mathcal{C^{\op}}
+        \arrow[r, shift left, "L^{\op}"]
+        &
+        \mathcal{D^{\op}}
+        \arrow[l, shift left, "R^{\op}"]
+    \end{tikzcd}
+    \]
+    and the unit $\eta_c\colon c \to RLc$ in $\mathcal{C}$ corresponds to the counit $c \xleftarrow{}RLc$ in $\mathcal{C}^{\op}$
+\end{rmk}
+
+\begin{prop}
+    Let $L_1 ; L_2 \colon \mathcal{C} \to  \mathcal{D}$ and $\mathcal{C} \xleftarrow{}\mathcal{D}:R$ be functors.
+    Suppose that $L_1 \dashv R$ and $L_2 \dashv R$ are adjunctions, then it follows that $L_1 \cong L_2$.
+\end{prop}
+
+\begin{proof}
+    We need to construct a natural isomorphism $\phi \colon L_1 \isomorphism L_2$.
+    Let $\eta^{(1)}\colon \mathds{1} \to RL_1$ and $\eta^{(2)} \colon \mathds{1}_{\mathcal{C}} \to RL_2$.
+    By the uniqueness of initial objects in $c/R$, for $c \in \mathcal{C}$ \cref{initial_final_comma_category} we obtain 
+    \[
+    \begin{tikzcd}
+        &
+        c
+        \arrow[ld, "\eta^{(1)}_c"']
+        \arrow[d, "\eta^{(2)}_2"]
+        \arrow[rd, "\eta^{(1)}_c"]
+        &
+        \\
+        RL_1c
+        \arrow[r, dashed, "Rg"]
+        &
+        RL_2c
+        \arrow[r, dashed, "Rh"]
+        &
+        RL_1c
+    \end{tikzcd}
+    \]
+    By the uniqueness of a morphism out of an initial object we obtain for the composition that 
+    $L_1c \xrightarrow{g}L_2c \xrightarrow{h}L_1c$ 
+    is given by $h \circ g = \id_{L_1c}$. 
+    Similarly one obtains $g \circ h = \id_{L_2c}$.
+    Thus $g \eqqcolon U_c \colon L_1c \isomorphism L_2c$.
+    We now have to check that $U_c$ is actually a natural transformation of functors. Consider the following diagram
+    
+    \[
+    \begin{tikzcd}
+        c 
+        \arrow[d, "f"]
+        &
+        L_1c
+        \arrow[r, "U_c"]
+        \arrow[d, "L_1f"']
+        &
+        L_2c
+        \arrow[d, "L_2f"]
+        \\
+        c'
+        &
+        L_1c'
+        \arrow[r, "U_c'"']
+        &
+        L_2c'
+    \end{tikzcd}
+    \]
+    apply $R$ to it 
+    \[
+    \begin{tikzcd}
+        &
+        c
+        \arrow[dl, "\eta^{(1)}_c"']
+        \arrow[dr, "\eta^{(2)}_c"]
+        \arrow[dd]
+        &
+        \\
+        RL_1c
+        \arrow[rr, crossing over, "R(U_c)", pos=0.3]
+        \arrow[dd, "RL_1(f)"']
+        &
+        &
+        RL_2c
+        \arrow[dd,"RL_2(f)"]
+        \\
+        &
+        c'
+        \arrow[ld, "\eta_{c'}^{(1)}"']
+        \arrow[rd, "\eta_{c'}^{(2)}"]
+        &
+        \\
+        RL_1c'
+        \arrow[rr, "R(U_{c'})"]
+        &
+        &
+        RL_2(c')
+    \end{tikzcd}
+    \]
+    This yields the following equations
+    \begin{align}
+        R(U_{c'} \circ L_1(f)) \circ \eta^{(1)}_c
+        &= R (U_{c'}) \circ \eta_c^{(1)} \circ f
+        \\
+        &= \eta_c^{(2)} \circ f
+        \\
+        &=RL_2(f) \circ \eta_c^{(2)}
+        \\
+        &=RL_2(f) \circ R(U_c) \circ \eta_c^{(1)}
+        \\
+        &=R(L_2(f) \circ U_c) \circ \eta_c^{(1)}
+    \end{align}
+    And thus results in the following commutative triangle 
+    \[
+    \begin{tikzcd}
+        c 
+        \arrow[r, "\eta_c^{(1)}"]
+        &
+        RL_1c
+        \\
+    \end{tikzcd}
+    \]
+    \todo{why are we done here ??}
+\end{proof}
+
+\begin{prop}
+    Let $\begin{tikzcd}
+        \mathcal{C}
+        \arrow[r, shift left, "L"]
+        &
+        \mathcal{D}
+        \arrow[l, shift left, "R"]
+    \end{tikzcd}$
+    be an adjunction then $L$ preserves colimits that exist in $\mathcal{C}$ and $R$ preserves limits that exist in $\mathcal{D}$.
+\end{prop}
+
+\begin{proof}
+    Let $X\colon A \to \mathcal{C}$ be a diagram that admits a colimit in $\mathcal{C}$, $\colim X_a \in \mathcal{C}$ and $ a \in A$.
+    \begin{align}
+        \Hom_{\mathcal{D}}(L(\colim_{a \in A} X_a),d) 
+        &\isomorphism \Hom_{\mathcal{C}}(\colim_{a \in A} X_a, Rd)
+        \\
+        &\isomorphism \lim_{a \in A} \Hom_{\mathcal{C}}(X_a,Rd)
+        \\
+        &\isomorphism \lim_{a \in A} \Hom_{\mathcal{C}}(LX_a,d)
+        \\
+    \end{align}
+    This exhibits $L(\colim_{a \in A} X)$ as a colimit of $X\colon A \xrightarrow{X} \mathcal{C} \xrightarrow{L} \mathcal{D}$.
+\end{proof}
+
+Let $A$ be a small category and $\mathcal{C}$ a category.
+Consider the functor $\const_A \colon \mathcal{C} \to \Fun(A , \mathcal{C})$
+that maps each object of $\mathcal{C}$ to the functor $F_c(a)=c$ for all and $a \in A$ and each morphism to $\id_c$.
+
+\begin{prop}
+    Suppose that there exists $L \colon \Fun(A,\mathcal{C}) \to \mathcal{C}$ a left adjoint to $\const_A$. 
+    Then for all $X \colon A  \to \mathcal{C}$ the unit $\eta_X \colon X \to \const_A(LX)$ exhibits $LX$ as a colimit of $X$.
+\end{prop}
+
+\begin{proof}
+    We know that $\eta_X \colon X \to \const_A(LX)$ is initial in $X / \const_A$.
+    Notice that the objects of $X/\const_A$ are pairs
+    $(c \in \mathcal{C}, \rho \colon X \Rightarrow \const_A(c))$.
+    Thus $\Bar{\rho} = ( \rho_a \colon X_a \to c \mid a \in A )$ is such that 
+    \[
+    \begin{tikzcd}
+        a
+        \arrow[d,"u"]
+        &
+        X_a 
+        \arrow[r, "\rho_a"]
+        \arrow[d, "X_u"']
+        &
+        c
+        \arrow[d, "\id_c"]
+        \\
+        b
+        &
+        X_b
+        \arrow[r, "\rho_b"]
+        &
+        c
+    \end{tikzcd}
+    \]
+    Let furthermore $f\colon c \to c'$ be a morphism inducing a morphism in $X/\const_A$
+    \[
+    \begin{tikzcd}
+        X 
+        \arrow[r, Rightarrow, "\Bar{\rho}"]
+        \arrow[d, equal]
+        &
+        \const_A(c)
+        \arrow[d,equal, "\const_A(f)"]
+        \\
+        X 
+        \arrow[r, Rightarrow, "\Bar{\sigma}"]
+        &
+        \const_A(c')
+    \end{tikzcd}
+    \]
+    given evaluated on objects $a \in A$ by 
+    \[
+    \begin{tikzcd}
+        X_a
+        \arrow[r, "\phi_a"]
+        \arrow[rd, " \sigma"]
+        \arrow[d, equal]
+        &
+        c
+        \arrow[d, "f"]
+        \\
+        X_a
+        \arrow[r,"\sigma"]
+        &
+        c'
+    \end{tikzcd}
+    \]
+\end{proof}
+
+\todo{why are we done here ? Don't see it.}
+
+
+\begin{prop}
+    Let $\mathcal{C} \xleftarrow{}\mathcal{D}:R$ be such that for all $c \in \mathcal{C}$ the functor $\Hom_{\mathcal{C}}(c,R(-))\colon \mathcal{D} \to \Set$ is corepresentable by an object $L(c) \in \mathcal{D}$ via $\phi_c \colon \Hom_{\mathcal{D}}(L(c),-) \isomorphism \Hom_{\mathcal{D}}(c,R(-))$.
+    Then the association $c \mapsto L(c)$ can be promoted to a functor $L \colon \mathcal{C} \to \mathcal{D}$ that is adjoint to $R$ via $\phi$.
+\end{prop}
+
+\begin{proof}
+    We need to define $L$ on morphisms.
+    For $c \xrightarrow{f}c'$ in $\mathcal{C}$ consider the commutative square
+    \[
+    \begin{tikzcd}
+        \Hom_{\mathcal{D}}(L(c),-)
+        \arrow[r, "\phi_c"]
+        &
+        \Hom_{\mathcal{C}}(c,R(-))
+        \\
+        \Hom_{\mathcal{D}}(L(c'),-)
+        \arrow[u, dashed, "L(f)^*"]
+        \arrow[r, "\phi_{c'}"]
+        &
+        \Hom_{\mathcal{C}}(c',R(-))
+        \arrow[u, "f^*"']
+    \end{tikzcd}
+    \]
+
+    By Yoneda we obtain an object $d \in\mathcal{D}$ such that
+    \[
+    \begin{tikzcd}
+        L(c)
+        \arrow[d, "L(f)"']
+        \arrow[rd]
+        &
+        \\
+        L(c')
+        \arrow[r]
+        &
+        d
+    \end{tikzcd}
+    \]
+    Now we need to prove that this actually defines a functor $L\colon \mathcal{C} \to \mathcal{D}$.
+    For $c \in \mathcal{C}$ we have that $L(\id_c)=\id_{L(c)}$ by construction.
+    Let $c \xrightarrow{f}c' \xrightarrow{g}c''$ be in $\mathcal{C}$.
+    \[
+    \begin{tikzcd}
+        \Hom_{\mathcal{D}}(L(c),-)
+        \arrow[r, "\phi_c"]
+        &
+        \Hom_{\mathcal{C}}(c, R(-))
+        \\
+        \Hom_{\mathcal{D}}(L(c'),-)
+        \arrow[r, "\phi_c'"]
+        \arrow[u, "L(f)^*"]
+        &
+        \Hom_{\mathcal{C}}(c', R(-))
+        \arrow[u, "f^*"']
+        \\        
+        \Hom_{\mathcal{D}}(L(c''),-)
+        \arrow[r, "\phi_c''"]
+        \arrow[u, "L(g)^*"]
+        \arrow[uu, bend left=90, "L(g \circ f)"]
+        &
+        \Hom_{\mathcal{C}}(c', R(-))
+        \arrow[u, "g^*"']
+        \arrow[uu,bend right=90,  shift right ,"g \circ f"']
+    \end{tikzcd}
+    \]
+    The uniqueness given by Yoneda, implies
+    \[
+    L(g \circ f) = L(g) \circ L(f)
+    \]
+    Let $\phi_{c,d}=(\phi_c)_d$
+\end{proof}

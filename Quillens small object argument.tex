@@ -1,0 +1,322 @@
+\section{Quillens small object argument}
+
+Let $\mathcal{C}$ be a category that has all small colimits, let furthermore $\mathcal{C}$ be a cocomplete category (e.g. $\SetD$)
+and $J$ a set of morphisms in $\mathcal{C}$
+
+\underline{Aim}: For all $f$ in $\mathcal{C}$ construct a factorisation under some assumption in $J$.
+\[
+\begin{tikzcd}
+    &
+    \bullet
+    \ar[rd, "{\in J^{\lift{}}}"]
+    &
+    \\
+    \bullet
+    \ar[ru, " \prescript{\lift{}}{}{(J^{\lift{}})} \ni"]
+    \ar[rr, "f"']
+    &&
+    \bullet
+\end{tikzcd}
+\]
+
+That is $J= \{ \Lambda_k^n \xhookrightarrow{} \Delta^n \mid n\geq 1, 0 \leq k \leq n\}$ and then $J^{\lift{}}=$Kan fibrations, or $J=\{ \partial \Delta^n \hookrightarrow \Delta^n \mid n \geq 0 \}$ and then $J^{\lift{}}=$Trivial Kan fibrations.
+But we also want this factorisation to be functorial.
+
+\begin{defi}
+    A functorial factorisation in $\mathcal{C}$ is a section
+    $\Fun([1], \mathcal{C}) \to \Fun([2], \mathcal{C})$
+    of the composition functor $\Fun([2], \mathcal{C}) \xrightarrow{? \circ d_1}\Fun([1], \mathcal{C})$
+    where $([1] \xrightarrow{d_1} [2] \to \mathcal{C})$.
+\end{defi}
+
+Let us unravel the definition:
+For all morphisms $x \xrightarrow{f}y$ in $\mathcal{C}$ we get a $2$-simplex
+\[
+    \begin{tikzcd}
+        &
+        U(f) \ar[rd,"Rf"]
+        &
+        \\
+        x
+        \ar[ru, "Lf"]
+        \ar[rr, "f"']
+        &&
+        y
+    \end{tikzcd}
+\]
+in $\mathcal{C}$.
+For all commutative squares 
+\[
+\begin{tikzcd}
+    x
+    \ar[r, "f"]
+    \ar[d, "a"']
+    &
+    y
+    \ar[d, "b"]
+    \\
+    x'
+    \ar[r, "f'"']
+    &
+    y'
+\end{tikzcd}
+\]
+in $\mathcal{C}$, we get a diagram
+\[
+\begin{tikzcd}
+    &
+    U(f)
+    \ar[dd, dashed, "{U(a,b)}" pos=0.7]
+    \ar[dr,"R(f)"]
+    \\
+    x
+    \ar[dd,"a"']
+    \ar[rr,"f" pos=0.3]
+    \ar[ru,"Lf"]
+    &&
+    y
+    \ar[dd,"b"]
+    \\
+    &
+    U(f')
+    \ar[rd,"Rf'"]
+    \\
+    x'
+    \ar[ru,"Lf'"]
+    \ar[rr,"f'"']
+    &&
+    y'
+\end{tikzcd}
+\]
+
+\begin{defi}
+\label{weak factorisation system}
+    A weak factorisation system $(\mathcal{L},\mathcal{R})$ in $\mathcal{C}$ is a pair of classes of morphisms such that the following properties hold:
+    \begin{enumerate}
+        \item 
+        (Factorisation) For all morphism $f:x\to y$ in $\mathcal{C}$ there exists a $2$-simplex
+        \[
+        \begin{tikzcd}
+            &
+            z
+            \ar[rd,"\in \mathcal{R}"]
+            \\
+            x
+            \ar[ru, " \mathcal{L} \ni"]
+            \ar[rr, "f"']
+            &&
+            y
+        \end{tikzcd}
+        \],
+        \item 
+        (Lifting) $\mathcal{L} \lift{} \mathcal{R}$,
+        \item 
+        (Closure) $\mathcal{L} = \prescript{\lift{}}{}{\mathcal{R}}$ and $\mathcal{L}^{\lift{}} = \mathcal{R}$.
+    \end{enumerate}
+\end{defi}
+
+\begin{lem}{The retract argument}
+Suppose 
+$
+\begin{tikzcd}
+    \bullet
+    \ar[d, "f"]
+    \ar[r, "l"]
+    &
+    \bullet
+    \ar[d, "r"]
+    \\
+    \bullet 
+    \ar[r, equal]
+    &
+    \bullet
+\end{tikzcd}
+$
+and $f \lift{} r$. Then $f$ is a retract of $l$ as objects in the arrow category .
+\end{lem}
+
+\begin{proof}
+Since $f$ has the left lifting property with respect to $r$, we get a lift
+    \begin{tikzcd}
+        \bullet
+        \ar[d, "f"]
+        \ar[r, "l"]
+        &
+        \bullet
+        \ar[d, "r"]
+        \\
+        \bullet 
+        \ar[ru, "w"]
+        \ar[r, equal]
+        &
+        \bullet
+    \end{tikzcd}
+We can rewrite this diagram:
+\[
+    \begin{tikzcd}
+        \bullet 
+        \ar[r, equal]
+        \ar[d, "f"]
+        &
+        \bullet
+        \ar[r, equal]
+        \ar[d, "l"]
+        &
+        \bullet
+        \ar[d, "f"']
+        \\
+        \bullet
+        \ar[rr, bend right, "\id"]
+        \ar[r, dashed, "w"']
+        &
+        \bullet
+        \ar[r, "r"]
+        &
+        \bullet
+    \end{tikzcd}
+\]
+\end{proof}
+
+\begin{lem}
+    Suppose $(\mathcal{L}, \mathcal{R})$ satisfy the properties Factorisation and Lifting from \cref{weak factorisation system}.
+    Then the property Closure holds if and only if $\mathcal{L}, \mathcal{R}$ are closed under retracts.
+\end{lem}
+
+\begin{proof}
+    \todo{I am not convinced here, are we using the wrong idea of retract here?}
+\end{proof}
+
+\begin{thm}{Quillen's small object argument}
+\label{Quillen's small object argument}
+    Let $\mathcal{C}$ be a cocomplete category, $J$ a set of morphisms in $\mathcal{C}$ suppose that for all $j \in J$ we have that $\Hom_{\mathcal{C}}(\dom j,-)\colon \mathcal{C} \to \Set$ preserve (countable) sequential colimits (shape $(\mathcal{N}, \leq )$.
+    Then there exists a functorial factorisation in $\mathcal{C}$ turning $(\prescript{\lift{}}{}{(J^{\lift{}})},J^{\lift{}})$ into a weak factorisation system.
+    Moreover $\prescript{\lift{}}{}{(J^{\lift{}})}$ is the saturation of $J$.
+\end{thm}
+
+\begin{proof}
+    Let $f$ be a morphism in $\mathcal{C}$.
+    For $j \in J$, let $S_q(j,f)=
+    \left\{ 
+        \begin{tikzcd}
+        \bullet
+        \ar[d, "i"]
+        \ar[r]
+        &
+        \bullet
+        \ar[d, "f"]
+        \\
+        \bullet 
+        \ar[r]
+        &
+        \bullet
+        \end{tikzcd}
+    \right\}$
+    \[
+    \coprod_{j\in J}\coprod_{S_q(j,f)}
+    \begin{tikzcd}
+        \bullet
+        \ar[d, "j"]
+        \ar[r, "d_f"]
+        &
+        \bullet
+        \ar[d, "f"]
+        \\
+        \bullet 
+        \ar[r, "c_f"']
+        &
+        \bullet
+    \end{tikzcd}
+    \]
+    Consider now the pushout:
+    \[
+    \coprod_{j\in J}\coprod_{S_q(j,f)}
+    \begin{tikzcd}
+        \bullet
+        \ar[r, "d_f"]
+        \ar[d]
+        \ar[r, phantom, shift right =3.4ex, "\PO" ]
+        &
+        \bullet
+        \ar[d, "Lf"]
+        \ar[r, equal]
+        &
+        \bullet
+        \ar[d, "f"]
+        \\
+        \bullet
+        \ar[r,"b_f"']
+        &
+        x_1 
+        \ar[r, "Rf"']
+        &
+        \bullet
+    \end{tikzcd}
+    \]
+    By construction $Lf \in \prescript{\lift{}}{}{(J^{\lift{}})}$, but we have no guarantee that $Rf \in J^{\lift{}}$.
+    Apply now the above construction to $Rf$ and thus we obtain a square:
+    \[
+    \begin{tikzcd}
+        x_1 
+        \ar[r, equal]
+        \ar[d, "LRf"]
+        &
+        x_1
+        \ar[d, "Rf"]
+        \\
+        x_2
+        \ar[r, "R^2f"]
+        &
+        x_2
+    \end{tikzcd}
+    \]
+    Repeating the construction iteratively we obtain a diagram:
+    \[
+    \begin{tikzcd}
+        x_0
+        \ar[r, "Lf"]
+        \ar[rrd, bend right, "f"]
+        \ar[rrrrr, bend left, "{L^wf \in \prescript{\lift{}}{}{(J^{\lift{}})}}" ]
+        &
+        x_1
+        \ar[r,"LRf"]
+        \ar[rd, bend right, "Rf"]
+        &
+        x_2
+        \ar[r, "LR^2f"]
+        \dar["R^2f"]
+        &
+        x_3
+        \ar[r]
+        \ar[ld, bend left,"R^3f"]
+        &
+        \dotsc 
+        \rar
+        &
+        x_w=\colim_n x_n
+        \ar[llld, bend left, "\exists ! R^wf"]
+        \\
+        &&
+        \bullet
+    \end{tikzcd}
+    \]
+    Where $L^wf$ is the transfinite composition of the $LR^if$ for $i \in \mathbb{N}$ and $R^{i+1}f \circ LR^if=R^if$, with $R^0f=f$.
+
+    We claim that $R^wf \in J^{\lift{}}$.
+    Consider the square 
+    \[
+    \begin{tikzcd}
+        j_w
+        \ar[r,"u"]
+        \ar[d,"j"]
+        &
+        x_w
+        \ar[d, "R^wf"]
+        \\
+        \bullet 
+        \ar[r,"v"]
+        &
+        \bullet
+    \end{tikzcd}
+    \]
+    \todo{we are going to skip the rest for now it can be found in the literature (Emily Riehl)}
+\end{proof}

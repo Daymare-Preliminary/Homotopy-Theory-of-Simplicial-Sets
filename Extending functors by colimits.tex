@@ -1,0 +1,70 @@
+\section{Extending functors by colimits}
+
+Consider $X\in\Set = \hat{\mathds{1}}=\Fun(\mathds{1}^{op},\Set)$ with $\mathds{1}$  the category $\{\ast\righttoleftarrow \id\}$. The following diagram
+
+\[\begin{tikzcd}
+\{(\ast,y)\} \arrow[rd, hook] & \cdots                      & \{(\ast,z)\} \arrow[ld, hook'] \\
+                 & X\cong\coprod\limits_{x\in X}\{x\} &                 
+\end{tikzcd}\]
+exhibits $X$ as colimit. Now consider a small category $A$, a presheaf $X\in \hat{A}$, a morphism $u\colon a \to b$ in $A$ and elements $s\in X_a, t\in X_b$ with
+
+\[
+    \begin{tikzcd}[row sep= 2pt]
+    X_a & X_b \arrow[l, "u^*"'] \\
+    s   & t \arrow[l, maps to] 
+    \end{tikzcd}
+\]
+Owing to Yoneda, we have a commutative diagram in $\hat{A}$:
+\[
+\begin{tikzcd}
+\hat{a} \arrow[rd, "s"'] \arrow[rr, "\hat{u}"] &   & \hat{b} \arrow[ld, "t"] \\
+                                               & X &                        
+\end{tikzcd}
+\]
+Replacing $\mathds{1}$ with a small category $A$ we can generalize the construction from the beginning.
+\begin{defi}
+    The \underline{category of elements of $X$}, denoted $\int^A X$ has as objects the pairs $(a\in A, s\in X_a)=(a\in A, \hat{a}\xrightarrow{s} X)$ with morphisms
+    \[
+        \begin{tikzcd}
+        a \arrow[d, "\forall u\in A"'] & \hat{a} \arrow[rr, "s"] \arrow[d, "\hat{u}"'] && X \arrow[d, Rightarrow, no head] \\
+        b                              & \hat{b} \arrow[rr, "t"']                      && X                               
+        \end{tikzcd}
+    \]
+    given that $u^*(t)=s.$ Note that there is a canonical projection $can\colon \int^A X \to A$.
+\end{defi}
+We will see that the presheaf $X\in \hat{A}$ acts as a colimit with $\int^A X$ as the indexing category.
+
+\begin{exmp}
+\begin{itemize}
+    \item $A=\mathds{1}, X\in \Set.$ Then $\int^\mathds{1} X= \{(\ast,s\in X)\vert s\in X\}.$ A morphism $(\ast,s\in X)\xrightarrow{\id^*}(\ast,t\in X)$ requires $s=t$.
+    
+    \item $M\colon$ monoid $\leadsto$ $\widehat{BM}=\Fun(\ast\righttoleftarrow M^{op},\Set)$. We have the following morphisms in $\int^{BM} X:$ 
+    \[(\ast,x\in X)\xrightarrow{m\in M}(\ast,y\in X)\] with $m^*(y)=y\cdot m = x$, i.e. morphisms exist precisely within orbits.
+    \item $b\in A\leadsto \int^A A(-,b).$ The morphisms are given by
+    \[
+        \begin{tikzcd}
+        a \arrow[d, "\forall u\in A"'] & {(a\in A, f\in A(a,b))} \arrow[d, "u"'] \arrow[rr, Rightarrow,no head] &  & {(a\in A, f\colon a\to b)} \arrow[d, "u"] \\
+        a'                             & {(a'\in A, g\in A(a',b))} \arrow[rr, Rightarrow,no head]               &  & {(a'\in A, g\colon a'\to b)}             
+        \end{tikzcd}
+    \] i.e. $u^*(g)=g\circ u = f$.
+    \end{itemize}
+\end{exmp}
+
+Consider the composite 
+\[
+    \begin{tikzcd}[row sep= 1pt]
+    \int^A X \arrow[r]         & A \arrow[r, "\mu", hook] & \hat{A}\ni X \\
+    {(a,s)} \arrow[r, maps to] & a \arrow[r, maps to]     & \hat{a}     
+    \end{tikzcd}
+\]
+The presheaf $X$ has a canonical cone structure under this diagram, which is what we alluded to before: 
+\[
+    \begin{tikzcd}
+    {(a,s)} \arrow[dd, "\substack{\forall u \in \int^AX\\(u^*(t)=s)}"'] & \hat{a} \arrow[rr, "\hat{u}"] \arrow[rdd, "s"'] &   & \hat{b} \arrow[ldd, "t"] \\
+                                                                        &                                                 &   &                          \\
+    {(b,t)}                                                             &                                                 & X &                         
+    \end{tikzcd}
+\]
+
+
+

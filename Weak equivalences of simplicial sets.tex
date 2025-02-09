@@ -1,0 +1,243 @@
+\section{Weak equivalences of simplicial sets}
+
+Recall that for $X \in \SetD$ and $K \in \SetD$ a Kan complex then $\underline{\Hom}(X,K)$ is a Kan complex.
+Furthermore $f\colon X \to Y$ in $\SetD$ is a homtopy equivalence if there exists $g\colon Y \to X$ and homotopies $g \circ f \to \id_X$ and $ f \circ g \to \id_Y$.
+
+\begin{exmp}
+    Let $\begin{tikzcd}
+            L \colon  \mathcal{C} 
+            \arrow[r, shift left]
+            &
+            \mathcal{D} \colon R
+            \arrow[l, shift left]
+        \end{tikzcd}$
+        be an adjunction $L \dashv R$.
+        Then $N(L)\colon N( \mathcal{C} \to \mathcal{D})$ is a homotopy equivalence.
+        Let $\eta \colon \mathds{1}_{\mathcal{C}} \to RL$ be the unit and $\epsilon\colon LR \to \mathds{1}_{\mathcal{D}}$ the counit of the adjunction, thus $\eta$ is a morphism in $\Fun( \mathcal{C} , \mathcal{C})$ and $\epsilon$ on $\Fun( \mathcal{D} , \mathcal{D} )$.
+        Thus we can also consider $\eta \colon [1] \to \Fun(\mathcal{C},\mathcal{C})$ and $\epsilon \colon [1] \to \Fun(\mathcal{D},\mathcal{D})$.
+        This can again be rephrased as $\eta \in \Fun( [1] , \Fun( \mathcal{C} , \mathcal{C})) \cong \Fun ( [1] \times \mathcal{C}, \mathcal{C}) \ni \overline{\eta}$ and $\epsilon \in \Fun( [1] , \Fun( \mathcal{D} , \mathcal{D})) \cong \Fun ( [1] \times \mathcal{D}, \mathcal{D}) \ni \overline{\epsilon}$.
+        Now $N( \overline{\eta}) \colon N( [1] \times \mathcal{C}) \to N (\mathcal{C})$ and we have isomorphisms $N( [1] \times \mathcal{C}) \cong N([1]) \times N(\mathcal{C}) \cong \Delta^1 \times N(\mathcal{C})$.
+        Take the nerve $N(\overline{\eta}) \colon N( \mathds{1}_{\mathcal{C}}) \to N(RL)= N(R) \circ N(L)$
+        \[
+        \begin{tikzcd}
+            \mathcal{C} \cong [0] \times \mathcal{C}
+            \ar[d, "L_0 \times \mathds{1}_{\mathcal{C}}"']
+            \ar[rd, bend left, "\mathds{1}_{\mathcal{C}}"]
+            \\
+            [1] \times \mathcal{C}
+            \ar[r, "\overline{\eta}"]
+            &
+            \mathcal{C}
+            \\
+            \overline{C}\cong [0] \times \mathcal{C} 
+            \ar[u, "L_1 \times \mathds{1}_{\mathcal{C}}"]
+            \ar[ru, bend right, "RL"']
+        \end{tikzcd}
+        \]
+\end{exmp}
+
+\begin{prop}
+\label{Homtopy eq. of Kan complexes are bij in pi_0(weak eq.)}
+    Let $f\colon X \to Y$ be a morphism between Kan complexes, then the following are equivalent:
+    \begin{enumerate}
+        \item 
+        $f$ is a homtopy equivalence,
+        \item 
+        for all Kan complexes $K \in \SetD$ the morphism $\pi_0(f^*) \colon \pi_0(\underline{\Hom}(Y,K)) \to \pi_0(\underline{\Hom}(X,K))$ is bijective.
+    \end{enumerate}
+\end{prop}
+
+\begin{defi}
+\label{weak equivalence}
+    A morphism of simplicial sets $f\colon X \to Y$ is a \underline{weak equivalence} if for all Kan complexes $K \in \SetD$ the morphism $\pi_0(f^*) \colon \pi_0(\underline{\Hom}(Y,K)) \to \pi_0(\underline{\Hom}(X,K))$ is bijective.
+\end{defi}
+
+\begin{lem}
+\label{homotopy equivalence of inner hom}
+    Let $f\colon X \to Y$ be a homotopy equivalence. 
+    Then for all Kan complexes $K \in \SetD$ the morphism $f^*\colon \underline{\Hom}(Y,K) \to \underline{\Hom}(X,K)$ is a homotopy equivalence.
+\end{lem}
+
+\begin{proof}
+    Let $h\colon \id_X \to g \circ f$ be a homotopy $(\Delta^1 \times X \xrightarrow{h} X)$.
+    Let $h^*\colon \underline{\Hom}(X,K) \to \underline{\Hom}(\Delta^1 \times X,K) \cong \underline{\Hom}(\Delta^1 , \underline{\Hom}(X,K))$ be the morphism induced by $h$ on the inner $\Hom$ simplicial sets, so $h^* \in \underline{\Hom}(\Delta^1 \times \underline{\Hom}(X,K), \underline{\Hom}(X,K))$.
+    Thus $h^*$ gives a homotopy between $(\id_X)^*=\id_{\underline{\Hom}(X,K)}$ and $(g \circ f)^* = f^* \circ g^*$.
+\end{proof}
+
+\begin{cor}
+    Let $f \colon X  \to  Y$ be a homotopy equivalence of simplicial sets, then $f$ is a weak equivalence.
+\end{cor}
+
+\begin{proof}
+    It is an application of \cref{homotopy equivalence of inner hom} and applying the definition of the weak equivalence.
+\end{proof}
+
+\begin{prop}
+    Let $i \colon X \hookrightarrow K$ be an anodyne extension, then $i$ is a weak equivalence.
+\end{prop}
+
+\begin{proof}
+    Let $K$ be a Kan complex, then $i^* \colon \underline{\Hom}(Y,K) \to \Hom(X,K) $ is a trivial Kan fibration, then it is a homtopy equivalence, thus $\pi_0$ is an iso.
+    \todo{find the statements}
+\end{proof}
+
+\begin{prop}{2 out of 3}
+\label{2 out of 3 weak equivalences}
+    Weak equivalences satisfy the 2 out of 3 property. 
+    That is for every commutative diagram
+    \[
+    \begin{tikzcd}
+        &
+        Y
+        \ar[rd, "g"]
+        &
+        \\
+        X
+        \ar[ru, "f"]
+        \ar[rr,"gf"']
+        &&
+        Z
+    \end{tikzcd}
+    \]
+    if 2 out of the morphisms $f,g$ and $g\circ f$ are weak equivalences, then so is the third.
+\end{prop}    
+
+\begin{proof}
+    Let $K \in \SetD$ be a Kan complex. 
+    \todo{too tired to understand the argument here, häääähhhhh}
+\end{proof}
+
+\begin{prop}
+    Let $f^{(i)}\colon X^{(i)} \to Y^{(i)}$ be a family of weak equivalences, indexed over the set $I$.
+    Then $\coprod_{i \in I} f^{(i)}$ is a weak equivalence.
+\end{prop}
+
+\begin{proof}
+    Let $K$ be a Kan complex 
+    \[
+    \begin{tikzcd}
+        \underline{\Hom}(\coprod Y^{(i)},K)
+        \ar[d,sloped, auto= false, "\sim"]
+        \ar[r, "(\coprod f^{(i)})^*"]
+        &
+        \underline{\Hom}(\coprod Y^{(i)}, K)
+        \ar[d,sloped, auto= false, "\sim"]
+        \\
+        \prod \underline{\Hom} ( Y^{(i)}, K) 
+        \ar[r, "(f^{(i)*})_i"']
+        &
+        \prod \underline{\Hom}(X^{(i)},K)
+    \end{tikzcd}
+    \]
+    Then $\underline{\Hom}(Y^{(i)},K)$ is a Kan complex, since $\pi_0$ preserves all small coproducts of Kan complexes, we are done.
+\end{proof}
+
+\begin{prop}
+    Let $f^{(i)}\colon X^{(i)} \to Y^{(i)}$ be a family of weak equivalences of Kan complexes, indexed over a set $I$.
+    Then $\prod f^{(i)}$ is a weak equivalence.
+    By \cref{Homtopy eq. of Kan complexes are bij in pi_0} all weak equivalences here are homotopy equivalences.
+\end{prop}
+
+\begin{proof}
+    Let $K$ be a Kan complex, then $\prod X^{(i)}$ and $\prod Y^{(i)}$ are Kan complexes.
+    Then we have the following diagram
+    \[
+    \begin{tikzcd}
+        \pi_0(\underline{\Hom}(K, \prod X^{(i)}))
+        \rar
+        \ar[d,sloped, auto= false, "\sim"]
+        &
+        \pi_0(\underline{\Hom}(K, \prod Y^{(i)}))
+        \ar[d,sloped, auto= false, "\sim"]
+        \\
+        \pi_0(\prod \underline{\Hom}(K, X^{(i)}))
+        \rar
+        \dar
+        &
+        \pi_0(\prod \underline{\Hom}(K, Y^{(i)}))
+        \dar
+        \\
+        \prod \pi_0(\underline{\Hom}(K, X^{(i)}))
+        \ar[r, "sim"]
+        &
+        \prod \pi_0(\underline{\Hom}(K, Y^{(i)}))
+    \end{tikzcd}
+    \]
+\end{proof}
+
+\begin{rmk}
+    For a finite product we do not need homtopy equivalence neither Kan complexes for the statement to hold.
+\end{rmk}
+
+\begin{prop}
+    Let $f\colon X \to Y$ be a weak equivalence.
+    Then for all Kan complexes $K$ the morphism $f^*\colon \underline{\Hom}(Y,K) \to \underline{\Hom}(X,K)$ is a homotopy equivalence.
+\end{prop}
+
+\begin{proof}
+    Let $ W \in \SetD$ be a Kan complex.
+    Then
+    \[
+    \begin{tikzcd}
+        \pi_0(\underline{\Hom}(W, \underline{\Hom}(Y,K)))
+        \ar[r, "f^* \circ ?"]
+        \ar[d,sloped, auto= false, "\sim"]
+        &
+        \pi_0(\underline{\Hom}(W, \underline{\Hom}(X,K)))
+        \ar[d,sloped, auto= false, "\sim"]
+        \\
+        \pi_0(\underline{\Hom}(Y, \underline{\Hom}(W,K)))
+        \ar[r, "\pi_0(f^*)"]
+        &
+        \pi_0(\underline{\Hom}(X, \underline{\Hom}(W,K)))
+    \end{tikzcd}
+    \]
+    Now all the inner $\Hom$ simplicial sets are Kan complexes and we are done by applying \cref{Homtopy eq. of Kan complexes are bij in pi_0}.
+\end{proof}
+
+\begin{cor}
+    Suppose that $f \colon X \to Y$ admits a factorisation 
+    \[
+    \begin{tikzcd}
+        &
+        Z
+        \ar[rd, "\in \text{ Triv. Kan fibrations}"]
+        &
+        \\
+        X
+        \ar[ru, "\An \ni"]
+        \ar[rr, "f"']
+        &&
+        Y
+    \end{tikzcd}
+    \]
+    Then $f$ is a weak equivalence.
+\end{cor}
+
+\begin{proof}
+    Anodyne extensions and trivial Kan fibrations are weak equivalences, $f$ is the composition of two weak equivalences hence a weak equivalence by \cref{2 out of 3 weak equivalences}.
+\end{proof}
+
+Let $X \in \SetD$ such that
+\[
+    \begin{tikzcd}
+        &
+        \Tilde{X}
+        \ar[rd, "\in \KanFib"]
+        &
+        \\
+        X
+        \ar[ru, "\An \ni"]
+        \ar[rr, "f"']
+        &&
+        \Delta^0
+    \end{tikzcd}
+\]
+then $X$ is weakly equivalent to the Kan complex $\Tilde{X}$.
+Can do this functorially by small object argument.
+
+\todo{dk, what this means}
+
+Lecture 14.1
+
+\todo{Correction}

@@ -1,0 +1,68 @@
+\section{Motivation}
+
+Let $\mathcal{C}$ be a category and $W$ a class of morphisms.
+
+\begin{defi}
+\label{localisation_morphisms}
+    A localisation of $\mathcal{C}$ at $W$ is a category $\mathcal{C}[W^{-1}]$ together with a functor $\gamma\colon \mathcal{C} \to \mathcal{C}[W^{-1}]$ such that $\forall f \in W$, we get that $\gamma(f)$ is an isomorphism in $\mathcal{C}[W^{-1}]$.
+\end{defi}
+
+\begin{exmp}
+    \begin{itemize}
+        \item 
+        A ring considered as category and the localisation at an ideal.
+        Can this be extended to rings with more than one object?
+        \item 
+        The derived category of an abelian category is the localisation with respect to the quasi isomorphisms.
+    \end{itemize}
+\end{exmp}
+
+\begin{prop}
+    Let $\mathcal{C}[W^{-1}]$ as in \cref{localisation_morphisms}. 
+    For any category $\mathcal{D}$ the functor 
+        \begin{align*}
+            j^*\colon\Fun(\mathcal{C}[W^{-1}], \mathcal{D}) 
+            \to
+            &
+            \Fun(\mathcal{C},\mathcal{D})
+            \\
+            (\mathcal{C}[W^{-1}] \to 
+            \mathcal{D})\longmapsto
+            &
+            (\mathcal{C} \xrightarrow{\gamma}
+            \mathcal{C[W^{-1}]}
+            \xrightarrow{F}
+            \mathcal{D})
+        \end{align*}
+    is an equivalence.
+\end{prop}
+
+\begin{thm}[{\cite{Gabriel1967CalculusOF}}]
+    Set-theoretic issues aside, loacalisations always exist. 
+\end{thm}
+    
+\todo{where}
+
+\begin{exmp}
+    \begin{itemize}
+        \item 
+        Let $\Top$ be the category with objects given by topological spaces and morphisms given by continuous maps.
+        Let $W$ be the weak homotopy equivalences, that is morphisms $f:X \to Y$ such that the induced maps on path components 
+        \[
+        \pi_0(f) \colon\pi_0(X) \isomorphism \pi_0(Y)
+        \]
+        and for all points $x \in X$ and for all $n\geq1$ with $n \in \mathbb{N}$ the morphism $f$ induces an an isomorphism on homotopy groups
+        \[
+        \pi_n(f,x) \colon \pi_n(X,x) \isomorphism \pi_n(Y,f(x))
+        \]
+        in $\Grp$.
+        The result of the localisation is called the homotopy category $\mathcal{H}: \Top[W^{-1}]$.
+        \item 
+        The localisation at all morphism of the category $\mathcal{C}[\mathcal{C}^{-1}]$ is a groupoid.
+    \end{itemize}
+\end{exmp}
+
+\begin{rmk}
+    The takeaway is the general paradigm, that the localisation is the \underline{truncation} of a richer mathematical structure.
+\end{rmk}
+

@@ -1,0 +1,219 @@
+\section{Kan Fibrations}
+
+Aim: Formalize the idea of a "family of Kan complexes parametrized by a simplicial set", i.e. suitable morphisms $X \xrightarrow{p} Y$ in $\Set_{\Delta}$ whose fibres are Kan complexes.
+That is we have a pullback diagram
+\[
+\begin{tikzcd}
+    X_y
+    \arrow[d]
+    \ar[r]
+    &
+    X
+    \ar[d,"p"]
+    \\
+    \Delta^0
+    \ar[r,"y"]
+    &
+    Y    
+\end{tikzcd}
+\]
+
+\underline{Terminology}:
+Let $ L \xrightarrow{i} K$ and $ X \xrightarrow{p} Y$ be morphisms.
+We say that ($ i \lift{} p$) $i$ has the left lifting property with respect to $p$ (equivalently $p$ has the right lifting property with respect to $i$).
+If there exists for every $L \xrightarrow{f} X$ and $K \xrightarrow{g}Y$ a morphism $h:K \to X$ such that the following diagram commutes
+\[
+\begin{tikzcd}
+    L
+    \arrow[d,"i"]
+    \ar[r, "f"]
+    &
+    X
+    \ar[d,"p"]
+    \\
+    K
+    \ar[ru,"h"]
+    \ar[r,"g"]
+    &
+    Y    
+\end{tikzcd}
+\]
+Let $X \in \SetD$ be a Kan complex. 
+Then 
+\[
+\{ \Lambda_k^n \to \Delta^n \mid n\geq 1 ,0 \leq k \leq n \} \lift{} (X \to \Delta^0)
+\]
+is given by 
+\[
+\begin{tikzcd}
+    \Lambda_k^n
+    \arrow[d,"\iota"']
+    \ar[r, "\sigma"]
+    &
+    X
+    \ar[d,"!"]
+    \\
+    \Delta^n
+    \ar[ru,"\Tilde{\sigma}"]
+    \ar[r,"!"']
+    &
+    \Delta^0
+\end{tikzcd}
+\]
+
+\begin{defi}
+    A morphism $X \xrightarrow{p} Y$ is a Kan fibration if 
+    \[
+    \{ \Lambda_k^n \to \Delta^n \mid n\geq 1 ,0 \leq k \leq n \} \lift{} (X \xrightarrow{p} Y)
+    \]
+\end{defi}
+
+\begin{rmk}
+    We may as well write $X \xrightarrow{p} Y \in \{ \Lambda_k^n \to \Delta^n \mid n\geq 1 , 0 \leq k \leq n\}^{\lift{}}$.
+\end{rmk}
+
+\begin{lem}
+    Let $i \lift{} p$ and
+    \[
+    \begin{tikzcd}
+        X'
+        \arrow[d,"p'"]
+        \ar[r]
+        &
+        X
+        \ar[d,"p"]
+        \\
+        Y'
+        \ar[r,"v"]
+        &
+        Y    
+    \end{tikzcd}
+    \]
+    be a pullbacksquare, then $i \lift{} p'$.
+\end{lem}
+
+\begin{proof}
+    Consider the diagram
+    \[
+    \begin{tikzcd}
+        L
+        \ar[r,"f"]
+        \ar[d,"i"']
+        &
+        X'
+        \arrow[d,"p'" pos=0.65]
+        \ar[r, "u"]
+        &
+        X
+        \ar[d,"p"]
+        \\
+        K
+        \arrow[r,"g"']
+        \ar[rru, dashed, "r" pos= 0.4]
+        \ar[ru, dashed, "h"]
+        &
+        Y'
+        \ar[r,"v"']
+        &
+        Y    
+    \end{tikzcd}
+    \]
+    where $r$ exists since $i$ has the left lifting property with respect to $p$ and $h$ exists by the universal property of the pullback.
+    Now $u \circ h \circ i = r \circ i = u \circ f$ and $p' \circ h \circ i = q \circ i = p' \circ f$, since the  morphism given by the pullback is unique we get that $h \circ i = f$.
+\end{proof}
+
+Lecture 3.12 
+
+Formalise the notion of a locally constant family of Kan complexes relative to a base simplicial set.
+
+\begin{defi}
+    Let $X \xrightarrow{p} Y$ be a Kan fibration. 
+    By the preceding theorem, we get that for every $y\in Y_0$ the fibre $X_y$ is a Kan complex. 
+    Now consider $\Delta^0$ as the simplicial set where $\Delta^0_n=\Hom_{\SetD}([n],[0])=\{[n] \to [0]\}$ is the unique map into the final object.
+    We have the constant map 
+\todo{alot missin here}
+\end{defi}
+
+\begin{prop}
+\label{comp_Kan_fib}
+    Let $L \xrightarrow{i} K$ be a morphism and suppose that $X \xrightarrow{p} Y$, $Y \xrightarrow{g} Z$ have the right lifting property with respect to $i$, then the composition $g \circ p$ has the right lifting property with respect to $i$.
+\end{prop}
+
+\begin{proof}
+    This is just a simple matter of writing down the square for $g$ and using the obtained morphism to write down the square $p$ obtaining a morphism that fllfills the desired property.
+\end{proof}
+
+\begin{cor}
+    Suppose that $X \xrightarrow{p} Y$ is a Kan fibration and $Y$ is a Kan complex, then $X$ is a Kan complex.
+\end{cor}
+
+\begin{proof}
+    Since $X \xrightarrow{p} Y$ is a Kan fibration and $Y \to \Delta^0$ is a Kan fibration, we get by \cref{comp_Kan_fib} that $X \to \Delta^0$ is a Kan fibration, thus we get that $X$ is a Kan complex.
+\end{proof}
+
+\begin{prop}
+    Let $X^{(i)} \xrightarrow{p^i} Y^{(i)}$ with $i \in I$ be a set indexed family of Kan fibrations.
+    Then $\prod X^{(i)} \xrightarrow{\prod p^i} \prod Y^{(i)}$ is a Kan fibration.
+\end{prop}
+
+\begin{proof}
+Consider the diagram arising from the assumptions
+\[
+    \begin{tikzcd}
+        \Lambda_k^n
+        \ar[r,"\sigma"]
+        \ar[d,"\iota"]
+        &
+        \prod X^{(i)}
+        \ar[d, "\prod p^i" pos=0.7]
+        \ar[r, "\prod \pi_j"]
+        &
+        X^{(j)}
+        \ar[d, "p^j"]
+        \\
+        \Delta^n
+        \ar[ru, dashed, "\exists ?"]
+        \ar[rru, dashed, "h_j" pos=0.4]
+        \ar[r, "\tau"']
+        &
+        \prod Y^{(i)}
+        \ar[r, "\pi_j"']
+        &
+        Y^{(j)}
+    \end{tikzcd}
+\]
+Since $p_j$ is a Kan fibration, there exists $h_j \colon \Delta^n \to X^{(j)}$ such that 
+$\begin{cases}
+    p_jh_j=\pi_j\tau\\
+    h_j\iota = \pi_j \sigma_j.
+\end{cases}$
+    The universal property of the product gives $h \colon \Delta^n \to \prod X^{(i)}$ such that $\pi_j \circ h = h_j$.
+    Now we have that $\pi_j(h \circ \iota ) = h_j \circ \iota = \pi_i \circ \sigma$ and thus $h \circ \iota = \sigma$ as well as $\pi_j(\prod {p_i} \circ h) = p_j \circ \pi_j \circ h = p_j h_j = \pi_j \tau$ and thus $\prod p_i \circ h = \tau$, where the equalities follow from the uniqueness of the morphism given by the pullback.
+\end{proof}
+
+\begin{prop}
+    Let $\dotsc \to X^{(n)} \xrightarrow{p_n} \dotsc \to X^{(1)} \xrightarrow{p_1}X^{(0)}$ be a "tower" of Kan fibrations, that is for all $i, p_i$ is a Kan fibration.
+    Then $X^{\infty} \coloneqq \lim X^{(n)} \xrightarrow{\pi_0} X^{(0)}$ is a Kan fibration. 
+\end{prop}
+
+\begin{proof}
+    Consider the diagram 
+\[
+\begin{tikzcd}
+    \Lambda_k^n
+    \arrow[d,"\iota"']
+    \ar[r, "\sigma"]
+    &
+    X^{(\infty)}
+    \ar[d,"\pi_0"]
+    \\
+    \Delta^n
+    \ar[ru, dashed, "\exists ?"]
+    \ar[r,"\tau"']
+    &
+    X^{(0)}
+\end{tikzcd}
+\]
+The idea is to construct a cone of the tower with apex $\Delta^n$ and then use the universal property $X^\infty$.
+\todo{finish this ya lazy bombaclat}
+\end{proof}

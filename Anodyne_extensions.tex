@@ -1,0 +1,63 @@
+\section{Anodyne extensions}
+
+\todo{why dis observation, how does dis motivate anodyne extensions}
+
+\begin{defi}
+    We say that a class $\mathcal{M}$ of morphisms in $\mathcal{C}$ is a \underline{saturated class} if 
+    \begin{enumerate}
+        \item 
+        $\mathcal{M}$ contains all isomorphisms,
+        \item 
+        $\mathcal{M}$ is closed under compositions,
+        \item
+        if $i:L \to K$ is in $\mathcal{M}$ then so is the pushout $i'$ given by the pushout diagram 
+        \[
+        \begin{tikzcd}
+            L
+            \arrow[d,"i"]
+            \ar[r,"\sigma"]
+            &
+            L'
+            \ar[d,"i'"]
+            \\
+            K
+            \ar[r]
+            &
+            K'   
+        \end{tikzcd}
+        \]
+        \item
+        $\mathcal{M}$ is closed under coproducts and
+        \item 
+        for any sequence of objects and morphism 
+        \[
+        L^{(0)} \to L^{(1)} \to L^{(2)}\to \dotsc
+        \]
+        in $\mathcal{M}$, the morphism $L^{(0)} \to L^{(\infty)}=\colim L^{(n)}$ is in $\mathcal{M}$.
+    \end{enumerate}
+    We say that $\mathcal{M}$ is a saturated class of monomorphisms if all $i \in \mathcal{M}$ are monomorphisms.
+\end{defi}
+
+\begin{defi}
+    The \underline{saturation} of a class of monos is the intersection of all such containing it. We write $\overline{\mathcal{M}}$ for its saturation.
+\end{defi}
+
+\begin{defi}
+    The class of anodyne extensions is $\overline{\{ \Lambda_k^n \xrightarrow{i_k^n} \Delta^n \mid 1 \leq n ,0 \leq k \leq n \}}=\An$.
+\end{defi}
+
+\begin{rmk}
+    The term anodyne extensions translates to something like harmless extensions.
+\end{rmk}
+
+\begin{prop}
+    The class $\An^{\lift{}}$ is equal to the Kan fibrations.
+\end{prop}
+
+\begin{proof}
+    $(\subseteq)$ Let $p \in \An^{\lift{}}$, then for all $n\geq 0$ there exists $0 \leq k \leq  n$ such that $i_{n,k} \lift{} p: p \in \KanFib$
+
+    $(\supseteq)$ Consider $\prescript{\lift{}}{}{\KanFib}$, this is a saturated class. 
+    By unitality of $\An \subseteq \prescript{\lift{}}{}{\KanFib}$ it holds that for all $i \in  \An$ and all $p \in \KanFib$ $i\lift{}p $ which means that for all $p \in \KanFib$ we have that $p \in \An^{\lift{}}$
+\end{proof}
+    
