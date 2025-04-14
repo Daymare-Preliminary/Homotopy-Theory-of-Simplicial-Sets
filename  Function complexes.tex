@@ -1,4 +1,8 @@
-For all $X,Y \in \SetD$ there exists a simplicial set $\underline{\Hom}_{\SetD}(X,Y)$ where $\underline{\Hom}_{\SetD}(X,Y)_n = \Hom_{\SetD}(\Delta^n \times X, Y)$ and for any $\sigma : \Delta^m \to \Delta^n$ we have 
+\section{Reminder Function complexes}
+
+For all $X,Y \in \SetD$ there exists a simplicial set $\underline{\Hom}_{\SetD}(X,Y)$ where 
+
+$\underline{\Hom}_{\SetD}(X,Y)_n = \Hom_{\SetD}(\Delta^n \times X, Y)$ and for any $\sigma : \Delta^m \to \Delta^n$ we have 
 \[
 (\Delta^n \times X  \xrightarrow{\alpha} Y) \mapsto (\Delta^m \times X \xrightarrow{\sigma \times \id_X} \Delta^n \times X \xrightarrow{\alpha}Y)
 \]
@@ -69,8 +73,153 @@ such that
     \ar[ru, "\sigma^*(f)"']
 \end{tikzcd}
 \]
-where $\sigma^*(\iota^*(f)) \coloneqq \iota^*(\sigma^*(f))$
 
-\todo{dont get what this diagram wants from me}
+\subsection{Exercises}  
 
+\begin{Exercise}
+    
+Consider a pair of adjunctions $ L \dashv R $ and $ L' \dashv R' $ between two categories $ \mathcal{ C } $ and $ \mathcal{ D } $.
+A natural transformation of adjunctions $ \lambda : ( L \dashv R ) \to ( L' \dashv R' ) $ is a tuple of natural transformations $ \lambda = ( \lambda^L , \lambda^R ) $ where $ \lambda^L : L \to L'$ and $\lambda^R : R' \to R $ such that 
+\[
+\begin{tikzcd}
+    \Hom_{\mathcal{ D } } ( L' ( - ) , ? )
+    \ar[r,"\sim","\varphi'"']
+    \ar[d, " (\lambda^L)^* "]
+    &
+    \Hom_{\mathcal{C}}(-,R'(?))
+    \ar[d,"(\lambda^R)_*"]
+    \\
+    \Hom_{\mathcal{D}}(L(-),?)
+    \ar[r,"\varphi"',"\sim"]
+    &
+    \Hom_{\mathcal{C}}(-,R(?))
+\end{tikzcd}
+\]
+commutes.
+Here $\varphi$ and $\varphi'$ are the respective adjunction isomorphisms.
+Fix two morphisms $ i \colon A \to B $ in $ \mathcal{ C } $ and $ p : X \to Y $ in $ \mathcal{ D } $.
+Assume that $ \mathcal{ C } $ admits pullbacks and $ \mathcal{ D } $ consider the following induced morphisms.
+
+\begin{tikzcd}
+    R'X 
+    \ar[rrd, bend left, "\lambda_X^R"]
+    \ar[rd, dashed, "{ \exists! ( R'p , \lambda ) }"]
+    \ar[rdd, bend right, "R'p"']
+    &
+    &
+    \\
+    &
+    R'Y \times_RY RX
+    \ar[r, "\pr_X"]
+    \ar[d, "\pr_Y"']
+    &
+    RX
+    \ar[d, "Rp"]
+    \\
+    &
+    R'Y 
+    \ar[r,"\lambda_Y^R"']
+    &
+    RY
+\end{tikzcd}
+\qquad
+\begin{tikzcd}
+    LA
+    \ar[r, "\lambda_A^L"]
+    \ar[d, "Li"]
+    &
+    L'A
+    \ar[d, "\iota_A"]
+    \ar[rdd, bend left, "L'i"]
+    &
+    \\
+    LB
+    \ar[r, "\iota_B"]
+    \ar[rrd, "\lambda_B^L"]
+    &
+    LB \amalg_LA L'A
+    \ar[rd, "{\exists ! ( \lambda , L'i )}"]
+    &
+    \\
+    &&
+    L'B
+\end{tikzcd}
+
+Our aim is to show that $ ( R'p , \lambda ) \in r ( i ) $ if and only if $ ( \lambda, L'i) \in l(p)$.
+
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Show that $ \big( ( R'p , \lambda ) \in r ( i ) \implies ( \lambda , L' i ) \in l ( p ) \big) $ is dual to $ \big( ( \lambda , L'i ) \in l ( p ) \implies ( R'p , \lambda ) \in r ( i ) \big)$.
+\end{enumerate}
+
+With this it suffices to show only one of the implications. 
+So consider the following lifting problem.
+\[
+\begin{tikzcd}
+    A 
+    \ar[r, "f"]
+    \ar[d, "i"]
+    &
+    R'X
+    \ar[d, "{(R'p , \lambda)} "]
+    \\
+    B
+    \ar[r, "{(g_Y , g_X)}"']
+    &
+    R'Y \times_RY RX
+\end{tikzcd}
+\]
+
+\begin{enumerate}[label=(\alph*), resume]
+    \item 
+    Show that $ \varphi^{-1} ( g_X ) $ and $ ( \varphi' )^{ - 1 } ( f ) $ induce an unique morphism $ LB \amalg_{LA} L'A \to X $ and that this map fits in the following commuting square.
+    \[
+    \begin{tikzcd}
+        LB \amalg_{LA} L'A 
+        \rar
+        \ar[d, "{ (\lambda , L' i ) }"']
+        &
+        X
+        \ar[d, "p"]
+        \\
+        L'B 
+        \ar[r, "{(\varphi')^{-1} (g_Y)}"']
+        &
+        Y
+    \end{tikzcd}
+    \]
+
+    \item 
+    Show that if $ \rho $ is a lift in the square from (b) then $ \varphi' ( b ) $ is a solution to the original problem.
+
+    \item 
+    Conclude that $ ( R'p , \lambda ) \in r(i) $ if and only if $ ( \lambda , L'i) \in l ( p ) $.
+
+    \item 
+    Describe the result if $ Y $ is final or $ A $ is initial.
+\end{enumerate}
+
+\end{Exercise}
+
+\begin{Exercise}
+    
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Show that given morphsim of simplicial sets $ f : L \to K $, the pair $ \lambda \coloneqq ( \id_{(-)} \times f , f^* ) $ is a morphism between the adjunctions $ - \times L \dashv \Hom ( L , - ) $ and $ - \times K \dashv \Hom ( K , - ) $ of endofunctors of $ \SetD $.
+
+    \item 
+    Show that if $ j : L \to K $ is a monomorphism, then for any horn inclusion $ i : \Lambda_k^n \to \Delta^n $, the induced morphism $ ( \id_{ \Delta^n } \times j , i \times \id_K ) $ is an anodyne extension.
+
+    \item 
+    Deduce that if $ p $ is a Kan fibration and $ j : L \to K $ is a monomorphism, then the induced morphism
+    \[
+        ( p_* , j^* ): \Hom( K , X ) \to \Hom ( K , Y ) \times_{ \Hom ( L , Y ) } \Hom ( L , X )
+    \]
+    is again a Kan fibration.
+
+    \item  
+    Describe the special case where $ Y = \Delta^0 $.
+    
+\end{enumerate}
+\end{Exercise}
 

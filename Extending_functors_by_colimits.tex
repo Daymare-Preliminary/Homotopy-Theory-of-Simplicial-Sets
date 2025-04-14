@@ -1,0 +1,384 @@
+\setcounter{section}{4}
+\section{Extending functors by colimits}
+
+Consider $X\in\Set = \widehat{\mathds{1}}=\Fun(\mathds{1}^{op},\Set)$ with $\mathds{1}$  the category $\{\ast\righttoleftarrow \id\}$. The following diagram
+
+\[\begin{tikzcd}
+\{(\ast,y)\} \arrow[rd, hook] & \cdots                      & \{(\ast,z)\} \arrow[ld, hook'] \\
+                 & X\cong\coprod\limits_{x\in X}\{x\} &                 
+\end{tikzcd}\]
+exhibits $X$ as colimit. Now consider a small category $A$, a presheaf $X\in \widehat{A}$, a morphism $u\colon a \to b$ in $A$ and elements $s\in X_a, t\in X_b$ with
+
+\[
+    \begin{tikzcd}[row sep= 2pt]
+    X_a & X_b \arrow[l, "u^*"'] \\
+    s   & t \arrow[l, maps to] 
+    \end{tikzcd}
+\]
+Owing to Yoneda, we have a commutative diagram in $\widehat{A}$:
+\[
+\begin{tikzcd}
+\widehat{a} \arrow[rd, "s"'] \arrow[rr, "\widehat{u}"] &   & \widehat{b} \arrow[ld, "t"] \\
+                                               & X &                        
+\end{tikzcd}
+\]
+Replacing $\mathds{1}$ with a small category $A$ we can generalize the construction from the beginning.
+\begin{defi}
+    The \underline{category of elements of $X$}, denoted $\int^A X$ has as objects the pairs $(a\in A, s\in X_a)=(a\in A, \widehat{a}\xrightarrow{s} X)$ with morphisms
+    \[
+        \begin{tikzcd}
+        a \arrow[d, "\forall u\in A"'] & \widehat{a} \arrow[rr, "s"] \arrow[d, "u^*"'] && X \arrow[d, Rightarrow, no head] \\
+        b                              & \widehat{b} \arrow[rr, "t"']                      && X                               
+        \end{tikzcd}
+    \]
+    given that $u^*(t)=s.$ Note that there is a canonical projection $can\colon \int^A X \to A$.
+\end{defi}
+We will see that the presheaf $X\in \widehat{A}$ acts as a colimit with $\int^A X$ as the indexing category.
+
+\begin{exmp}
+\begin{itemize}
+    \item $A=\mathds{1}, X\in \Set.$ Then $\int^\mathds{1} X= \{(\ast,s\in X)\vert s\in X\}.$ A morphism $(\ast,s\in X)\xrightarrow{\id^*}(\ast,t\in X)$ requires $s=t$.
+    
+    \item $M\colon$ monoid $\leadsto$ $\widehat{BM}=\Fun(\ast\righttoleftarrow M^{op},\Set)$. We have the following morphisms in $\int^{BM} X:$ 
+    \[(\ast,x\in X)\xrightarrow{m\in M}(\ast,y\in X)\] with $m^*(y)=y\cdot m = x$, i.e. morphisms exist precisely within orbits.
+    \item $b\in A\leadsto \int^A A(-,b).$ The morphisms are given by
+    \[
+        \begin{tikzcd}
+        a \arrow[d, "\forall u\in A"'] & {(a\in A, f\in A(a,b))} \arrow[d, "u"'] \arrow[rr, Rightarrow,no head] &  & {(a\in A, f\colon a\to b)} \arrow[d, "u"] \\
+        a'                             & {(a'\in A, g\in A(a',b))} \arrow[rr, Rightarrow,no head]               &  & {(a'\in A, g\colon a'\to b)}             
+        \end{tikzcd}
+    \] i.e. $u^*(g)=g\circ u = f$.
+    \end{itemize}
+\end{exmp}
+
+Consider the composite 
+\[
+    \begin{tikzcd}[row sep= 1pt]
+    \int^A X \arrow[r]         & A \arrow[r, "\mu", hook] & \widehat{A}\ni X \\
+    {(a,s)} \arrow[r, maps to] & a \arrow[r, maps to]     & \widehat{a}     
+    \end{tikzcd}
+\]
+The presheaf $X$ has a canonical cone structure under this diagram, which is what we alluded to before: 
+\[
+    \begin{tikzcd}
+    {(a,s)} \arrow[dd, "\substack{\forall u \in \int^AX\\(u^*(t)=s)}"'] & \widehat{a} \arrow[rr, "\widehat{u}"] \arrow[rdd, "s"'] &   & \widehat{b} \arrow[ldd, "t"] \\
+                                                                        &                                                 &   &                          \\
+    {(b,t)}                                                             &                                                 & X &                         
+    \end{tikzcd}
+\]
+
+\begin{prop}
+    The cocone $(X, (s\colon \widehat{a} \to X)_ {(a,s)\in \int^A})$ is a colimit of the composition $\int^A X \xrightarrow{ can } A \xrightarrow{\mu}\widehat{A}$.
+\end{prop}
+
+\begin{proof}
+    Consider a cone $(Y \in \widehat{A} , (\mu_{a,s} \colon \widehat{a} \to Y)_{(a,s) \in \int^A})$, we need to prove that there exists a unique morphism of  cones $f \colon (X, (s)_{(a,s) \in \int^A}) \mapsto (Y, (\mu_{a,s})_{(a,s) \in \int^A})$.
+    Consider the tuple:
+    $f \colon (f_a \colon X_a \to Y_a \mid a  \in A)$ where $f_a\colon X_a \to Y_a$ and $f_a(s)=\mu_{(a,s)}$ to prove $f:X \to Y$ is a natural transformation.
+    \[
+    \begin{tikzcd}
+        a 
+        \ar[d, "u"]
+        &
+        X_a
+        \ar[r, "f_a"]
+        &
+        Y_a
+        \\
+        b
+        &
+        X_b
+        \ar[r, "f_b"']
+        \ar[u, "u^*"]
+        &
+        Y_b
+        \ar[u, "u^*"']
+    \end{tikzcd}
+    \quad
+    \begin{tikzcd}
+        u^*(t)
+        \ar[r, mapsto]
+        &
+        \mu_{a, u^*(t)}
+        \\
+        t
+        \ar[u, mapsto]
+        \ar[r, mapsto]
+        &
+        \mu_{b, u^*(t)}
+        \ar[u, mapsto, "u^*(\mu_{b,t})"]
+    \end{tikzcd}
+    \]
+    We need to prove that $f \colon (X, (s)_{(a,s) \in \int^A}) \to (Y,(\mu_{a,s}))$ is a morphism of cones.
+    That is to show, that for $(a,s) \in \int^AX$ 
+    \[
+    \begin{tikzcd}
+        &
+        \widehat{a}
+        \ar[rd,"{\mu_{a,s}}"]
+        \ar[ld, "s"']
+        \\
+        X
+        \ar[rr,"f"']
+        &&
+        Y
+    \end{tikzcd}
+    \] commutes, so $f \circ s = \mu_{a,s}$, which means that $f_a(s)=\mu_{a,s}$, but this is true by the definition of $f$.
+\end{proof}
+
+Remember that we have a natural isomorphism of functors $\Hom_{\widehat{A}}(A(-,?),X) \isomorphism X$. 
+Suppose now we are given a functor $u \colon A  \to \mathcal{C}$ and $ \mathcal{ C } $ has all small colimits.
+Consider the functor $u^*\colon \mathcal{C} \to \widehat{A}$, where $u^*(c) = \Hom_{\mathcal{C}}(u(-),c)$ which can be considered to be the composition $A^{\op} \xrightarrow{u^{\op}} \mathcal{C}^{\op} \xrightarrow{\Hom(-,c)}\Set$.
+
+\begin{thm}{Kan}
+\label{Kan_extending_by_colimits}
+    The functor $u^*\colon \mathcal{C} \to \widehat{A}$ admits a left adjoint $u_!\colon \widehat{A} \to \mathcal{C}$.
+    Moreover $\exists !\phi \colon u_! \circ \mu \isomorphism u$ natural morphism such that for all $a \in A$ and $c \in \mathcal{C}$.
+    \[
+    \begin{tikzcd}
+        \Hom_{\mathcal{C}}(u_!(\widehat{a}),c)
+        \ar[d,"\text{adj.}"]
+        &
+        \Hom_{\mathcal{C}}(u(a),c)
+        \ar[l, "\phi_a^*"]
+        \ar[d, equal]
+        \\
+        \Hom_{\widehat{A}}(\widehat{a},u^*(c)) 
+        \ar[r, "\sim \text{Yoneda}"]
+        &
+        u^*(c)_a
+    \end{tikzcd}
+    \]
+\end{thm}
+
+\begin{proof}
+    It is enough to prove that for $X \in \widehat{A}$ the functor
+    \[
+    \Hom_{\widehat{A}}(X,u^*(-))\colon \mathcal{C} \to \Set
+    \]
+    is corepresentable.
+    Consider the functor given by the composition $ \int^A X \xrightarrow{p} A \xrightarrow{u} \mathcal{C}$.
+    Since $\mathcal{C}$ is cocomplete, we may choose a colimit $(u_!(X), (f_{a,s}\colon u(a) \to u_!(X))_{(a,s) \in \int^A X})$.
+    Then $\Hom_{\mathcal{C}}(u_!(X),c) \isomorphism \lim_{(a,s) \in \int^A X} \Hom_{\mathcal{C}}(u(a),c)$, since the $\Hom$ functor takes colimits in the first entry to limits of the $\Hom$ functor.
+    Now by Yoneda \cref{yoneda_lemma} $\lim_{(a,s) \in \int^A X} \Hom_{\mathcal{C}}(u(a),c) \isomorphism \lim_{(a,s) \in \int^A X} \Hom_{\widehat{A}}(\widehat{a},u^*(c))$ which is isomorphic to $\Hom_{\widehat{A}}(X,u^*(c))$.
+\end{proof}
+
+\begin{rmk}
+    Note $u_!$ preserves colimits and $u^*$ preserves limits, since they are the components of an adjunction.
+\end{rmk}
+
+\begin{prop}
+\label{colimit_preserving_admits_right_adjoint}
+    Let $F\colon \widehat{A} \to \mathcal{C}$ be colimit preserving. 
+    Then $F \cong (F \circ \mu)_!$ and in particular it admits a right adjoint.
+\end{prop}
+
+\begin{proof}
+    For $X \in \widehat{A}$. 
+    We have $F(X)=F(\colim_{(a,s) \in \int^A X}\widehat{a}) \isomorphism \colim_{(a,s) \in \int^A X}F(\widehat{a}) = \colim_{(a,s) \in \int^A X} ( F \circ \mu ) ( a ) = ( F  \circ \mu )_! ( X ) $.
+    The last equality can be found in the proof right above.
+\end{proof}
+
+\begin{exmp}
+    Let $1_{\widehat{A}}\colon \widehat{A} \to \widehat{A}$, then $\mathds{1}_{\widehat{A}} \cong \mu_!$
+    where $\mu$ is the Yoneda embedding.
+\end{exmp}
+
+Lecture 31.10
+
+Let us take a look at another application of the adjunction constructed above, that is to internal Hom functors.
+For $Y \in \widehat{A}$ let
+\[
+_ \times Y \colon \widehat{A} \to \widehat{A}, X \mapsto X \times Y
+\]
+preserves colimits and thus by \cref{colimit_preserving_admits_right_adjoint} admits a right adjoint $\underline{\Hom}_{\widehat{A}}(Y,Z)_a\colon \widehat{A} \to \widehat{A}$.
+Let $\underline{\Hom}(Y,Z)_a =\Hom_{\widehat{A}}(\widehat{a} \times Y, Z)$ we obtain
+\[
+\Hom_{\widehat{A}}(X \times Y, Z) \isomorphism \Hom_{\widehat{A}}(X, \underline{\Hom}_{\widehat{A}}(X \times Y,Z)).
+\]
+Now for any $W \in \widehat{A}, \Hom_{\widehat{A}}(W, \underline{\Hom}_{\widehat{A}}(X \times Y, Z)) \cong \Hom_{\widehat{A}}(W \times(X \times Y),Z) \cong \Hom_{\widehat{A}}((W \times X) \times Y,Z) \cong \Hom_{\widehat{A}}(W \times X, \underline{\Hom}_{\widehat{A}}(Y,Z))$.
+Let $u \colon \int^AX \to \widehat{A}/X$, where $\widehat{A}/X$ is the category of presheaves over $X$, be the functor induced by Yoneda.
+Then $u_! \colon \widehat{\int^A_X} \to \widehat{A} /X$ is colimit preserving.
+
+\begin{thm}
+    The functor $u_!$ given above is an equivalence of categories.
+\end{thm}
+
+\begin{proof}
+    At first observe that $u \colon \int^AX \to \widehat{A}/X$ is fully faithfull, since it is given by the composition of the Yoneda embedding with an isomorphism.
+    Secondly $u_!(\widehat{(a,s)})=u(a,s)=(\widehat{a} \xrightarrow{s}X)$ satisfies that $\Hom_{\widehat{A}/X}(u_! ( \widehat{(a,s)}), - ) \colon \widehat{A}/X \to \Set$ preserves small colimits.
+    The third observation is that the collection $\{ u_!(\widehat{(a,s)}) \mid (a,s) \in \int^A X \} \subseteq \widehat{A}/X$ generates under small colimits the whole category.
+    Put together we get that $u_!\colon \widehat{\int^A X} \to \widehat{A}/X$ is an equivalence of categories.
+\end{proof}
+
+Consider the following $F\colon \widehat{A} \to \mathcal{D}$ where $\mathcal{D}$ is cocomplete and $F$ a functor that preserves colimits.
+
+\underline{Aim}
+We want to prove that $F$ is an equivalence and are going to do so in 3 steps:
+\begin{enumerate}
+    \item 
+    $F \circ \mu \colon A  \to \mathcal{D}$ is fully faithfull,
+    \item 
+    for all $a \in A$ the functor $\Hom_{\mathcal{D}}(F(\widehat{a}),-)$ preserves colimits,
+    \item 
+    and $\{F(\widehat{a}) \in \mathcal{D} \mid a \in A \} \subseteq \mathcal{D}$ generates under small colimits.
+\end{enumerate}
+Suppose we are given functors $\begin{tikzcd} \widehat{A} \ar[r, shift left , "F"] \ar[r, shift right, "G"'] & \mathcal{C}\end{tikzcd}$ and a natural transformation $\eta:F \to G$.
+
+\begin{prop}
+    The natural transformation $\eta: F \to G$ is an isomorphism of functors, if and only if for all $a \in A$ the induced morphism $F(\widehat{a}) \xrightarrow{\eta_{\widehat{a}}} G(\widehat{a})$ is an isomorphism.
+\end{prop}
+
+\begin{proof}
+    Consider $\mu(A) \subseteq * = \{ X \in  \widehat{A} \mid  \eta_X \colon FX \to GX \text{ is an iso } \subseteq \widehat{A}$.
+    By the density theorem it is enough to prove that this category is closed under colimits.
+    Let $\underline{X} \colon I \to X \subseteq \widehat{A}$ be a diagram.
+    Consider $\colim_I \underline{X} \in \widehat{A}$. 
+    We need to prove $\eta_{\colim_I \underline{X}} \colon F(\colim_I \underline{X}) \to G(\colim_I \underline{X})$ is an isomorphism.
+    To do so consider the diagram:
+    \[
+    \begin{tikzcd}
+        \colim_I F\underline{X}
+        \ar[r, dashed, "\colim_I \eta_{\underline{X}}"]
+        \ar[d,"\sim"]
+        &
+        \colim_I G\underline{X}
+        \ar[d, "\sim"]
+        \\
+        F(\colim_I X) 
+        \ar[r, "\eta_{\colim_I \underline{X}}"]
+        &
+        G(\colim_I \underline{X})
+    \end{tikzcd}
+    \]
+\end{proof}
+
+\subsection{Exercises}
+
+\begin{Exercise}
+    Let $ L \colon \mathcal{ C } \to \mathcal{ D } $ be a functor between small categories.
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        For $ d \in \mathcal{ D } $ describe the category of elements of the presheaf $\Hom_{\mathcal{ D } } ( L ( - ) , d ) \in \widehat{ \mathcal{ C } }$.
+    
+        \item 
+        Show that $ L $ admits a right adjoint if and only if for every $d \in \mathcal{ D } $ the category of elements $ \int^{ \mathcal{ C } } \Hom_{ \mathcal{ D } } ( L ( - ) , d ) $ admits a final object.
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ A $ be a small category and $ a \in A $ some object.
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that $ \Hom_{\widehat{A}}( \widehat{a} , - ) \colon \widehat{A} \to \Set $ preserves colimits, i.e. for any functor $ F \colon I \to \widehat{ A } $ the canonical map 
+        \[
+            \colim_I ( \Hom_{ \widehat{ A } } ( \widehat{ a } , - ) \circ F ) \to \Hom_{ \widehat{ A } }( \widehat{ a }, \colim_I F )
+        \]
+        is an isomorphism.
+    
+        \item 
+        Deduce that $\Hom_{\widehat{A}} ( \widehat{a} , - ) $ admits a right adjoint and describe it.
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ u \colon A \to  B $ be a functor between small categories. 
+    Let $ u* \colon \widehat{ B } \to \widehat{ A } $ denote the functor obtained by precomposition with $ u $.
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that $u^*$ preserves colimits.
+    
+        \item 
+        Deduce that there exists a right adjoint $ u^* \dashv u_* $.
+    
+        \item 
+        Give an explicit description of $ u _*$.
+    
+        \item 
+        Confirm directly that $ u^* \dashv u_* $ by giving the adjunction isomorphism explicitly.
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ X $ be a presheaf over a small category $ A $. Recall from the lecture the canonical functor.
+    \[
+        u \colon \int^A X \to \widehat{ A } / X 
+    \]
+    sending $ ( a , s \in X_a ) $ to $ s \colon \widehat{ a } \to X $, where $ \int^A X $ is the category of elements of $ X $. 
+    Hence, by extending by colimits we obtain a functor
+    \[
+        u_! \colon \widehat{\int^A X} \to \widehat{A} / X
+    \]
+    which we aim to show is equivalence, most of which was done in the lecture. 
+    Show the remaining claims.
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        The slice category $ \widehat{A} / X $ is cocomplete.
+    
+        \item 
+        For any $ ( a , s \colon a \to X ) \in \int^A X $ the functor $ \Hom_{\widehat{A}/X} ( u_! ( \widehat{ ( a ,s )} ) , - ) $ preserves colimits.
+    
+        \item 
+        Any $ ( Y , f \colon Y \to X ) $ can be obtained as a colimit of a diagram in the essential image of $ u $.
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ \mathcal{ C } $ and $ \mathcal{ D } $ be two cocomplete categories where $ \mathcal{ C } $ is small and let $  D \colon I \to \mathcal{ C } $ be a diagram in $ \mathcal{ C } $.
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that there is a natural transformation of functors $ \Fun ( \mathcal{ C }, \mathcal{ D } \to \mathcal{ D } $
+        \[
+            can \colon \colim_I D^* ( - ) \to \ev_{ \colim_I D}.
+        \]
+        
+        \item 
+        Deduce that if $ F $ and $ G $ are two isomorphic funtors in $ \Fun ( \mathcal{ C } , \mathcal{ D } ) $, then $ F $ is colimit preserving if and only if $ G $ is.
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Consider an adjunction $ L \dashv R $ where $ L \colon \mathcal{ C } \to \mathcal{ D } $.
+    
+    \begin{enumerate}[label=(\alph*)]
+    
+        \item 
+        Show that for a $ d \in \mathcal{ D } $ the counit $ \epsilon_d $ at $ d $ is an isomorphism if and only if $ R $ induces a natural isomorphism 
+        \[
+            R_{d,-}\colon \Hom_{\mathcal{ D } } ( d, - ) \to \Hom_{ \mathcal{ C } } ( R ( d ) , R ( - ) ). 
+        \]
+    
+        \item 
+        Deduce that $ R $ is fully faithful if and only if the counit $ \epsilon \colon L \circ R  \to \id_{\mathcal{ D } } $ is an isomorphism.
+    
+        \item 
+        Give the dual statement to (b) and give a proof reducing the statement to (b).
+    
+        \item 
+        Show that if $ R $ is fully faithful, then $ c \in \mathcal{ C } $ is in the essential image of $ R $ if and only if the unit morphism $ \eta_c $ is an isomorphism at $ c $.
+        
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ u \colon A \to B $ be a functor between small categories.
+    Recall from the lecture and Exercise 4.3 that we have a triple of adjunctions $ u_! \dashv u^* \dashv u_* $ where $ u^* \colon  \widehat{ B } \to \widehat{ A } $. 
+    Assume further that $ u $ is fully faithful.
+    
+    \begin{enumerate}[label=(\alph*)]
+    
+        \item 
+        Show that $ u_* $ is fully faithful. 
+    
+        \item   
+        Show that $ u_! $ is fully faithful.
+        \newline
+        (Hint: Show that the class $ \{ X \in \widehat{ A } \mid \eta_X \text{ is invertible } \} $ is closed under colimits and contains all representable presheaves.)
+        
+    \end{enumerate}
+\end{Exercise} 

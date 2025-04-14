@@ -2,6 +2,7 @@
 
 Lecture 22.10
 
+
 Everytime you encounter some free object, in the sense that it is freely generated from some other object of some other category, like a free group on some set, you are most likely going to use the properties of the object stemming from an adjunction.
 
 \begin{defi}
@@ -316,13 +317,13 @@ Everytime you encounter some free object, in the sense that it is freely generat
         d
     \end{tikzcd}
     \]
-    Notice that given an adjunction $ L \dashv R$ we have that $\forall c \in \mathcal{C} (c,c \xrightarrow{\eta_c} Rc)$ is in $c/R$ and $\forall \in \mathcal{D}(d, LR \xrightarrow{\epsilon_d} d)$ is in $L/d$.
+    Notice that given an adjunction $ L \dashv R$ we have that $\forall c \in \mathcal{C} (c,c \xrightarrow{\eta_c} RLc)$ is in $c/R$ and $\forall \in \mathcal{D}(d, LRd \xrightarrow{\epsilon_d} d)$ is in $L/d$.
 \end{defi}
 
 \begin{prop}
 \label{initial_final_comma_category}
-    The object $(c,c \xrightarrow{\eta_c} Rc)$ is initial in $c/R$ and
-    $(d, LR \xrightarrow{\epsilon_d} d)$ is final in $L/d$.
+    The object $(c,c \xrightarrow{\eta_c} RLc)$ is initial in $c/R$ and
+    $(d, LRd \xrightarrow{\epsilon_d} d)$ is final in $L/d$.
 \end{prop}
 
 \begin{proof}
@@ -342,7 +343,7 @@ Everytime you encounter some free object, in the sense that it is freely generat
         \]
     where $\overline{\overline{f}}=\overline{R(\overline{f})\circ \eta_c}$. 
     Thus the morphism $f$ of the object $(c,f)$ uniquely determines the morphism $R(\overline{f})$. 
-    The argument for final object is dual
+    The argument for final object is dual to this one.
 \end{proof}
 
 Lecture 24.10
@@ -420,15 +421,15 @@ Consider the following transformations, given by the adjunction isomorphisms
         &
         c
         \arrow[ld, "\eta^{(1)}_c"']
-        \arrow[d, "\eta^{(2)}_2"]
+        \arrow[d, "\eta^{(2)}_c"]
         \arrow[rd, "\eta^{(1)}_c"]
         &
         \\
         RL_1c
-        \arrow[r, dashed, "Rg"]
+        \arrow[r, dashed, "Rg"']
         &
         RL_2c
-        \arrow[r, dashed, "Rh"]
+        \arrow[r, dashed, "Rh"']
         &
         RL_1c
     \end{tikzcd}
@@ -467,7 +468,7 @@ Consider the following transformations, given by the adjunction isomorphisms
         c
         \arrow[dl, "\eta^{(1)}_c"']
         \arrow[dr, "\eta^{(2)}_c"]
-        \arrow[dd]
+        \arrow[dd, "f", pos=0.7]
         &
         \\
         RL_1c
@@ -494,9 +495,9 @@ Consider the following transformations, given by the adjunction isomorphisms
     This yields the following equations
     \begin{align}
         R(U_{c'} \circ L_1(f)) \circ \eta^{(1)}_c
-        &= R (U_{c'}) \circ \eta_c^{(1)} \circ f
+        &= R (U_{c'}) \circ \eta_{c'}^{(1)} \circ f
         \\
-        &= \eta_c^{(2)} \circ f
+        &= \eta_{c'}^{(2)} \circ f
         \\
         &=RL_2(f) \circ \eta_c^{(2)}
         \\
@@ -508,13 +509,18 @@ Consider the following transformations, given by the adjunction isomorphisms
     \[
     \begin{tikzcd}
         c 
-        \arrow[r, "\eta_c^{(1)}"]
-        &
+        \arrow[rr, "\eta_c^{(1)}"]
+        \ar[rrd, bend right, "\eta_{c'}^{(2)} \circ f"']
+        &&
         RL_1c
+        \dar[shift left, "R(L_2(f) \circ U_c)"]
+        \dar[shift right, "R(U_{c'} \circ L_1(f))"']
         \\
+        &&
+        RL_2(c)
     \end{tikzcd}
     \]
-    \todo{why are we done here ??}
+    Both compositions give an initial object in $c/R$ by \cref{initial_final_comma_category}, thus by the uniqueness of an initial object they are equal in $c/R$ and thus $U_{c'} \circ L_1(f)=L_2(f) \circ U_c$.
 \end{proof}
 
 \begin{prop}
@@ -544,7 +550,7 @@ Consider the following transformations, given by the adjunction isomorphisms
 
 Let $A$ be a small category and $\mathcal{C}$ a category.
 Consider the functor $\const_A \colon \mathcal{C} \to \Fun(A , \mathcal{C})$
-that maps each object of $\mathcal{C}$ to the functor $F_c(a)=c$ for all and $a \in A$ and each morphism to $\id_c$.
+that maps each object of $\mathcal{C}$ to the functor $F_c(a)=c$ for all $a \in A$ and each morphism to $\id_c$.
 
 \begin{prop}
     Suppose that there exists $L \colon \Fun(A,\mathcal{C}) \to \mathcal{C}$ a left adjoint to $\const_A$. 
@@ -552,7 +558,7 @@ that maps each object of $\mathcal{C}$ to the functor $F_c(a)=c$ for all and $a 
 \end{prop}
 
 \begin{proof}
-    We know that $\eta_X \colon X \to \const_A(LX)$ is initial in $X / \const_A$.
+    We know by \cref{initial_final_comma_category} that $\eta_X \colon X \to \const_A(LX)$ is initial in $X / \const_A$.
     Notice that the objects of $X/\const_A$ are pairs
     $(c \in \mathcal{C}, \rho \colon X \Rightarrow \const_A(c))$.
     Thus $\Bar{\rho} = ( \rho_a \colon X_a \to c \mid a \in A )$ is such that 
@@ -584,7 +590,7 @@ that maps each object of $\mathcal{C}$ to the functor $F_c(a)=c$ for all and $a 
         \arrow[d, equal]
         &
         \const_A(c)
-        \arrow[d,equal, "\const_A(f)"]
+        \arrow[d, "\const_A(f)"]
         \\
         X 
         \arrow[r, Rightarrow, "\Bar{\sigma}"]
@@ -597,22 +603,20 @@ that maps each object of $\mathcal{C}$ to the functor $F_c(a)=c$ for all and $a 
     \begin{tikzcd}
         X_a
         \arrow[r, "\phi_a"]
-        \arrow[rd, " \sigma"]
+        \arrow[rd, " \sigma_a"]
         \arrow[d, equal]
         &
         c
-        \arrow[d, "f"]
+        \arrow[d, "f"] 
         \\
         X_a
-        \arrow[r,"\sigma"]
+        \arrow[r,"\sigma_a"']
         &
         c'
     \end{tikzcd}
     \]
+    The two diagrams above tell us, that $c$ together with the $\phi_a$ is a cocone and combining this with the universality of the initial object, we obtain that $LX$ is a colimit.
 \end{proof}
-
-\todo{why are we done here ? Don't see it.}
-
 
 \begin{prop}
     Let $\mathcal{C} \xleftarrow{}\mathcal{D}:R$ be such that for all $c \in \mathcal{C}$ the functor $\Hom_{\mathcal{C}}(c,R(-))\colon \mathcal{D} \to \Set$ is corepresentable by an object $L(c) \in \mathcal{D}$ via $\phi_c \colon \Hom_{\mathcal{D}}(L(c),-) \isomorphism \Hom_{\mathcal{D}}(c,R(-))$.
@@ -683,5 +687,176 @@ that maps each object of $\mathcal{C}$ to the functor $F_c(a)=c$ for all and $a 
     \[
     L(g \circ f) = L(g) \circ L(f)
     \]
-    Let $\phi_{c,d}=(\phi_c)_d$
+    Let $\phi_{c,d}=(\phi_c)_d$ be the isomorphism $ \Hom_{ \mathcal{ D } } ( L ( c ) , d ) \isomorphism \Hom_{ \mathcal{ C } } ( c , R ( d ) ) $.
+    We need to show that $ \varphi \colon \Hom_{ \mathcal{ D } } ( L ( - ) , ? ) \to \Hom_{ \mathcal{ C } } ( - , R ( ? ) ) $ is a natural transformation of functors $ \mathcal{ C }^{ \op } \times \mathcal{ D } \to \Set $.
+    Thus let $ ( c , d ) , ( c' , d' ) \in \mathcal{ C }^{ \op } \times \mathcal{ D } $  be objects and $ f \colon c' \to c $ as well as $ g \colon d  \to d' $ morphisms.
+    Then the commutativity of the following diagram yields the result.
+    \[
+    \begin{tikzcd}
+        \Hom_\mathcal{D}( L ( c ) , d ) 
+        \ar[dd, bend right=90, " g_* \circ L ( f )^* "']
+        \ar[d, " g_* \circ \id_{L(c)}^* "]
+        \ar[r, " \varphi_{ c , d } "]
+        &
+        \Hom_\mathcal{C}( c , R ( d ) ) 
+        \ar[d , " R ( g )_* \circ \id_c^* "]
+        \ar[dd, bend left=90, " R ( g )_* \circ f^* " ]
+        \\
+        \Hom_\mathcal{D}( L ( c ) , d' )
+        \ar[d, " L(f)^* "]
+        \ar[r, " \varphi_{ c , d' } "]
+        &
+        \Hom_\mathcal{C}( c , R ( d' ) )
+        \ar[d , " f^* "]
+        \\
+        \Hom_\mathcal{D}( L ( c' ) , d' ) 
+        \ar[r, " \varphi_{ c' , d' } "]
+        &
+        \Hom_\mathcal{C}( c' , R ( d' ) )
+    \end{tikzcd}
+    \]
+Since the two inner squares as well as the triangles on the sides commute, we obtain that the whole diagram commutes.
 \end{proof}
+
+\begin{prop}
+    Suppose that $\mathcal{C}$ has all colimits of shape $A$. 
+    Then $\const_A \colon \mathcal{C} \to \Fun(A, \mathcal{C})$ admits a left adjoint.
+\end{prop}
+
+\begin{proof}
+    For $X \in \Fun(A, \mathcal{C})$ we have $\Hom_{\mathcal{C}}(\colim_{a \in A} X,c) \isomorphism \lim_{a \in A} \Hom_{\mathcal{C}}(Xa,c)=\Hom_{X/\const_A}(X, \const_A(c))$ since $\overline{\phi}\colon ( \phi\colon X_a \to c \mid a \in A)$ belongs to the right hand side if and only if for all $a \xrightarrow{u} b$ in $A$, we have that
+    \[
+    \begin{tikzcd}
+        &
+        c
+        &
+        \\
+        X_a
+        \ar[rr, "X_u"']
+        \ar[ur, "\phi_a"]
+        &&
+        X_b
+        \ar[lu, "\phi_b"']
+    \end{tikzcd}
+    \]
+    That is $(c,\overline{\phi})$ is a cone under $X$, that is $\overline{\phi}: X \to \const_A(c)$. 
+\end{proof}
+
+\subsection{Exercises}
+
+\begin{Exercise}
+    Consider two small categories $ A $ and $ B $ and a functor $ F \colon B \to \Fun ( A , \mathcal{ C } ) $. Assume further that $ \lim_B ( \ev_a \circ F ) $ exists in $ \mathcal{ C } $ for every $ a \in A $.
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that a cone $ C $ of $ F $ is a limit cone if and only if for every $ a \in A $
+        the evaluation $  C ( a ) $ is a limit cone of $ \ev_a \circ F $.
+    
+        \item 
+        Deduce that for any small category $ A $ the category of presheaves $ \widehat{ A } $ is complete and cocomplete.
+    
+        \item 
+        [Bonus] 
+        We aim to show that the converse of the above is not true in general, i.e if not all
+        $ \lim_B ( \ev_a \circ F ) $ exists, then $ \lim_B F $ might still exist ( and consequentially $( \lim_B F ) ( a ) $ is not a limit cone of $ \ev_a \circ F $ for some $ a \in A $.
+    
+        For this we will reformulate the property of a morphism being a monomorphism in terms of a pullback and show that there might exist monomorphisms in $ \Fun ( A , \mathcal{ C } )$ which are not pointwise monomorphisms. Fix $ A  \coloneqq \{ 0 < 1 \} $ to be the category with two objects and one morphism between them.
+        Then $ \Fun ( A , \mathcal{ C } ) $ is the morphism category in $ \mathcal{ C } $.
+        We now take $ \mathcal{ C } $ to be the category which does contain a non-monomorphism, explicitely let $ \mathcal{ C }$ be given by
+        \[
+        \begin{tikzcd}
+            x 
+            \ar[r, bend left, "f"]
+            \ar[r, bend right, "g"']
+            &
+            y
+            \ar[r, "h"]
+            &
+            z
+        \end{tikzcd}
+        \]
+        with the relation $ h \circ f = h \circ g$.
+        \begin{itemize}
+            \item 
+            Show that a morphism $ u \colon s \to t $ in a category is a monomorphism if and only if 
+            \[
+            \begin{tikzcd}
+                s 
+                \ar[d, "\id_s"]
+                \ar[r, "\id_s"]
+                &
+                s
+                \ar[d, "u"]
+                \\
+                s 
+                \ar[r, "u"]
+                & 
+                u
+            \end{tikzcd}
+            \]
+            is a pullback diagram.
+    
+            \item 
+            Show that there is a monomorphism $ u \colon f \to h $ in $\Fun ( A , \mathcal{C} )$ such that $ u_1 $ is not a monomorphism.
+    
+            \item 
+            Describe a $ B $ and a functor $ F  \colon B \to \Fun ( A , \mathcal{C} ) $ giving the desired counterexample.
+            
+        \end{itemize}
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ F \colon A \to \mathcal{ C } $ be a functor from a small category. Let $ \Tilde{ F } \colon A \to  \mathcal{ C } \to \widehat{ \mathcal{ C } } $ be the composition of $ F $ with the Yoneda embedding $ \mathcal{ C } \to \widehat{ \mathcal{ C } } $. Recall from Exercise 3.1 that the limit $ \lim_A \Tilde{ F } $ exists.
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that there is a bijection between representations of $\lim_a \Tilde{ F } $ and limit cones of $ F $.
+    
+        \item 
+        Deduce that the limit of $ F $ exists if and only if $ \lim_A \Tilde{ F } $ is representable, i.e. there exists some $ c_F \in \mathcal{ C } $ such that $ \lim_A  \Tilde{ F } \cong \Hom_{ \mathcal{ C } } ( - , c_F ) . $ 
+    
+        \item 
+        Conclude that the Yoneda embedding $ \mathcal{ C } \to \widehat{ \mathcal{ C } } $ preserves limits.
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Show that the inclusion $ \iota \colon \Gpd \to \Cat $ of small groupoids into the category of small categories has a right adjoint given by "forgetting" all non-isomorphisms in a given category.
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ L \dashv R $ be an adjoint pair of functors where $ L \colon \mathcal{ C } \to \mathcal{ D } $.
+    Recall that we define unit $ \eta \colon \id_{ \mathcal{ C } } \to R \circ L $ the image of $ \id_{ L ( c ) } $ under the adjunction isomorphism
+    \[
+        \phi_{ ( c , L ( c ) ) } \colon \Hom_{\mathcal{ D } } ( L ( c ) , L ( c ) ) \cong \Hom_{ \mathcal{ C } }( c, R ( L ( c ) ) )
+    \]
+    for every $ c \in \mathcal{ C } $ and the counit $ \epsilon \colon L \circ R \to \id_{ \mathcal D } $ as the image of $ \id_{ R ( d ) } $ under the adjunction isomorphism
+    \[
+        \phi^{ -1 }_{ ( R ( d ) , d ) } \colon \Hom_{ \mathcal{ C } } ( R ( d ) , R ( d ) ) \cong  \Hom_{ \mathcal{ D } }( L ( R ( d ) ) , d ) 
+    \]
+    for every $ d \in \mathcal{ D } $. 
+    Show the following 
+    \begin{enumerate}
+        \item 
+        The assignment $ \epsilon $ is indeed a natural transformation.
+    
+        \item 
+        Without using $ L \dashv R $, show that $ \Tilde{ \phi }_{ ( c ,d ) } \coloneqq \eta_c^* \circ R_{ L ( c ) , d } $ defines a natural transformation
+        \[
+            \Tilde{ \phi } \colon \Hom_{ \mathcal{ D } }( L ( - ) , ?  ) \to \Hom_{ \mathcal{ C } } ( - , R ( ? ) ). 
+        \]
+    
+        \item 
+        There is an adjunction $ R^{ \op } \dashv L^{ \op } $ between the opposite categories with uni $ \epsilon^{ \op } \colon \id_{ \mathcal{ D }^{ \op } } \to L^{ \op } \circ R^{ \op } $ and counit $ \eta^{ \op } \colon R^{ \op } \circ L^{ \op } \to \id_{ \mathcal{ C  }^{\op} } $.
+    
+        \item 
+        For any $ d \in \mathcal{ D } $ the category $ L / d $ has the final object $ ( R ( d ) , \epsilon_d \colon L R ( d ) \to d ) $.
+    
+        \item 
+        Given a second adjunction $ L' \dashv R' $ with $ L' \colon \mathcal{ D} \to \mathcal{ A } $ and a unit $ \eta' $ and counit $ \epsilon' $, the counit of the composed adjunction $ L' \circ L \dashv R  \circ R' $ is given by $ \epsilon'_{ ( - ) } \circ L' ( \epsilon_{ R' ( - ) } ) $.
+    
+        \item 
+        Any right adjoint $ R' $ of $ L , L \dashv R' $, is isomorphic to $ R $.
+    \end{enumerate}
+\end{Exercise}

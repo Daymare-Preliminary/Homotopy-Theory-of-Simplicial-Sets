@@ -1,0 +1,353 @@
+\section{Kan's Ex functor}
+
+Lecture 23.1
+
+Consider the adjunction 
+$\begin{tikzcd}
+    \Sd\colon \SetD
+    \ar[r, shift left]
+    &
+    \SetD\colon\Ex
+    \ar[l, shift left]
+\end{tikzcd}$
+induced by the functor 
+\[
+\Delta \to \SetD, [n] \mapsto N(S([n]))
+\]
+where $S[n]$ is the poset of non-empty subsets of $[n]$ and to $\sigma \colon [m] \mapsto [n]$ we associate.
+$(U \subseteq [m] \mapsto \sigma(U) \subseteq [n])$.
+For $X \in \SetD$ we have $\Ex(X)_n \coloneqq \Hom_{\SetD}(\Sd(\Delta^n),X)$ with $\Sd(\Delta^n)=N(S[n])$
+
+\begin{exmp}
+    \begin{itemize}
+        \item 
+        $(n=0) \Sd(\Delta^0) = N(S[0])=\{0\}$
+        \item 
+        $(n=1) \Sd(\Delta^1)=N(S[1]) \colon \{0\} \to \{ 0,1 \} \xleftarrow{}\{1\}$
+        \item 
+        $ (n=2) \Sd( \Delta^1) = N(S[2])$
+        \[
+        \begin{tikzcd}
+            &&
+            \{1\}
+            \ar[rd]
+            \ar[dd]
+            \\
+            &
+            \{0,1\}
+            \ar[rd]
+            \ar[ru]
+            &
+            &
+            \{1,2\}
+            \ar[ld]
+            \\
+            &&
+            \{0,1,2\}
+            &&
+            \\
+            \{0\}
+            \ar[ruu]
+            \ar[rr]
+            \ar[rru]
+            &&
+            \{0,1\}
+            \ar[u]
+            &&
+            \{2\}
+            \ar[ll]
+            \ar[llu]
+            \ar[luu]
+        \end{tikzcd}
+        \]
+    \end{itemize}    
+\end{exmp}
+
+\begin{exmp}
+    Let $T \in \Top$. Then we can consider $\Ex(\Sing(X))$ with $\Ex(\Sing(X))_n=\Hom_{\SetD}(\Sd(\Delta^n),\Sing(X))_n \cong \Hom_{\Top}(\lvert\Sd(\Delta^n)\rvert, T)$, where $\lvert\Sd(\Delta^n)\rvert$ is the barycentric subdivision of $\lvert\Delta^n\rvert$.
+\end{exmp}    
+    
+    We wish to define a natural map 
+    
+    $\beta_X \colon X \to \Ex(X)$. 
+    For this we define $a_n \colon S[n] \to [n]$ and $U \subseteq [n] \mapsto \max (U)$ and the induced map 
+    $\alpha_n \colon \Sd(\Delta^n) N(S[n]) \to N([n]) = \Delta^n$ as well as the induced map 
+    $(\beta_X)_n \colon X_n \cong \Hom_{\SetD}(\Delta^n, X) \xrightarrow{\alpha_n^*} \Hom_{\SetD}(\Sd(\Delta^n),X)=\Ex(X)_n$
+
+\begin{lem}
+    Take $\beta_X\colon X \to \Ex(X)$ is a morphism of simplicial sets.
+\end{lem}
+
+\begin{proof}
+    The proof is just an exercise in backtracking the definitions of the constructions.
+    Let $\sigma\colon [m] \to [n]$ be a morphism in $\Delta$, we get the following commutative square
+    \[
+    \begin{tikzcd}
+        X_m \cong \Hom_{\SetD}( \Delta^m,X) 
+        \ar[r, "{(\beta_X)_m=\alpha_m^*}"]
+        &
+        \Hom(\Sd(\Delta^m),X)=\Ex(X)_m
+        \\
+        X_n \cong \Hom_{\SetD}(\Delta^n,X)
+        \ar[r, "(\beta_X)_m=\alpha^*"]
+        &
+        \Hom_{\SetD}(\Sd(\Delta^n),X)=\Ex(X)_n
+    \end{tikzcd}
+    \]
+    Let $\Delta^n \xrightarrow{x} X$, it is enough to show that the following commutes:
+    \[
+    \begin{tikzcd}
+        \Delta^m
+        \ar[r, "\sigma"]
+        &
+        \Delta^n
+        \ar[r, "x"]
+        &
+        X
+        \\
+        \Sd(\Delta^m)
+        \ar[u, "\alpha_m"]
+        \ar[r, "\Sd(\sigma)"]
+        &
+        \Sd(\Delta^n)
+        \ar[u, "\alpha_n"]
+        \ar[ru]
+    \end{tikzcd}
+    \]
+    which is the case if the following commutes
+    \[
+    \begin{tikzcd}
+        {[m]}
+        \ar[r, "\sigma"]
+        &
+        {[n]}
+        \\
+        S([m])
+        \ar[u, "a_m"]
+        \ar[r, "S(\sigma)"]
+        &
+        S([n])
+        \ar[u, "a_n"]
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+        \max(U)
+        \ar[r, mapsto]
+        &
+        \sigma(\max U)
+        \\
+        U
+        \ar[u,mapsto]
+        \ar[r,mapsto]
+        &
+        \sigma(U)
+        \ar[u, mapsto]
+    \end{tikzcd}
+    \]
+\end{proof}
+
+\begin{lem}
+    The map $\beta \colon \mathds{1}_{\SetD} \to \Ex$, induced by $\beta_X$, is a natural transformation.   
+\end{lem}
+
+\begin{proof}
+    Let $f\colon X \to Y$ be a morphism in $\SetD$, we obtain a square 
+    \[
+    \begin{tikzcd}
+        X 
+        \ar[d, "f"]
+        \ar[r, "\beta_X"]
+        &
+        \Ex(X)
+        \ar[d, "\Ex(f)"]
+        \\
+        Y 
+        \ar[r, "\beta_Y"]
+        &
+        \Ex(Y)
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+        (\Delta^n \xrightarrow{x} X)
+        \ar[d]
+        \ar[r, mapsto]
+        &
+        (\Sd(\Delta^n)\xrightarrow{\alpha_n}\Delta^n\xrightarrow{x}X)
+        \ar[d, mapsto]
+        \\
+        (\Delta^n \xhookrightarrow{x} X \xrightarrow{f} Y)
+        \ar[r, mapsto]
+        &
+        (\Sd(\Delta^n) \xrightarrow{\alpha_n} \Delta^n \to X \xrightarrow{f} Y)
+    \end{tikzcd}
+    \]
+    Now one can check with the definitions of the morphisms that objects (right square) are mapped accordingly and everything commutes.
+\end{proof}
+
+We now discuss some properties of $X \mapsto \Ex(X)$
+
+\begin{prop}
+    The functor $\Ex\colon \SetD \to \SetD$ preserves filtered colimits.
+\end{prop}
+
+\begin{proof}
+    Notice that $\Sd(\Delta^n)=N(S[n])$ is compact,that is $\Hom_{\SetD}(\Sd(\Delta^n),-)$ preserves filtered colimits.
+    Let $J \to \SetD$ be a filtered diagram where $j \to X^{(j)}$.
+    Let 
+    \begin{align*}
+        \Ex(\colim_{j\in J} X^{(j)})_n &= \Hom_{\SetD}(\Sd(\Delta^n), \colim_{j \in J} X^{(j)}) \\
+        &\cong \colim_{j \in J}\Hom_{\SetD}(\Sd(\Delta^n), X^{(j)}) \\
+        &= \colim_{j \in J} \Ex(X^{(j)})_n
+    \end{align*}
+\end{proof}
+
+\begin{rmk}
+    Let $\alpha_X = \overline{\beta_X} \in \Hom_{\SetD}(\Sd(X),X) \cong \Hom_{\SetD}(X, \Ex(X)) \ni \beta_X$
+\end{rmk}
+
+\begin{prop}
+    For all $i\colon K \hookrightarrow L$ anodyne, $\Sd(i) \colon \Sd(K) \hookrightarrow \Sd(L)$ is anodyne.
+\end{prop}
+
+\begin{proof}
+    see cisinski 3.1.18
+\end{proof}
+
+\begin{cor}
+\label{Ex preserves Kan fibrations}
+    Let $p\colon X \to Y$ be a Kan fibration and $\Ex(p) \colon \Ex(X) \to \Ex(Y)$ is a Kan fibration.
+\end{cor}
+
+\begin{proof}
+    Take the square
+    \[
+    \begin{tikzcd}
+        \Lambda_k^n
+        \ar[d, hook, "\in \An"']
+        \ar[r]
+        &
+        \Ex(X)
+        \ar[d, "\Ex(p)"]
+        \\
+        \Delta^n 
+        \rar
+        &
+        \Ex(Y)
+    \end{tikzcd}
+    \]
+    which gives by applying the definition of $\Ex$
+    \[
+    \begin{tikzcd}
+        \Sd(\Lambda_k^n)
+        \ar[d, hook, "\in \An"']
+        \ar[r]
+        &
+        X
+        \ar[d, "\Ex(p)"]
+        \\
+        \Sd(\Delta^n )
+        \ar[ru, dashed]
+        \rar
+        &
+        Y
+    \end{tikzcd}
+    \]
+    where we can find a lift since $\An$ and Kan fibrations are a weak factorisation system.
+\end{proof}
+
+\begin{cor}
+    Let $X \in \SetD$ be a Kan complex, then $\Ex(X)$ is a Kan complex.
+\end{cor}
+
+\begin{proof}
+    Since $X$ is a Kan complex, $(X \to \Delta^0) \in \KanFib$, thus by the previous corollary $\Ex(Y) \to \Ex(\Delta^0) \in \KanFib$ and $\Ex(\Delta^0)\cong \Delta^0$ since $\Ex$ preserves coolimits. 
+\end{proof}
+
+\begin{thm}
+    For all $X \in \SetD$ we have that $\beta_X \colon X \to \Ex(X)$ is a weak equivalence. 
+\end{thm}
+
+\begin{proof}
+    We are only going to give a sketch of the proof.
+    Let $X$ be a Kan complex. 
+    Take the square induced by $\pi_0$
+    \[
+    \begin{tikzcd}
+        \pi_0(\underline{\Hom}(\Ex(X),K)) 
+        \ar[d, "\beta_K \circ ?"]
+        \ar[r, "? \circ \beta_X"]
+        &
+        \pi_0(\underline{\Hom}(X,K))
+        \ar[d, "\beta_K \circ ?"]
+        \ar[ld, "f\mapsto \Ex(f)"']
+        \\
+        \pi_0(\underline{\Hom}(\Ex(X),\Ex(K))
+        \ar[r, "? \circ \beta_X"]
+        &
+        \pi_0(\underline{\Hom}(X, \Ex(K)))
+    \end{tikzcd}
+    \]
+    proof can be found in Goerss-Jardine III thm 4.6.
+\end{proof}
+
+\begin{cor}
+\label{Ex preserves and reflects weak eq.}
+    The morphism $(f\colon X \to Y)$ is a weak equivalence if and only if
+    $(\Ex(f)\colon \Ex(X) \to \Ex(Y))$ is a weak equivalence.
+\end{cor}
+
+\begin{proof}
+    Take the square
+    \[
+    \begin{tikzcd}
+        X
+        \ar[r, "\circ" marking, "\beta_X"]
+        \ar[d, "f"]
+        \ar[dr]
+        &
+        \Ex(X)
+        \ar[d, "\Ex(f)"]
+        \\
+        Y
+        \ar[r, "\circ" marking, "\beta_Y"]
+        &
+        \Ex(Y)
+    \end{tikzcd}
+    \] 
+    Now the assertion follows by applying \cref{2 out of 3 weak equivalences}.
+\end{proof}
+
+\begin{defi}
+    For $X \in \SetD$ we let $\Exinfty = \colim ( X \xrightarrow{\beta_X} \Ex(X) \xrightarrow{\beta_{\Ex(X)}}\Ex^2(X) \to \dotsc)$ this defines an Endofunctor of $\SetD$ and a natural transformation $\beta^{\infty}\colon \mathds{1} \to \Exinfty$.
+\end{defi}
+
+\begin{prop}
+    The functor $\Exinfty\colon \SetD \to \SetD$ preserves filtered colimits since for all $n\geq 0$ the functor $\Ex^n$ preserves filtered colimits and $\Exinfty$ is defined as a filtered colimit of these.
+    Furthermore $\Exinfty$ preserves finite limits since for all $n \geq 0$, $\Ex^n$ preserves all limits and finite limits commute with filtered colimits in $\SetD$ hence also in $\SetD$.
+\end{prop}
+
+\begin{prop}
+Trivial Kan Fibrations are closed under filtered colimits in $\Fun([1], \SetD)$.
+\end{prop}
+
+\begin{prop}
+    Let $f \colon X \to Y$ be a Kan fibration then $\Exinfty(f)$ is a Kan fibration.
+\end{prop}
+
+\begin{proof}
+    This is an application of \cref{Ex preserves Kan fibrations} to all factors of the colimit.
+\end{proof}
+
+\begin{cor}
+    The morphism $\beta_X^\infty \colon X  \to \Ex(X)$ is a weak equivalence.
+\end{cor}
+
+\begin{proof}
+    This is an application of \cref{Ex preserves and reflects weak eq.} to all factors of the colimit.
+\end{proof}
+
+%\begin{thm}
+%%    For all $X \in \SetD, \Exinfty(X)$ is a Kan complex.
+%\end{thm}
+
+%\todo{add proof, goerss jardine III.4.7.}

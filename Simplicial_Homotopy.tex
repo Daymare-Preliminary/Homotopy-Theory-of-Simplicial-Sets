@@ -49,12 +49,10 @@ A homotopy $h\colon f \to g$ is a morphism $\Delta^1 \times K \xrightarrow{h} X$
 \subsection{Adjoint description of homotopy}
 Let $f,g \in \Hom(K,X) = \underline{\Hom}(K,X)_0$ and $h\colon f\mapsto g$, that is $h \in \Hom(\Delta^1 \times K, X) = \underline{\Hom}(K,X)_1$ such that $d_1(h)=f$ and $d_0(h)=g$.
 
-\begin{prop}
-    Homotopy of maps $K \to X$ is an quivalence relation if $\underline{\Hom}(K,X)$ is a Kan complex.
-\end{prop}
+\underline{Upshot} Homotopy of maps $K \to X$ is an equivalence relation if $\underline{\Hom}(K,X)$ is a Kan complex.
+So take the following lifting problem
 
-\begin{proof}
-Since $\underline{\Hom}(K,X)$ is a Kan complex, we have that
+\[
     \begin{tikzcd}
         \Lambda_k^n
         \ar[r,"\sigma"]
@@ -65,12 +63,25 @@ Since $\underline{\Hom}(K,X)$ is a Kan complex, we have that
         \\
         \Delta^n
         \ar[ur, dashed, "\exists"]
+        \ar[r]
         &
         \Delta^0
     \end{tikzcd}
-
-    \todo{finish this proof}
-\end{proof}
+\]
+which equates to the following lifting problem due to the adjunction of the inner hom and the product.
+\[
+\begin{tikzcd}
+    \Lambda^n_k \times K
+    \ar[r, " \overline{\sigma} "]
+    \ar[d, " i \times \id_K"' ]
+    &
+    X
+    \\
+    \Delta^n \times K
+    \ar[ru, dashed, " \overline{ \rho }"']
+\end{tikzcd}
+\]
+If now $X$ were a Kan complex, then we would obtain a lift if $ i \times \id_K $ is an anodyne extension.
 
 \begin{defi}
     Let $i\colon L \hookrightarrow K$ is a monomorphism in $\SetD$.
@@ -91,7 +102,7 @@ Since $\underline{\Hom}(K,X)$ is a Kan complex, we have that
         X
     \end{tikzcd}
     \]
-    \todo{what is the map $\Delta^n$ supposed to be}
+    where $1_{\alpha}$ is given by $\Delta^1 \times L \xrightarrow{(!,\id_L)} \Delta^0 \times L \xrightarrow{\alpha}X$ and $!$ is the unique map into the terminal object.
 \end{defi}
 
 \subsection{Adjoint description of relative homotopy}
@@ -121,10 +132,11 @@ Consider the pullbackdiagram
 \end{tikzcd}
 \]
 
-We want that given a Kan complex $X$
+A morphism $\overline{h}$ into the fiber induces a homotopy $ h $ that is constant on $L$, thus this pullback gives us the construction of homotopy relative the simplical subset $L$.
 
-\todo{alot missing here}
+We want that given a Kan complex $X$, to get that $ \underline{\Hom} ( K , X ) \xrightarrow{i^*} \underline{\Hom} ( L , X ) $ is a Kan fibration and finally get that $ \underline{ \Hom } ( K , X )_{\alpha} $ is a Kan complex and that homotopy ( rel $L$ ) is the equivalence relation on vertices of $ \underline{ \Hom } ( K , X )_{\alpha}$.
 
+Rest is for now omitted since I cannot read my own notes.
 Lecture 10.12
 
 \begin{prop}
@@ -189,8 +201,8 @@ As an example for $l=1$ and $n=2$ the domain of a morphism in $B_2$ is given by 
                 \draw [dashed] (01) --  (11);
                 \draw (02) --  (12);
                 \draw [dashed]  (10) --  (11);
-                \draw [dashed]  (10) --  (12);
-                \draw   (11) -- (12);
+                \draw   (10) --  (12);
+                \draw [dashed]   (11) -- (12);
             \end{scope}
     \end{tikzpicture}
 \]
@@ -257,8 +269,72 @@ As an example for $l=1$ and $n=2$ the domain of a morphism in $B_2$ is given by 
         (\Delta^1 \times \Delta^n)^{(i)}
     \end{tikzcd}
     \]
+
+        
     Let us take a look at the example for the case $n=2$ in detail.
-    \todo{alot of work, to do after exam maybe}
+    We iteratively add 3-simplices into $\partial \Delta^2 \times \Delta^1 \cup \Delta^2 \times \Delta^1$.
+    \[
+    \begin{tikzcd}
+        \begin{tikzpicture}
+            \node (A) at (-0.7,0.7) {$00$};
+            \node (B) at (-0.7,-0.7) {$10$};
+            \node (C) at (0.7,-0.7) {$12$};
+            \node (D) at (0,0) {$11$};
+            \draw [-> ] (A) -- (B);
+            \draw[->] (A) to [bend left=60] (C);
+            \draw [->, dashed] (A) -- (D);
+            \draw [->, dashed] (B) -- (C);
+            \draw [->, dashed] (B) -- (D);
+            \draw [->, dashed] (D) -- (C);
+            \draw [red] [smooth cycle] plot coordinates { (-0.35,0.75) (0.65,-0.3) (0.5,0.5)};
+        \end{tikzpicture}
+    \ar[r]
+    \ar[d, hook]
+    &
+        \begin{tikzpicture}
+            \node (A) at (0, 0.85) {$01$};
+            \node (B) at (-0.8, 0.35) {$01$};
+            \node (C) at (0.8, 0.35) {$02$};
+            \node (D) at (0, -0.35) {$11$};
+            \node (E) at (-0.8, -0.85) {$10$};
+            \node (F) at (0.8, -0.85) {$12$};
+            \draw[->] (A) to (C);
+            \draw[->] (A) to (D);
+            \draw[->] (B) to (C);
+            \draw[->] (B) to (A);
+            \draw[->] (B) to (E);
+            \draw[->] (C) to (F);
+            \draw[->] (D) to (F);
+            \draw[->] (E) to (F);
+            \draw[->] (E) to (D);
+            \draw [red] [smooth cycle] plot coordinates { (0,0.83) (0.5,0.5) (-0.5,0.5)};
+        \end{tikzpicture}
+    \ar[d, hook]
+    \\
+    \Delta^3
+    \ar[r, hook, "h_0"']
+    &
+        \begin{tikzpicture}
+            \node (A) at (0, 0.85) {$01$};
+            \node (B) at (-0.8, 0.35) {$01$};
+            \node (C) at (0.8, 0.35) {$02$};
+            \node (D) at (0, -0.35) {$11$};
+            \node (E) at (-0.8, -0.85) {$10$};
+            \node (F) at (0.8, -0.85) {$12$};
+            \draw[->] (A) to (C);
+            \draw[->] (A) to (D);
+            \draw[->] (B) to (C);
+            \draw[->] (B) to (A);
+            \draw[->] (B) to (E);
+            \draw[->] (C) to (F);
+            \draw[->] (D) to (F);
+            \draw[->] (E) to (F);
+            \draw[->] (E) to (D);
+            \draw [red] [smooth cycle] plot coordinates { (0,0.83) (0.5,0.5) (-0.5,0.5)};
+        \end{tikzpicture}
+    \end{tikzcd}
+    \]
+    
     For the case $(\overline{B}_1 \subseteq \overline{B}_2 = \overline{B}_3 )$ we exhibit each horn inclusion $\Lambda_k^n \hookrightarrow \Delta^n$ as a retract of a map in $\overline{B}_3$ for $0 \leq k \leq n$.
     \[
     \begin{tikzcd}
@@ -385,36 +461,35 @@ As an example for $l=1$ and $n=2$ the domain of a morphism in $B_2$ is given by 
     is an anodyne extension.
     In particular for $S= \Lambda_k^n$ and $T=\Delta^n$ we obtain that 
     \[
-        (\Lambda_k^n \times K) \cup (\Delta^n \times L) \xrightarrow{incl.} \Delta \times K
+        (\Lambda_k^n \times K) \cup (\Delta^n \times L) \xrightarrow{incl.} \Delta^n \times K
     \]
     is an anodyne extension.
 \end{cor}
 
 \begin{proof}
     For 
-    $ L \xrightarrow{i} K$ define $\mathcal{M} \coloneqq \{ S \xhookrightarrow{i} T \mid (S \times K) \cup (T \times L) \xrightarrow{} T \times K \text{ is anodyne }\}$
+    $ L \xrightarrow{i} K$ define $\mathcal{M} \coloneqq \{ S \xhookrightarrow{i} T \mid (S \times K) \cup (T \times L) \xrightarrow{} T \times K \text{ is anodyne}\}$
     Notice that $\mathcal{M}$ is a saturated class 
-    \todo{is that clear?}
     hence if $\mathcal{M} \supseteq B_3 \implies \mathcal{M} = \overline{B}_3$.
-    Consider $L' \hookrightarrow K'$ a monomorphism, that gives rise to $S = ( \Delta^1 \times L') \cup ( \Delta^{\{0\}} \times K') \to \Delta^1 \times K'= T$
+    Consider $L' \hookrightarrow K'$ a monomorphism, that gives rise to $S = ( \Delta^1 \times L') \cup ( \Delta^{\{l\}} \times K') \to \Delta^1 \times K'= T$
     
     \[
     \begin{tikzcd}
-        (((\Delta^1 \times L') \cup ( \Delta^{\{0\}} \times K')) \times K ) 
+        (((\Delta^1 \times L') \cup ( \Delta^{\{l\}} \times K')) \times K ) 
         \ar[r, " \in \An"]
         \ar[d, "\cong"]
         &
         (\Delta^1 \times K') \times K 
         \ar[d,"\cong"]
         \\
-        \Delta^1 \times ( L' \times K \cup K' \times L) \cup ( \Delta^{\{0\}} \times (K' \times K) )
+        \Delta^1 \times ( L' \times K \cup K' \times L) \cup ( \Delta^{\{l\}} \times (K' \times K) )
         \ar[r]
         &
         \Delta^1 \times (K' \times K)
     \end{tikzcd}
     \]
-    Where the vertical map in the top row is in $B_3$ and thus anodyne extension.
-    \todo{how does this proof work}
+    Where the vertical map in the top row is in $B_3$ and thus an anodyne extension.
+    It follows the bottom row is an anodyne extension as well, which we wanted to show.
 \end{proof}
 
 Let now $X$ be a Kan complex.
@@ -559,7 +634,7 @@ Lecture 12.11
         &
         \\
         \Delta^1 \times \Delta^1
-        \ar[r]
+        \ar[r, "h"]
         &
         X
         \\
@@ -614,7 +689,7 @@ For the general case we obtain a map from the horn (given on its n-simplices) as
     X
     \\
     \Delta^{(n+1)}
-    \ar[rru, dashed, "\exists \sigma"]
+    \ar[rru, dashed, "\exists \sigma"']
     &&
 \end{tikzcd}
 \]
@@ -650,20 +725,62 @@ Now we define the multiplicative law on $\pi_n(X,x)$ by
         X
         \\
         \Delta^1 \times \Delta^{(n+1)}
-        \ar[rrru, "w''"]
+        \ar[rrru, "w''"']
         &&
     \end{tikzcd}
     \]
     where $w''$ exists, since on the one summand we just have an inclusion and on the other we use that $X$ is a Kan complex.
     This way the composite
     \[
-    h_n \colon \Delta^1 \times \Delta^n \xrightarrow{1 \times d^n} \Delta^n \times \Delta^{n+1} \xrightarrow{w''} X
+    h_n \colon \Delta^1 \times \Delta^n \xrightarrow{1 \times d^n} \Delta^1 \times \Delta^{n+1} \xrightarrow{w''} X
     \]
     is a homotopy from $\gamma$ to $\gamma'$ ($\rel \partial \Delta^n)$.
 \end{proof}
 Let us take a look at the case $n=1$ explicitely.
-\todo{still remains with images above}
+    
+\[
+    \begin{tikzpicture}
+    \begin{scope}
+        \node (0) at (-1.75,0) {$\Delta^1 \times \Delta^2 =$};
+        \node (A) at (0, 0.85) {$01$};
+        \node (B) at (-0.8, 0.35) {$01$};
+        \node (C) at (0.8, 0.35) {$02$};
+        \node (D) at (0, -0.35) {$11$};
+        \node (E) at (-0.8, -0.85) {$10$};
+        \node (F) at (0.8, -0.85) {$12$};
+        \draw[->] (A) to (C);
+        \draw[->] (A) to (D);
+        \draw[->] (B) to (C);
+        \draw[->] (B) to (A);
+        \draw[->] (B) to (E);
+        \draw[->] (C) to (F);
+        \draw[->] (D) to (F);
+        \draw[->] (E) to (F);
+        \draw[->] (E) to (D);
+    \end{scope}
 
+    \begin{scope}[xshift=5cm]
+        \node(arrow) at ( -3,0) {$\rightsquigarrow$};
+        \node (A) at (0, 1.7) {$x$};
+        \node (w) at (-0.3, 1.2) {$w$};
+        \node (B) at (-1.6, 0.7) {$x$};
+        \node (C) at (1.6, 0.7) {$x$};
+        \node (D) at (0, -0.7) {$x$};
+        \node (w') at (0, -1.2) {$w'$};
+        \node (E) at (-1.6, -1.7) {$x$};
+        \node (F) at (1.6, -1.7) {$x$};
+        \draw[->] (A) to node[above right ]{$\alpha$} (C) ;
+        \draw[double equal sign distance] (A) to (D) ;
+        \draw[->] (B) to node[below left]{$\gamma$} (C);
+        \draw[->] (B) to node[above left]{$\beta$} (A);
+        \draw[double equal sign distance] (B) to (E) ;
+        \draw[double equal sign distance] (C) to (F);
+        \draw[->] (D) to node[above right ]{$\alpha'$} (F);
+        \draw[->] (E) to node[below]{$\gamma'$} (F);
+        \draw[->] (E) to node[above left]{$\beta'$} (D);
+    \end{scope}
+    \end{tikzpicture}
+\]
 \begin{prop}
     For all $n \geq 1$ it holds that $ \pi_n(X,x)$ is a group.
 \end{prop}
@@ -695,7 +812,7 @@ Let us take a look at the case $n=1$ explicitely.
         X
         \\
         \Delta^{n+1}
-        \ar[rrru, "w"]
+        \ar[rrru, "w"']
     \end{tikzcd}
     \]
     where $[c^n(x)][\alpha]=[\alpha]$.
@@ -762,6 +879,7 @@ Let us take a look at the case $n=1$ explicitely.
         \ar[rr]
         &&
         \Hom(\Delta^n,Y)
+        \ar[dd]
         \\
         \Delta^0
         \ar[rd, equal]
@@ -773,9 +891,9 @@ Let us take a look at the case $n=1$ explicitely.
         \\
         &
         \Delta^0
-        \ar[rr, "c^n(y)]
+        \ar[rr, "c^n(y)"]
         &&
-        \underline{\Hom(\partial \Delta^1, X)}
+        \underline{\Hom(\partial \Delta^n, X)}
     \end{tikzcd}
 \]
 For $i \colon \partial \Delta^n \to \Delta^n$.
@@ -866,3 +984,60 @@ Then $\pi_0(f_*) \eqqcolon \pi_n(f) \colon \pi_n(X,x) \to \pi_n(Y,y)$ is a morph
     \]
     The horizontal composition then gives a homotopy from $gf_1$ to $gf_2$.
 \end{proof}
+
+\subsection{Exercises}
+
+\begin{Exercise}
+    
+Consider a set $ G $ with two unital binary operations $ \otimes : G \times G \to G $.
+Suppose that 
+\[
+    ( a \otimes b ) \cdot ( c \otimes d ) = ( a \cdot c ) \otimes ( b \cdot d )
+\]
+for all $ a , b, c , d \in G $.
+\begin{enumerate}
+    \item 
+    Show that both units $e$ and $e_{\otimes}$ agree.
+
+    \item 
+    Deduce that $ \cdot = \otimes $.
+
+    \item 
+    Conclude that $ ( G , \cdot , e ) $ is an abelian monoid.
+\end{enumerate}
+\end{Exercise}
+
+
+\begin{Exercise}
+\label{Exercise_11.2}
+
+Fix a Kan complex $ X $ and $ n \in \mathbb{N}_0$.
+
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Let $ \alpha: \Delta^n \to X $ represent an element of $ \pi_n ( X , x ) $ for some $ x \in X_0 $ and $ n \in \mathbb{N}_0 $.
+    Show that $ \alpha $ is homotopic to the neutral element $ x : \Delta^n \to \Delta^0 \xrightarrow{x} X $ if and only if there exists some $ \sigma \in \Delta^{n+1}$ such that $ d_i ( \sigma ) = x $ for $ 0 \leq  i \leq n $ and $ d_{n+1} ( \sigma ) = \alpha $.
+
+    \item 
+    Deduce that if $ p : X \to \Delta^0 $ is a trivial Kan fibration, i.e. $p \in r ( \{ \partial \Delta^n \to \Delta^n \mid n \in \mathbb{N}_0 \} )$, then $ \pi_n( X , x ) = 0 $ for all $ x \in X_0 $.
+
+    \item 
+    Deduce that for $X$ $n$-skeletal we have that $\pi_m ( X , x ) \cong 0 $ for any $ x \in X_0 $ and $ m \geq n $.
+
+    \item 
+    Show that for a group $ G $ we have that 
+    \[
+        \pi_n ( N ( BG ) , \star ) 
+        \cong 
+        \begin{cases}
+            G &\text{ if }  n = 1
+            \\
+            0 &\text{ if }  n \neq 1
+        \end{cases}
+    \]
+    where $ \star $ is the unique object of $ BG $.
+\end{enumerate}
+\end{Exercise}
+
+
+

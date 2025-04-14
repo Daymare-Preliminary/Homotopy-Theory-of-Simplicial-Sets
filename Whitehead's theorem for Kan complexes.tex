@@ -8,7 +8,7 @@
 
 \begin{proof}
     Let $g\colon Y \to X$ be a homotopy left inverse to $f$, so there exists a homotopy $h\colon \id_X \to g\circ f$.
-    Let now $\alpha \colon \Delta^n \times X \to X$ and extend the homotopy diagram by the morphism associated to the selected point:
+    Let now $\alpha \colon \Delta^1 \times X \to X$ be a homtopy and extend the homotopy diagram by the morphism associated to the selected point:
     \[
     \begin{tikzcd}
         \Delta^{\{0\}} \times \Delta^0
@@ -84,11 +84,53 @@
         \ar[ru, bend right, "g"']
     \end{tikzcd}
     \]
-    \todo{Do not understand the rest of this proof rn}
+    The next step is to take the degenerate 2-simplex $s_0(e)$ given by
+    \[
+    \begin{tikzcd}
+        x
+        \ar[rd, "e"]
+        \\
+        x 
+        \ar[u, "1_X"]
+        \ar[r, "1_X"']
+        &
+        g ( f ( x ) ) 
+    \end{tikzcd}
+    \]
+    and take it as the bottom row map in the following lifting problem
+    \[
+    \begin{tikzcd}
+        \Lambda_2^2
+        \ar[d]
+        \ar[r, "q"]
+        &
+        \underline{\Hom}  ( X , X )
+        \ar[d, "\ev_x"]
+        \\
+        \Delta^2
+        \ar[r,"s_0(e)"']
+        &
+        \underline{\Hom} ( \Delta^0 , X )
+    \end{tikzcd}
+    \]
+    where $q$ is given by the following horn diagram.
+    \[
+    \begin{tikzcd}
+        g'f
+        \ar[rd, "\beta_f"]
+        \\
+        \id_X
+        \ar[ u , dashed]
+        \ar[r, " \alpha"']
+        &
+        gf
+    \end{tikzcd}
+    \]
+    Since $\ev_x$ is a Kan fibration, we obtain a lift and thus a pointed homotopy $\gamma:\id_X \to g'f $, thus $g'$ is a pointed homotopy inverse to $f$.
 \end{proof}
 
 \begin{cor}
-\label{htpy_eq_then_pointed_htpy_eq}
+\label{htpy eq. then pointed htpy eq.}
     Let $f\colon (X,x) \to (Y,y)$ be a morphism of Kan complexes such that $f \colon X \to Y$ is a homotopy equivalence then $f$ is also a pointed homotopy equivalence.
 \end{cor}
 
@@ -97,17 +139,16 @@
     $g\colon (Y,y) \to (X,x)$ and $[g] \circ [f] = [\id_X]$ in $\hKan_*$.
     Then $g\colon Y \to X$ is a homotopy equivalence.
     There exists a homotopy left inverse $h\colon (X,x) \to (Y,y)$, $[h]=[h]([g][f])=[f]$
-    \todo{don't see the argument here as well}
 \end{proof}
 
 \begin{cor}
-    Let $f\colon X \to Y$ be a homtopy equivalence. 
+    Let $f\colon X \to Y$ be a homotopy equivalence. 
     Then for all $x \in X$ and all $n \geq 0$, there is an isomorphism $\pi_n(f)\colon \pi_n(X,x) \xrightarrow{\sim} \pi_n(Y,f(x))$.
 \end{cor}
 
 \begin{proof}
-    By \cref{htpy_eq_then_pointed_htpy_eq} $f\colon (X,x) \to (Y,f(x))$ is a pointed homotopy equivalence.
-    Now $\pi_n(X,x) = \pi_n ( \underline{\Hom}((S^n,*),(X,x)))$, similarly for $(Y,f(x))$
+    By \cref{htpy eq. then pointed htpy eq.} $f\colon (X,x) \to (Y,f(x))$ is a pointed homotopy equivalence.
+    Now $\pi_n(X,x) = \pi_n ( \underline{\Hom}((S^n,*),(X,x))$, similarly for $(Y,f(x))$
 \end{proof}
 
 \begin{defi/prop}  
@@ -219,7 +260,6 @@
         \ar[rru, bend right, "\beta"']
     \end{tikzcd}
     \]
-    \todo{ consult Goerss Jardine}
 \end{itemize}
 \end{proof}
 

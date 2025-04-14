@@ -1,0 +1,226 @@
+\section{Kan-Quillen Model structure}
+
+Lecture 21.1
+
+\underline{Aim} We prove that $(\SetD,$ Weq, Mono's, Kanfib.$)$ is a model structure.
+
+Let us examine what we know so far.
+\begin{enumerate}
+    \item 
+    Weak equivalences satisfy the 2 out of 3 property.
+    \item 
+    (Mono's, Triv Kan Fib.) and (An, Kanfib.) form a weak factorisation system.
+    Thus for all $f\colon X \to Y$ we have factorisations
+    \[
+    \begin{tikzcd}
+        &
+        Z
+        \ar[rd, "\in \text{ Triv. KanFib. }"]
+        &
+        \\
+        X
+        \ar[ru, " \in \text{ Mono's }"]
+        \ar[rr, "f"]
+        &&
+        Y
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+        &
+        Z'
+        \ar[rd, "\in \text{ KanFib. }"]
+        &
+        \\
+        X
+        \ar[ru, " \in \An "]
+        \ar[rr, "f"]
+        &&
+        Y
+    \end{tikzcd}
+    \]
+    Remember that the Triv. KanFib. $= \{ \partial\Delta^n \hookrightarrow \Delta^n \mid n \geq 0 \}^{\lift{}}=\text{ Mono's }^{\lift{}}$, Mono's $=\prescript{\lift{}}{}{\text{ Triv. KanFib. }} = \prescript{\lift{}}{}{(\{ \partial\Delta^n \hookrightarrow \Delta^n \mid n \geq 0 \}^{\lift{}})}$ and that $\KanFib\coloneqq \{ \Lambda_k^n \hookrightarrow \Delta^n \mid n \geq 1, 0 \leq k \leq n \}^{\lift{}}= \An^{\lift{}}, \An= \prescript{\lift{}}{}{(\KanFib)^{\lift{}}}= \prescript{\lift{}}{}{(\{ \Lambda_k^n \hookrightarrow \Delta^n \mid n \geq 1, 0 \leq k \leq n\}^{\lift{}})}$.
+\end{enumerate}
+
+What we need is $\An=$ Weq $\cap$ Mono's and TrivKanFib$=$ Weq $\cap$ KanFib and we already know $\An \subseteq$ Weq $\cap$ Mono's and Triv.KanFib. $\subseteq$ Weq $\cap$ KanFib.
+
+\begin{prop}
+    Assume that TrivKanFib = Weq $\cap$ KanFib, then $\An \supseteq$ Weq $\cap$ Mono's.
+\end{prop}
+
+\begin{proof}
+    Let $f\colon X \to Y $ be in Weq $\cap$ Mono's.
+    Choose a factorisation 
+    \[
+    \begin{tikzcd}
+        &
+        Z
+        \ar[rd, "p"]
+        &
+        \\
+        X
+        \ar[ru, "i"]
+        \ar[rr, "f"]
+        &&
+        Y
+    \end{tikzcd}
+    \]
+    where $i \in \An$ and $p \in \KanFib$ since $i \in \An \subseteq$ Weq $\cap$ Mono's and $f\in$ Weq $\cap$ Mono's.
+    By the 2 out of 3 property $p \in$ Weq $\cap \KanFib = $TrivKanFib.
+    Take the square 
+    \[
+    \begin{tikzcd}
+        X
+        \ar[r, "i"]
+        \ar[d, "f \in \text{ Mono's}"]
+        &
+        Z
+        \ar[d,"p \in \text{ TrivKanFib. }"]
+        \\
+        Y 
+        \ar[r, equal]
+        &
+        Y
+    \end{tikzcd}
+    \]
+    since we have that $f \lift{} p$ we get by the retract argument \cref{Retract_argument} that $f$ is a retract $i \in \An$.
+\end{proof}
+
+We are now reduced to prove Triv. KanFib. $\supseteq$ Weq $\cap$ KanFib.
+
+\begin{prop}
+\label{Property A}
+Let us call the following property, property A.
+Let now $p \colon X \to Y$ be a $\KanFib$ and take the square
+\[
+\begin{tikzcd}
+    X'
+    \ar[d, "q"]
+    \ar[r, "f"]
+    &
+    X
+    \ar[d, "p \in \KanFib"]
+    \\
+    Y'
+    \ar[r, "g"]
+    &
+    Y
+\end{tikzcd}
+\]
+If $p$ is a weak equivalence, then $q \in$ weak eq. $\cap$ KanFib. 
+\end{prop}
+
+\begin{thm}
+\label{Ex_infinity properties}
+    Let $f\colon X \to Y$ be a Kan Fibration.
+    The following are equivalent
+    \begin{enumerate}
+        \item 
+        $f$ is a trivial Kan Fibration,
+        \item 
+        $f$ is a homotopy equivalence,
+        \item 
+        $f$ is a weak equivalence,
+        \item 
+        for all $y \in Y$
+        \[
+        \begin{tikzcd}
+            X_y
+            \ar[r]
+            \dar
+            &
+            X
+            \dar["f \in \text{ Weq $\cap$ KanFib}"]
+            \\
+            \Delta^0
+            \rar["y"]
+            &
+            Y
+        \end{tikzcd}
+        \]
+        $X_y$ is a contractible Kan complex, that is $X_y \to \Delta^0 \in$ TrivKanFib..
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}
+    The only implication that is missing to be shown is 3. to 4. which relies on \cref{Property A}.
+    Assume that $f\colon X \to Y$ is in Weq. $\cap$ KanFib.
+    Then the following is a pullback
+    \[
+    \begin{tikzcd}
+        X_y
+        \rar
+        \dar
+        &
+        X
+        \ar[d, "f \in \text{ Weq $\cap$ KanFib.}"]
+        \\
+        \Delta^0 
+        \rar
+        &
+        Y
+    \end{tikzcd}
+    \]
+    and with \cref{Property A} it follows that $X_y \to \Delta^0$ in Weq $\cap$ KanFib. is a trivial KanFib..
+    We are reduced to proving \cref{Property A}.
+\end{proof}
+
+\begin{thm}
+    There is a functor $\Exinfty \colon \SetD \to \SetD$ with the following properties 
+    \begin{enumerate}
+        \item 
+        For all $X \in \SetD, \Exinfty$ is a Kan complex.
+        \item 
+        There exists a natural transformation $\mathds{1} \xrightarrow{\beta} \Exinfty$ such that for all $X \in \SetD$ $X \to \Exinfty$ is a weak equivalence.
+        \item   
+        The functor $\Exinfty \colon \SetD \to \SetD$ preserves finite limits, weak equivalences and Kan Fibrations.
+    \end{enumerate}
+\end{thm}
+
+\begin{proof}{\cref{Property A}}    
+    Take the square 
+    \[
+    \begin{tikzcd}
+        X' 
+        \ar[r,"f"]
+        \ar[d, "q"]
+        &
+        X
+        \ar[d, "p \in \text{ Weq $\cap$ KanFib.}"]
+        \\
+        Y'
+        \ar[r, "g"]
+        &
+        Y
+    \end{tikzcd}
+    \]
+    Apply Kan's $\Exinfty$-functor to obtain:
+    \[
+    \begin{tikzcd}
+        X'
+        \ar[d, "g"]
+        \ar[rrr, "\circ" marking, "\beta_{X'}"]
+        \ar[rrrd, "\circ" marking, "\in \text{ Triv. KanFib. }"]
+        &&&
+        \Exinfty(X')
+        \ar[r,"\Exinfty(f)"]
+        \ar[d, "\circ" marking, "\Exinfty(g)"]
+        &
+        \Exinfty(X) 
+        \ar[d, "\Exinfty(p) \in \text{Weq $\cap$ KanFib}"]
+        \\
+        Y'
+        \ar[rrr, "\circ" marking, "\beta_{Y'}"]
+        &&&
+        \Exinfty(Y')
+        \ar[r, "\Exinfty(g)"]
+        &
+        \Exinfty(Y)
+    \end{tikzcd}
+    \]
+    Note that the arrows marked with a circle are weak equivalences.
+    By the 2 out of 3 property and \cref{Ex_infinity properties}, we get that $g$ is a weak equivalence.
+    So we just have to show the theorem above.
+\end{proof}   
+
+Lecture 23.1
+

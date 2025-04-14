@@ -132,11 +132,12 @@ $
     \bullet
 \end{tikzcd}
 $
-and $f \lift{} r$. Then $f$ is a retract of $l$ as objects in the arrow category .
+and $f \lift{} r$. Then $f$ is a retract of $l$ as objects in the arrow category, that is $\Fun([1], \mathcal{C})$.
 \end{lem}
 
 \begin{proof}
 Since $f$ has the left lifting property with respect to $r$, we get a lift
+\[
     \begin{tikzcd}
         \bullet
         \ar[d, "f"]
@@ -146,12 +147,13 @@ Since $f$ has the left lifting property with respect to $r$, we get a lift
         \ar[d, "r"]
         \\
         \bullet 
-        \ar[ru, "w"]
+        \ar[ru, dashed, "w"]
         \ar[r, equal]
         &
         \bullet
     \end{tikzcd}
-We can rewrite this diagram:
+\]
+We can rewrite this diagram
 \[
     \begin{tikzcd}
         \bullet 
@@ -175,20 +177,41 @@ We can rewrite this diagram:
         \bullet
     \end{tikzcd}
 \]
+to obtain the result.
 \end{proof}
 
-\begin{lem}
+\begin{lem}{Retract argument}
+\label{Retract_argument}
     Suppose $(\mathcal{L}, \mathcal{R})$ satisfy the properties Factorisation and Lifting from \cref{weak factorisation system}.
     Then the property Closure holds if and only if $\mathcal{L}, \mathcal{R}$ are closed under retracts.
 \end{lem}
 
 \begin{proof}
-    \todo{I am not convinced here, are we using the wrong idea of retract here?}
+    ($\implies$) Exercise
+    ($\impliedby$) The inclusion $\mathcal{L} \subseteq \prescript{\lift{}}{}{\mathcal{R}}$ holds by assumption. 
+    Let $k \in \prescript{\lift{}}{}{\mathcal{R}}$, by factorisation there exists a square 
+    \[
+    \begin{tikzcd}
+        \bullet 
+        \ar[r, "l \in \mathcal{L}"]
+        \ar[d, "k"]
+        &
+        \bullet
+        \ar[d, "r \in \mathcal{R}"]
+        \\
+        \bullet
+        \ar[r, equal]
+        &
+        \bullet
+    \end{tikzcd}
+    \]
+    By the retract argument \cref{Retract_argument} $k$ is a retract of $l \in \mathcal{L}$, hence $k \in \mathcal{L}$ since $\mathcal{L}$ is closed under retracts $\prescript{\lift{}}{}{\mathcal{R}}$. 
+    Dually $\mathcal{L}^{\lift{}} \subseteq \mathcal{R}$.
 \end{proof}
 
 \begin{thm}{Quillen's small object argument}
 \label{Quillen's small object argument}
-    Let $\mathcal{C}$ be a cocomplete category, $J$ a set of morphisms in $\mathcal{C}$ suppose that for all $j \in J$ we have that $\Hom_{\mathcal{C}}(\dom j,-)\colon \mathcal{C} \to \Set$ preserve (countable) sequential colimits (shape $(\mathcal{N}, \leq )$.
+    Let $\mathcal{C}$ be a cocomplete category, $J$ a set of morphisms in $\mathcal{C}$ suppose that for all $j \in J$ we have that $\Hom_{\mathcal{C}}(\dom j,-)\colon \mathcal{C} \to \Set$ preserve (countable) sequential colimits (shape $(\mathbb{N}, \leq )$.
     Then there exists a functorial factorisation in $\mathcal{C}$ turning $(\prescript{\lift{}}{}{(J^{\lift{}})},J^{\lift{}})$ into a weak factorisation system.
     Moreover $\prescript{\lift{}}{}{(J^{\lift{}})}$ is the saturation of $J$.
 \end{thm}
@@ -233,7 +256,7 @@ We can rewrite this diagram:
     \begin{tikzcd}
         \bullet
         \ar[r, "d_f"]
-        \ar[d]
+        \ar[d, "j"']
         \ar[r, phantom, shift right =3.4ex, "\PO" ]
         &
         \bullet
@@ -258,13 +281,13 @@ We can rewrite this diagram:
     \begin{tikzcd}
         x_1 
         \ar[r, equal]
-        \ar[d, "LRf"]
+        \ar[d, "LRf"']
         &
         x_1
         \ar[d, "Rf"]
         \\
         x_2
-        \ar[r, "R^2f"]
+        \ar[r, "R^2f"']
         &
         x_2
     \end{tikzcd}
@@ -318,5 +341,22 @@ We can rewrite this diagram:
         \bullet
     \end{tikzcd}
     \]
-    \todo{we are going to skip the rest for now it can be found in the literature (Emily Riehl)}
+    Claim : $ R^w f \in J^{\lift{}} $.
+    Consider 
+    \[
+    \begin{tikzcd}
+        f_w 
+        \ar[r , " u "]
+        \ar[d, "j"]
+        &
+        X_w
+        \ar[d, "R^w f "]
+        \\
+        \cdot
+        \ar[r, " v"]
+        &
+        \cdot
+    \end{tikzcd}
+    \]
+    %\todo{finish dis}
 \end{proof}

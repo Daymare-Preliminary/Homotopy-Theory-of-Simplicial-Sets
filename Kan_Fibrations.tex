@@ -20,7 +20,7 @@ That is we have a pullback diagram
 
 \underline{Terminology}:
 Let $ L \xrightarrow{i} K$ and $ X \xrightarrow{p} Y$ be morphisms.
-We say that ($ i \lift{} p$) $i$ has the left lifting property with respect to $p$ (equivalently $p$ has the right lifting property with respect to $i$).
+We say for the notation ($ i \lift{} p$) that $i$ has the left lifting property with respect to $p$ (equivalently $p$ has the right lifting property with respect to $i$).
 If there exists for every $L \xrightarrow{f} X$ and $K \xrightarrow{g}Y$ a morphism $h:K \to X$ such that the following diagram commutes
 \[
 \begin{tikzcd}
@@ -89,7 +89,7 @@ is given by
         Y    
     \end{tikzcd}
     \]
-    be a pullbacksquare, then $i \lift{} p'$.
+    be a pullback-square, then $i \lift{} p'$.
 \end{lem}
 
 \begin{proof}
@@ -128,11 +128,29 @@ Formalise the notion of a locally constant family of Kan complexes relative to a
 
 \begin{defi}
     Let $X \xrightarrow{p} Y$ be a Kan fibration. 
-    By the preceding theorem, we get that for every $y\in Y_0$ the fibre $X_y$ is a Kan complex. 
+    By the preceding Lemma, we get that for every $y\in Y_0$ the fibre $X_y$ is a Kan complex. 
     Now consider $\Delta^0$ as the simplicial set where $\Delta^0_n=\Hom_{\SetD}([n],[0])=\{[n] \to [0]\}$ is the unique map into the final object.
-    We have the constant map 
-\todo{alot missin here}
+    Furthermore we have the constant map $c=c^n\colon Y_0 \to  Y_n$, $y \mapsto c^n(y)$.
+    Let $X \xrightarrow{p} Y$ be a Kan fibration.
+    Where 
+    \[
+    \begin{tikzcd}
+        \Lambda_1^1=\Delta^{\{1\}}_0
+        \ar[r,"x"]
+        \ar[d]
+        &
+        X
+        \ar[d,"p"]
+        \\
+        \Delta^{\{0,1\}}
+        \ar[r,"f"]
+        \ar[ru, dashed, "\exists \Tilde{f}"]
+        &
+        Y
+    \end{tikzcd}
+    \]
 \end{defi}
+
 
 \begin{prop}
 \label{comp_Kan_fib}
@@ -140,7 +158,7 @@ Formalise the notion of a locally constant family of Kan complexes relative to a
 \end{prop}
 
 \begin{proof}
-    This is just a simple matter of writing down the square for $g$ and using the obtained morphism to write down the square $p$ obtaining a morphism that fllfills the desired property.
+    This is just a simple matter of writing down the square for $g$ and using the obtained morphism to write down the square $p$ obtaining a morphism that fullfills the desired property.
 \end{proof}
 
 \begin{cor}
@@ -192,28 +210,248 @@ $\begin{cases}
 \end{proof}
 
 \begin{prop}
-    Let $\dotsc \to X^{(n)} \xrightarrow{p_n} \dotsc \to X^{(1)} \xrightarrow{p_1}X^{(0)}$ be a "tower" of Kan fibrations, that is for all $i, p_i$ is a Kan fibration.
+    Let $\dotsc \to X^{(n)} \xrightarrow{p_n} \dotsc \to X^{(1)} \xrightarrow{p_1}X^{(0)}$ be a "tower" of Kan fibrations, that is for all $i \in \mathbb{N}, p_i$ is a Kan fibration.
     Then $X^{\infty} \coloneqq \lim X^{(n)} \xrightarrow{\pi_0} X^{(0)}$ is a Kan fibration. 
 \end{prop}
 
 \begin{proof}
     Consider the diagram 
-\[
-\begin{tikzcd}
-    \Lambda_k^n
-    \arrow[d,"\iota"']
-    \ar[r, "\sigma"]
-    &
-    X^{(\infty)}
-    \ar[d,"\pi_0"]
-    \\
-    \Delta^n
-    \ar[ru, dashed, "\exists ?"]
-    \ar[r,"\tau"']
-    &
-    X^{(0)}
-\end{tikzcd}
-\]
-The idea is to construct a cone of the tower with apex $\Delta^n$ and then use the universal property $X^\infty$.
-\todo{finish this ya lazy bombaclat}
+    \[
+    \begin{tikzcd}
+        \Lambda_k^n
+        \arrow[d,"\iota"']
+        \ar[r, "\sigma"]
+        &
+        X^{(\infty)}
+        \ar[d,"\pi_0"]
+        \\
+        \Delta^n
+        \ar[ru, dashed, "\exists ?"]
+        \ar[r,"\tau"']
+        &
+        X^{(0)}
+    \end{tikzcd}
+    \]
+    The idea is to construct a cone of the tower with apex $\Delta^n$ and then use the universal property $X^\infty$.
+    \[
+    \begin{tikzcd}
+        &&&
+        \Delta^n
+        \ar[llld, dashed, bend right]
+        \ar[lld, " h_2 "' ]
+        \ar[ld , " h_1 " ]
+        \ar[d , " h_0 \coloneqq \tau_0" ]
+        \\
+        \dotsc
+        \ar[r, "p_2"']
+        &
+        X^{(2)}
+        \ar[r, "p_1"']
+        &
+        X^{(1)}
+        \ar[r, "p_0"']
+        &
+        X^{(0)}
+    \end{tikzcd}
+    \]
+
+    Suppose that $ 0 \leq s \leq t $ and that we have constructed $ h_s \colon \Delta^n \to X^{ ( s ) } $ such that $ p_s h_s = h_{s-1} $ and consider the case for $t+1$, where the diagram following on the left side is used to construct the top morphism in the right diagram.
+    \[
+    \begin{tikzcd}
+        &
+        \Lambda_k^n
+        \ar[d, " \sigma "]
+        \\
+        &
+        X^{(\infty)}
+        \ar[d, " \pi_t "]
+        \ar[dl, " \pi_{t+1} "']
+        \\
+        X^{(t+1)}
+        \ar[r, " p_{t+1} "']
+        &
+        X^{(t)}
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+        \Lambda_k^n
+        \ar[d, " \iota "]
+        \ar[r, " \pi_{t+1} \circ \sigma "]
+        &
+        X^{t+1}
+        \ar[d, " p_{t+1}"]
+        \\
+        \Delta^n 
+        \ar[ru, " \exists h_{t+1}"]
+        \ar[r, "h_t"]
+        &
+        X^{(t)}
+    \end{tikzcd}
+    \]
+    Since $ p_{t+1}$ is a Kan fibration, $ h_{t+1} $ exists and $h_{t+1} \circ \iota = \pi_{ t+1 } \circ \sigma $ as well as $ p_{ t + 1 } \circ h_{ t + 1 } = h_t $.
+    By the universal property of $ X^{ ( \infty ) }$ we get 
+    \[
+    \begin{tikzcd}
+        \exists! h \colon \Delta^n 
+        \ar[r]
+        \ar[rd, "h_t"']
+        &
+        X^{(\infty)}
+        \ar[d, "\pi_t"]
+        \\
+        &
+        X^{(t)}
+    \end{tikzcd}
+    \]
+    such that for all $t, \pi_t \circ h = h_t $.
+    Also for all $ t $,
+    $ \pi_t \circ  h \circ \iota  = h_t \circ \iota = \pi_t \sigma $, since this holds in particular for the case $ t = 0 $ the statement is proven.
 \end{proof}
+
+
+\subsection{Exercises}
+
+\begin{Exercise}
+    Recall that for a category $ \mathcal{ C } $ and a class of morphisms $ \mathcal{ F } \subseteq \Mor ( \mathcal{ C } )$ the class of morphisms with the left lifting property with respect to $ \mathcal{ F } $ is 
+    \[
+        l ( \mathcal{ F } )
+        \coloneqq  
+        \Bigg\{ i \colon x \to y \mid \forall \begin{tikzcd}
+            a 
+            \ar[r, "f"]
+            \ar[d, "i"]
+            &
+            x
+            \ar[d, "p \in \mathcal{ F }"]
+            \\
+            b
+            \ar[r, "g"]
+            &
+            y
+        \end{tikzcd}
+        \exists h
+        \begin{tikzcd}
+            a 
+            \ar[r, "f"]
+            \ar[d, "i"]
+            &
+            x
+            \ar[d, "p "]
+            \\
+            b
+            \ar[r, "g"]
+            \ar[ru, dashed, "h"]
+            &
+            y
+        \end{tikzcd}
+        \Bigg\}
+    \]
+    where diagrams commute, i.e. $ p \circ f = g \circ i , f = h \circ i $ and $ g = p \circ h $.
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Give the explicit description of the class of morphisms with the right lifting property of $ \mathcal{ F } , l ( \mathcal{ F } )$, which is defined dually, i.e.
+        \[
+            r ( \mathcal{ F } ) \coloneqq ( l ( \mathcal{ F^{\op} } ) )^{\op}
+        \]
+        where $\mathcal{ F }^{\op} $ denotes the same class of morphisms but viewed in the opposite category $ \mathcal{ C }^{\op}$.
+    
+        \item 
+        Show that $ l ( r ( l ( \mathcal{ F } ) ) ) = l ( \mathcal{ F } ) $.
+    
+    \end{enumerate}
+    
+    From now on let $ \mathcal{ C } = \Set $ and consider the inclusion $ \iota : \emptyset \to \{ \star \} $ of the empty set into a set with one element.
+    
+    \begin{enumerate}[label=(\alph*), resume]
+        \item 
+        Compute the set of morphisms with the right lifting property for $ \iota, r ( \{ \iota \} ), $ in Set.
+    
+        \item 
+        Show that $ l ( r ( \{ \iota \} ) ) $ is the class of injective maps.
+    
+        \item 
+        Show that (d) is equivalent to the axiom of choice.
+        \[
+            \forall  X ( \emptyset \notin X \implies \exists \varphi \colon X  \to \bigcup_{ A \in X } A 
+            \forall A \in C \varphi( A ) \in A )    
+        \]
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ \mathcal{ F } $ be a class of morphisms in a cocomplette category $ \mathcal{ C } $.
+    We say that an object $ x \in \mathcal{ C } $ is a retract of an object $ y \in \mathcal{ C } $ if there exist two morphisms $ j : x \to y $ and $ q: y \to x $ such that $ q \circ j = \id_x .$
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Describe retracts in the category of morphisms $ \Fun ( [ 1 ] , \mathcal{ C } ) $ where we assume $ \mathcal{ C } $ to be small.
+    
+        \item 
+        Show that $ l ( \mathcal{ F } ) $ is closed under retracts in the sense (a).
+    
+        \item 
+        Show that $ l ( \mathcal{ F } ) $ is closed under pushouts, i.e. for any pushout square
+        \[
+        \begin{tikzcd}
+            x 
+            \ar[r, "g"]
+            \ar[d, "f"]
+            &
+            x'
+            \ar[d,"f'"]
+            \\
+            y
+            \ar[r, "g'"]
+            &
+            y'
+        \end{tikzcd}
+        \]
+        we have that if $ f \in l ( \mathcal{ F } ) $, then $ f' \in l ( \mathcal{ F } ) $.
+    
+        \item 
+        Show that $ l ( \mathcal{ F } )$ is closed under composition.
+    
+        \item 
+        Show that $ l ( \mathcal{ F } ) $ is closed under ( countable ) transfinite composition, i.e. for any functor $ F : \mathbb{ N }_0 \to \mathcal{ C } $ with $ f_n \coloneqq F ( n < n + 1 ) \in l ( \mathcal{ F } ) $ we have that the canonical map $ F ( 0 ) \to \colim_{ \mathbb{ N } } F $ is in $ l ( \mathcal{ F } ) $.
+    \end{enumerate}
+    
+    Note that (e) can be generalised to arbitrary well-ordered sets (ordinals) in place of $ \mathbb{ N } $ using transfinite induction.
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ \mathcal{ F } $ be a class of morphisms on a cocomplete category $ \mathcal{ C } $.
+    Assume that $ \mathcal{ F } $ includes all identity morphisms, is closed under pushouts and (countable) transfinite composition in the sense of Exercise 9.2.
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that $ \mathcal{ F } $ contains all isomorphisms.
+    
+        \item 
+        Show that $ \mathcal{ F } $ is closed under composition.
+    
+        \item 
+        Deduce that $ \mathcal{ F } $ is closed under finite coproducts, i.e. for two morphisms $ f : x  \to y $ and $ f' : x' \to y' $ with both $ f , f' \in \mathcal{ F } $, we have that the induced map $ f \amalg f' : x \amalg x' \to y \amalg y' $ is also in $ l ( \mathcal{ F } ) $.
+    
+        \item 
+        Show that $ \mathcal{ F } $ is closed under countable coproducts by expressing a morphism $ \coprod_{ n \in \mathbb{ N } } f_n $ as suitable transfinite composition.
+        
+    \end{enumerate}
+    
+    Again, assuming that $ \mathcal{ F } $ is closed under arbitrary transfinite compositions, we can generalise the above argument to show that $ \mathcal{ F } $ is closed under set indexed coproducts.
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ A $ be a small category. 
+    Recall that a morphism $ f : y \to z $ in $ A $ is a monomorphism, if for any two $ g , g' : x \to y $, we have that $ f \circ g = f \circ g' $ if and only if $ g = g' $.
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that a morphism in $ \Set $ is a monomorphism if and only if it is injective.
+    
+        \item 
+        Deduce from Exercise 3.1 that a morphism of presheaves $ f : X \to Y $ in $ \widehat{ A } $ is a monomorphism if and only if $ f_a $ is a monomorphism for all $ a \in A $.
+    
+        \item 
+        Conclude that the class of monomorphism in $ \widehat{ A } $ is closed under retracts, pushouts, (countable) transfinite composition and coproducts. In particular, the class of monomoprhism in $ \widehat{ A } $ is saturated.
+    \end{enumerate}
+\end{Exercise}

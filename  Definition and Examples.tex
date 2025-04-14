@@ -59,3 +59,143 @@ Lecture 16.01
         for all $x \in X$ and all $n \geq 0$ the induced morphism on homotopy groups of the geometric realisation is an isomorphism $\lvert f \rvert^* \colon  \pi_n(\lvert X \rvert, x) \isomorphism \pi_n(\lvert Y \rvert, f(x))$.
     \end{enumerate}
 \end{thm}
+
+\underline{Motivation}
+
+Let $(\mathcal{C},W, \Cofib, \Fib)$ be a model category.
+Our aim is to study the homotopy category of $\mathcal{C}$, given as $\Ho(\mathcal{C})=\mathcal{C}[W^{-1}]$
+
+\begin{defi}
+    A \underline{Cylinder object} for $A \in \mathcal{C}$ is a factorisation 
+    \[
+    \begin{tikzcd}
+        A \coprod A 
+        \ar[rr, "{(1_A,1_A)}"]
+        \ar[rd, "{(\partial_0, \partial_1)}"']
+        &&
+        A
+        \\
+        &
+        I_A
+        \ar[ru, "\sigma \in W"']
+    \end{tikzcd}
+    \]
+    Dually a \underline{path object} for $A$ is a factorisation:
+    \[
+    \begin{tikzcd}
+        &
+        A^I
+        \ar[rd, "{(d^0,d^1)\in \Fib}"]
+        \\
+        A
+        \ar[rr, "{(1_A,1_A}"']
+        \ar[ru, "s \in W"]
+        &&
+        A \times A
+    \end{tikzcd}
+    \]
+\end{defi}
+
+\begin{defi}
+    Let $f\colon A \to B$ be a morphism in $\mathcal{C}$. 
+    A left homotopy $f\sim_Lg$ is a choice of cylinder object 
+    \[
+    \begin{tikzcd}
+        A
+        \ar[d, "\partial_0"']
+        \ar[rd, "f"]
+        \\
+        I_A
+        \ar[r, "h"]
+        &
+        B
+        \\ 
+        A
+        \ar[u, "\partial_1"]
+        \ar[ru, "g"]
+    \end{tikzcd}
+    \]
+    There is the dual notion of right homotopy $f \sim_R g$ given by the choice of a path object $B^I$.
+\end{defi}
+
+\begin{thm}{Quillen}
+The following statements hold:
+    \begin{enumerate}
+        \item 
+        Left homotopy is an equivalence relation on $\Hom_{\mathcal{C}}(A,B)$ when $A$ is cofibrant.
+        \item 
+        Let $A \in \mathcal{C}_{\Cofib}$ and $ \in \mathcal{C}_{\Fib}$ then $f \sim_L g \iff f \sim_R g$ for morphisms $f$ and $g$ from $A$ to $B$.
+        \item 
+        The map 
+        \begin{align*}
+            [-,-] \colon & \mathcal{C}^{\op}_{\Cofib} \times \mathcal{C}_{\Fib} \to \Set
+            \\
+            &(A,B) \mapsto \Hom_{\mathcal{C}}(A,B)/\sim
+        \end{align*}
+        is a functor.
+        \item 
+        The inclusions $\mathcal{C}_{\Cofib} \hookrightarrow \mathcal{C} \hookleftarrow\mathcal{C}_{\Fib}$ induce equivalences of homotopy categories
+        $ \Ho( \mathcal{C}_{\Cofib}) \isomorphism \Ho(\mathcal{C})$ and $\Ho( \mathcal{C}_{\Cofib} )$.
+        \item 
+        The functor in 3. induces a functor 
+        \[
+        [-,-]\colon \Ho( \mathcal{C_{\Cofib}})^{\op} \times  \Ho(\mathcal{C}_{\Fib}) \to \Set.
+        \]
+        \item 
+        For all $A \in  \mathcal{C}_{\Cofib}$ and all $B \in \mathcal{C}_{\Fib}$ we have that $[A,B] \cong  \Hom_{\Ho(\mathcal{C})}(A,B)$.
+        Furthermore we write $\pi ( \mathcal{C}_{\Bifib})$ for the category with $\Ob(\pi ( \mathcal{C}_{\Bifib}))=\mathcal{C}_{\Bifib}$ and $\Hom_{\pi ( \mathcal{C}_{\Bifib})}=[A,B]$ for all $A,B \in \pi ( \mathcal{C}_{\Bifib})$.
+        %\item 
+        %Let $A,B \in \mathcal{C}_{\Bifib}$ and $f\colon A  \to B$ is a homotopy %equivalence, that is an isomorphism in $\pi(\mathcal{C}_{\Bifib})$
+        %\todo{can not read my handwriting}
+        \item 
+        $\pi( \mathcal{C}_{\Bifib}) \cong \Ho(\mathcal{C})$
+    \end{enumerate}
+\end{thm}
+
+\begin{exmp}
+    Examples of model categories
+    \begin{enumerate}
+        \item 
+        $R=$quasi-Frobenius ring ( $\Proj R = \Inj R$), $\underline{\Mod} R\colon$ stable category of $R$-modules 
+        \item 
+        $\underline{\Hom}_R(M,N)=\Hom_R(M,N)/S$, where the set $S$ is given by $\{f \colon M \to N \mid 
+        \begin{tikzcd}
+            M 
+            \ar[rr, "f"]
+            \ar[rd]
+            &&
+            N
+            \\
+            &
+            P 
+            \ar[ru]
+        \end{tikzcd}
+        P$ projective $\}$
+        \item 
+        $W=$ stable isomorphisms $=\{ f \text{ in } \Mod R \mid [f] \text{ isomorphism in } \underline{\Mod} R\}$
+        $f \sim g \iff [f] = [g]$ in $\underline{\Mod} R$, i.e. $([f-g]=[0])$
+        $\pi(\Mod R) \cong \Ho(\Mod(R)) \cong \underline{\Mod}_R$
+        \item
+        Let $R$ be a ring and $\Ch(\Mod R)$ the cochain complexes of $R$-modules and $W=$ quasi-isomorphisms and the fibrations are given by epimorphisms.
+        
+        Then $(\Ch(\Mod R), \text{ Quasi-iso's }, \prescript{\lift{}}{}{(\text{ Quasi-iso's } \cap \text{ epi's })}, \text{ epi's })$ is a model category called the projective model structure.
+        Every object is fibrant. 
+        If $X$ is cofibrant then for all $n \in \mathbb{Z}$ the object $X^n$ in degree $n$ is projective and it is bounded below.
+        Note that then 
+        \[
+        K(\Cofib) \cong \Ho(\Ch(\Mod R)) \cong D ( \Mod R)
+        \]
+        \item 
+        Let $R$ be a ring and $\Ch/( \Mod R)$ the cochain complexes of $R$-modules, let $W=$ quasi-isomorphisms and $\Cofib=$ monomorphisms.
+        
+        Then $(\Ch(\Mod R), \text{ Quasi-iso's }, \prescript{\lift{}}{}{(\text{ Quasi-iso's } \cap \text{ mono's })}, \text{ mono's })$ is a model category (injective model structure).
+        For all $X \in  \Ch( \Mod R)$ the morphism $0 \to X$ is a cofibration.
+        Furthermore if $X$ is a fibrant object, then for all $n \in  \mathbb{Z}$ $X^n$ is an injective module and bounded below.
+        \item 
+        Let $\SetD$ be the category of simplicial sets.
+        Let $W=$ weak cat. equivalences, that is $f\colon X\to Y$ is in $W$ if for every $\mathcal{C} \in \SetD$ the induced morphism $f^*\colon \tau( \underline{\Hom}(Y, \mathcal{C}) \isomorphism \tau(\underline{\Hom}(X, \mathcal{C}))$ is an isomorphism.
+
+        Then $(\SetD, \text{ Weak cat eq. , mono's, (Weak cat eq. $\cap$ mono's)$^{\lift{}}$})$ is called the Joyal model structure.
+        Where $X$ is fibrant if and only if $X$ is an $\infty$-category.  
+    \end{enumerate}
+\end{exmp}

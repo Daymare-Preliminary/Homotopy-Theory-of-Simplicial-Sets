@@ -1,7 +1,5 @@
 \section{Anodyne extensions}
 
-\todo{why dis observation, how does dis motivate anodyne extensions}
-
 \begin{defi}
     We say that a class $\mathcal{M}$ of morphisms in $\mathcal{C}$ is a \underline{saturated class} if 
     \begin{enumerate}
@@ -60,4 +58,68 @@
     $(\supseteq)$ Consider $\prescript{\lift{}}{}{\KanFib}$, this is a saturated class. 
     By unitality of $\An \subseteq \prescript{\lift{}}{}{\KanFib}$ it holds that for all $i \in  \An$ and all $p \in \KanFib$ $i\lift{}p $ which means that for all $p \in \KanFib$ we have that $p \in \An^{\lift{}}$
 \end{proof}
+
+\subsection{Exercises}
+
+\begin{Exercise}
+    
+We define the class of trivial Kan fibrations to be $ r ( \{ \partial \Delta^n \to \Delta^n \mid n \in \mathbb{ N }_0 \} ) $ in $ \SetD $.
+Furthermore, let $ \mathcal{ F } $ be the smallest saturated class containing all boundary inclusions $ \{ \partial \Delta^n \to \Delta^n \mid n \in \mathbb{ N }_0 \} $.
+
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Show that $ r ( \mathcal{ F } ) $ is the class of trivial Kan fibrations.
+
+    \item 
+    Show that $ \mathcal{ F } $ contains all monomorphisms. Proceed as follows.
+
+    \begin{itemize}
+        \item 
+        For a fixed monomorphism $ \iota : X \to Y $ construct a filtration of $ Y $ by $ X \cup \bold{sk_{n-1}} ( Y ) $ starting with $ X = X \cup \bold{sk_{-1}}( Y ) $, similar to the skeletal filtration from Exercise 7.2. 
+        Here $ X \cup \bold{sk_n} ( Y ) $ is defined as pushouts of $ \bold{ sk_n } ( Y ) $ and the image of $ \iota $ along their intersection.
+
+        \item 
+        Observe that $ \iota $ is the transfinite composition of this filtration.
+
+        \item 
+        Show that the morphisms $ X \cup \bold{sk_{n-1]}}( Y ) \to X \cup \bold{ sk_n }( Y ) $ is pushout of morphisms in $ \mathcal{ F } $ for all $ n \in \mathbb{ N }_0 $ by construction a similar pushout diagram as for the skeletal filtration.
+    \end{itemize}
+
+    \item 
+    Deduce that $\mathcal{ F }$ is the class of monomorphisms.
+
+    \item 
+    Conclude that a trivial Kan fibration is a Kan fibration.
+    
+\end{enumerate}
+
+\end{Exercise}
+
+\begin{Exercise}
+    
+We have shown in the lecture that the saturated closure of the horn inclusions 
+\[
+    \mathcal{B}_1 
+    \coloneqq 
+    \{ \Lambda_k^n \subseteq \Delta^n \mid 0 \leq k \leq n \in \mathbb{ N }_+ \}
+\]
+agrees with the saturated closure of
+\[
+    \mathcal{B}_2
+    \coloneqq
+    \{ ( \Delta^1 \times \partial\Delta^n) \cup ( \{ \epsilon \} \times \Delta^n ) \subseteq ( \Delta^1 \times \Delta^n ) \mid n \in \mathbb{ N }_0 , \\epsilon \in \Delta_0^1 = \{ 0 , 1 \} \}.
+\]
+We call this class the anodyne extensions $ \bold{ An }$.
+Show that $ \bold{ An } $ agrees with the saturated closure of 
+\[
+    \mathcal{ B }_3 
+    \coloneqq
+    \{ ( \Delta^1 \times X ) \cup ( \{ \epsilon \} \times Y ) \subseteq ( \Delta^1 \times Y ) \mid  \epsilon \in \Delta_0^1 = \{ 0 , 1 \} , X \to Y \text{ monomorphism } \}.
+\]
+
+\end{Exercise}
+
+
+
+
     

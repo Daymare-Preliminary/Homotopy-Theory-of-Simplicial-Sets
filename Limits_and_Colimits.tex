@@ -1,0 +1,430 @@
+\section{Limits and Colimits}
+
+Let $D$ be a small category, $\mathcal{C}$ be a category and $F \colon D \to \mathcal{C}$ a functor (a $D$-shaped diagram in $\mathcal{C}$).
+For example let $D$ be given by
+\[
+10\xrightarrow{g}11\xleftarrow{f}01
+\]
+and let $F\colon D \to \mathcal{C}$ be a functor. We get a diagram
+\[
+F(10)\xrightarrow{F(g)}F(11)\xleftarrow{F(f)}F(01).
+\]
+
+\begin{defi}
+    A \underline{cone over $F$} is a pair $(X , ( \phi_a)_{a\in A})$ consisting of 
+    \begin{enumerate}
+        \item 
+        $X \in \mathcal{C},$
+        \item 
+        $(\phi_a\colon X \to F(a) \mid a \in A,$
+    \end{enumerate}
+    such that $\forall u \colon a \to b$ in $\mathcal{A}$
+    \begin{tikzcd}
+        &
+        X
+        \arrow[rd, "\phi_b"]
+        \arrow[ld, "\phi_a"']
+        &
+        \\
+        F(a)
+        \arrow[rr, "F(u)"']
+        &
+        &
+        F(b)
+    \end{tikzcd}
+    And $\phi_b=F(u) \circ \phi_a$.
+    Cones form a category $\mathcal{C}/F$ with morphisms given by 
+    \[
+    f\colon(X,(\phi_a)_{a\in A}) \to (Y, (\sigma_a)_{a \in A})
+    \]
+    given by $f \colon  X \to Y$ such that for all $a \in A$
+    \[
+    \begin{tikzcd}
+        X
+        \arrow[rd, "\phi_a"']
+        \arrow[rr,"f"]
+        &
+        &
+        Y
+        \arrow[ld,"\sigma_a"]
+        \\
+        &
+        F(a)
+    \end{tikzcd}
+    \]
+    A \underline{limit (cone)} of $F$ is a final object in $\mathcal{C}/F$.
+    Explicitely $(\lim F, (\sigma_a)_{a \in A})$ is a limit of $F$ if for all cones $( X , (\phi_a)_{a\in A})$, there exists a unique $f \colon X \to \lim F$ in $\mathcal{C}$ such that for all $a \in A$ the following diagram commutes:
+    \[
+    \begin{tikzcd}
+        X 
+        \arrow[rd , "\phi_a"']
+        \arrow[rr, "f"]
+        &
+        &
+        \lim F
+        \arrow[ld, "\phi_a"]
+        \\
+        &
+        F(a)
+        &
+    \end{tikzcd}
+    \]
+\end{defi}
+
+\begin{exmp}
+    Let $A=\phi$ and $F\colon \phi \to \mathcal{C}$. 
+    A limit is an object $\mathds{1} \in \mathcal{C}$ such that for all $X \in \mathcal{C}$ there exists a unique $f \colon X \to \mathds{1}$ that is $\mathds{1}$ is a final object in $\mathcal{C}$.
+\end{exmp}
+
+\begin{exmp}
+    Let $A = \{ \text{\textcircled{1}} , \text{\textcircled{2}} \} \xrightarrow{F} \mathcal{C}$ be a functor the limit cone in $\mathcal{C}$ is given by the product, that is a cone $(Y, \pi_i)$ in $\mathcal{C}$.
+    \[
+    \begin{tikzcd}
+        &
+        &
+        F(2)
+        \\
+        X
+        \arrow[rru, bend left, "\phi_2"]
+        \arrow[rrd, bend right, "\phi_1"']
+        \arrow[r, "\exists !"]
+        &
+        Y
+        \arrow[ru, "\pi_2"']
+        \arrow[rd, "\pi_1"]
+        &
+        \\
+        &
+        &
+        F(1)
+    \end{tikzcd}
+    \]
+\end{exmp}
+
+Lecture 17.10
+
+If $(X , \overline{\rho}) = \overline{X}$ and $(Y , \overline{\sigma})=\overline{Y}$ are limits of $F \colon A \to \mathcal{C}$.
+Then there is a unique isomorphism of cones $\overline{X} \to \overline{Y}$.
+It is enough to prove the statement for final objects, by definition of the limit cone.
+Let $X,Y \in \mathcal{D}$ be final objects.
+Then there exists a unique morphism $f \colon X \to Y$ in $\mathcal{D}$ since $Y$ is final.
+Then there exists a unique morphism $f \colon Y \to X$ in $\mathcal{D}$ since $X$ is final.
+But then $g \circ f (X) = X$ must be $g \circ f = \id_X$ since $X$ is \underline{final}.
+
+\begin{prop}
+    Suppose that $(\lim F , \overline{\sigma} )$ is a limit of $F \colon \mathcal{A} \to \mathcal{C}$ and $f \colon X \to \lim F$ is an isomorphism.
+    Then $(X ,(\sigma_a f\colon X \to F(a)) a \in \mathcal{A})$ is a limit cone.
+\end{prop}
+
+\begin{proof}
+    For all $u \colon a \to b$ in $A$, we have get the following commutative diagram: 
+    \[
+    \begin{tikzcd}
+        &
+        X
+        \arrow[ld,"\sigma_a \circ f"']
+        \arrow[rd,"\sigma_b \circ f"]
+        &
+        \\
+        F(a)
+        \arrow[rr, "F(u)"']
+        &
+        &
+        F(b)
+    \end{tikzcd}
+    \]
+    which means that 
+    \[
+    F(u) \circ (\sigma_a \circ f) =\sigma_b \circ f.
+    \]
+    Thus $(X,(\sigma_a \circ f)_{a \in A})$ is indeed a cone and $f \colon (X, ( \sigma \circ f )_{a \in A}) \to (\lim_A F , \overline{\sigma})$ is an isomorphism of cones since $f$ is an isomorphism and since 
+    \[
+    \begin{tikzcd}
+        X
+        \arrow[rr,"f"]
+        \arrow[rd,"\sigma_a \circ f"']
+        &
+        &
+        \lim_A F
+        \arrow[ld, "\sigma_a"]
+        \\
+        &
+        F(a)
+        &
+    \end{tikzcd}
+    \]
+    commutes for all $a$ in $A$.
+\end{proof}
+
+\begin{defi/prop}
+    A category $\mathcal{C}$ is complete if for all small categories $A$ and functors $F:A \to \mathcal{C}$ a limit of $F$ exists.
+    The category $\Set$ is complete.
+\end{defi/prop}
+
+\begin{proof}
+    Let $A$ be a small category and $F\colon A  \to \Set$ a diagram.
+    Let 
+    \[
+    \lim_A F \coloneqq \{ \Bar{X} = (X_a)_{a \in A} \in \prod_{a \in A} F(a) \mid \forall u \colon a \to b \text{ in } A, F(u)(X_a)=X_b\}
+    \]
+    This this is a subset of a product, it comes with projections.
+    We get that $(\lim_A F, (\pi_a:\Bar{X} \to X_a)_{a\in A})$ is a cone over $F$ since for all morphisms $u \colon a \to b$ in $A$ we get that the following diagram 
+    \[
+    \begin{tikzcd}
+        &
+        \lim_A F
+        \arrow[ld,"\pi_a"']
+        \arrow[rd,"\pi_b"]
+        &
+        \\
+        F(a)
+        \arrow[rr,"F(a)"']
+        &
+        &
+        F(b)
+    \end{tikzcd}
+    \]
+    equates to 
+    \[
+    \begin{tikzcd}
+        &
+        \Bar{X}
+        \arrow[ld,"\pi_a"']
+        \arrow[rd,"\pi_b"]
+        &
+        \\
+        X_a
+        \arrow[rr,"F(u)(X_a)"']
+        &
+        &
+        X_b
+    \end{tikzcd}
+    \]
+    Now let $(X, (\rho_a \colon X \to F(a) \mid a \in A))$ be another cone over $F$.
+    Define $\Bar{\rho}: X \to \prod_{a \in A} F(a)$ by $x \mapsto (\rho_a(x))_{a \in A}$.
+    Notice that $\Bar{\rho}$ factors through $\lim_A F \subseteq \prod_{a \in A} F(a)$ since for all $x \in X$ and for all morphisms $u\colon a \to b$, we have that $F(u)(\rho_a(x))=\rho_b(x)$ since the following diagram commutes
+    \[
+        \begin{tikzcd}
+            &
+            X
+            \arrow[ld, "\rho_a"']
+            \arrow[rd, "\rho_b"]
+            &
+            \\
+            F(a)
+            \arrow[rr, "F(u)"']
+            &
+            &
+            F(b)
+        \end{tikzcd}
+    \]
+    Thus $\Bar{\rho} \to \lim_A F$ is well defined.
+    Observe that $\Bar{\rho}$ is actually a morphism of cones, since 
+    \[
+    \begin{tikzcd}
+        X
+        \arrow[rr, "\Bar{\rho}"]
+        \arrow[rd, "\rho_b"']
+        &
+        &
+        \lim F
+        \arrow[ld, "\pi_b"]
+        \\
+        &
+        F(b)
+        &
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+        x
+        \arrow[rr , mapsto , "\Bar{\rho}"]
+        \arrow[rd , mapsto]
+        &
+        &
+        (\rho_a(x))_{a \in A}
+        \arrow[ld, mapsto , "\pi_b"]
+        \\
+        &
+        \rho_b(x)
+        &
+    \end{tikzcd}
+    \]
+    Finally if $f\colon ( X , ( \rho_a )_{a \in A}) \to ( \lim_A F , (\pi_a)_{a \in A})$ is a morphism of cones, then (by definition) we get for all $a \in A$ 
+    \[
+    \begin{tikzcd}
+        X
+        \arrow[rr, "f"]
+        \arrow[rd, "\rho_a"']
+        &
+        &
+        \lim_A F
+        \arrow[ld, "\pi_a"]
+        \\
+        &
+        F(a)
+        &
+    \end{tikzcd}
+    \]
+    that is for all $x \in X$ we get $\pi_a(f(x)) = \rho_a(x)$, so $f= \Bar{\rho}$.
+\end{proof}
+
+\begin{defi}
+    A functor $G$ \underline{preserves limits of shape $A$} if for all functors $F\colon A \to \mathcal{C}$, $G$ sends limit cones of $F$ to limit cones of $G \circ F$. 
+    A functor $G$ preserves limits if for all small categories $A$ we have that $G$ preserves limits of shape $A$.
+\end{defi}
+
+\begin{rmk}
+    Consider the example of the covariant $\Hom$-functor.
+     Let $F \colon  A \to \mathcal{C}$ and $X\in \mathcal{C}$.
+     Consider the covariant functor $\Hom_{\mathcal{C}}(X,-) \colon \mathcal{C} \to \Set$ and a limit $\sigma_a\colon \lim_A F \to F(a)$.
+     We can put these together to obtain a cone $\Hom_{\mathcal{C}}(X, \sigma_a) \colon \Hom_{\mathcal{C}}(X, \lim F) \xrightarrow{\sigma_a \circ ?=(\sigma_a)_*} \Hom_{\mathcal{C}}(X,F(a))$.
+\end{rmk}
+
+\begin{thm}
+\label{covariant_hom_preserves_limits}
+    The functor $\Hom_{\mathcal{C}}(X,-) \colon \mathcal{C} \to \Set$ preserves limits.
+\end{thm}
+
+\begin{proof}
+    Consider the map
+    \[
+    \begin{tikzcd}
+        \Hom_{\mathcal{C}}(X, \lim_A F) 
+        \arrow[r, "\phi"]
+        &
+        \lim_{a \in A} \Hom_{\mathcal{C}} ( X, F(a)) 
+        \\
+        (X \xrightarrow{f} \lim_A F) 
+        \arrow[r, mapsto]
+        &
+        (\sigma_a  \circ f\colon X \xrightarrow{f} \lim_A F \xrightarrow{\sigma_a} F(a))_{a \in A}
+    \end{tikzcd}
+    \]
+    This is a morphism of cones, now we need to show it is bijective.
+    For injectivity, assume there are two morphisms $ X \underset{g}{\overset{f}{{\rightrightarrows}}} \lim_A F$ such that $\phi(f)=\phi(g)$.
+    Then for all $a \in A$ we get that $\sigma_a \circ f = \sigma_a \circ g$ and for all morphisms $a \to b$
+    \[
+    \begin{tikzcd}
+        &
+        X
+        \arrow[rrrr, shift left , "f"]
+        \arrow[rrrr, shift right, "g"']
+        \arrow[ld]
+        \arrow[rd]
+        &
+        &
+        &
+        &
+        \lim_A F
+        \arrow[ld, "\sigma_a"']
+        \arrow[rd, "\sigma_b"]
+        &
+        \\
+        F(a)
+        \arrow[rr, "F(u)"]
+        &
+        &
+        F(b)
+        &
+        &
+        F(a)
+        \arrow[rr ,"F(u)"]
+        &
+        &
+        F(b)
+    \end{tikzcd}
+    \]
+    which means $f$ and $g$ are morphisms of cones, but by the uniqueness of a morphism into a limit, such that the above commutes, we get that $f=g$.
+    For the surjectivity, let $(f_a \colon X \to F(a))_{a\in A}$ be morphism indexed by $A$ and take $\lim_{a \in A} \Hom( X, F(a))$.
+    This means that for all morphism $u \colon a  \to  b$ in $A$, we have that $\Hom_{\mathcal{C}}(X,F(u))(f_a)=f_b$,
+    so that $(X, (f_a \colon \to F(a))_{a \in A})$ is a cone over $F$.
+    Thus there exists a unique morphism into the limit cone $\psi: (X,(f_a)_{a \in A}) \to ( \lim_A F, (\sigma_a)_{a \in A})$, where $\sigma_a \circ \psi =f_a$ that is $\phi(f)= (f_a)_{a \in A}$.
+\end{proof}
+
+\begin{thm}
+    The Yoneda embedding $\mu \colon \mathcal{A} \to \widehat{A} = \Fun ( \mathcal{A}^{\op}, \Set )$ preserves limits.
+\end{thm}
+
+\begin{proof}
+    The proof is just an application of $\cref{covariant_hom_preserves_limits}$ to the Yoneda embedding from $\cref{yoneda_embedding}$.
+\end{proof}
+
+\subsection{Exercise}
+
+\begin{Exercise}
+    Show that two objects $ a , b \in A $ in a category $ A $ are isomorphic if and only if their respresentable presheaves $ \Hom_A ( - , a ) $ and $ \Hom_A ( -, b ) $ are isomorphic in $ \widehat{ A } $.
+\end{Exercise}
+
+\begin{Exercise}
+    Consider a functor $ F \colon A  \to \mathcal{ C } $ from a small category $A$.
+    
+    \begin{enumerate}
+        \item 
+        Show that if $ A $ is an initial object $ \emptyset $, then the limit of $ F $ exists.
+    
+        \item 
+        Show that if $ A $ has a final object $ e $, then the colimit of $ F $ exists.
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ F \colon A \to \set $ be a functor from a small category to the category of sets.
+    Recall that we have shown in the lecture that the limit of $ F $ exists and is given by 
+    \[
+        \lim_A F \coloneqq \bigg\{ x \in \prod_{ a \in A } F ( a ) \mid \forall u \colon a \to b \quad F ( u ) ( x_a ) = x_b \bigg\}
+    \]
+    together with the canonical projections.
+    
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that the inclusion $ \lim_A F \subseteq \prod_{ a \in A } F ( a ) $ exhibits $ \lim_A F $ as the equalizer (= limit of the following diagram)
+        \[
+        \begin{tikzcd}
+            \prod_{ a \in A } F ( a ) 
+            \ar[r , shift left, " \phi "]
+            \ar[r , shift right, " \psi "']
+            &
+            \prod_{ \substack{ u \colon s \to t \\ \text{ in } A} } F ( t )
+        \end{tikzcd}
+        \]
+        where $ \phi ( x )_u = F ( u ) ( x_{ s ( u ) } ) $ and $ \psi ( x )_u = x_{ t ( u ) }$.
+    
+        \item 
+        Let $ \coprod $ denote the disjoint union of sets. 
+        Assume that the coequalizer ( = colimit of the following diagram ) 
+        \[
+        \begin{tikzcd}
+            \coprod_{ \substack{ u \colon s \to t \\ \text{ in } A} } F ( t )
+            \ar[r , shift left, " \phi "]
+            \ar[r , shift right, " \psi "']
+            &
+            \coprod_{ a \in A } F ( a ) 
+        \end{tikzcd}    
+        \]
+        exists where for $ y \in F ( s ( v ) ) \subseteq \coprod_{ \substack{ u \colon s \to t \\ \text{ in } A} } F ( t ) $ we have $ \phi ( y ) = F ( v ) ( y ) \in F ( t ( v ) ) \subseteq \coprod_{ a \in A } F ( a ) $ and $ \psi ( y ) = y \in F ( s ( v ) ) \subseteq \coprod_{ a \in A } F ( a ) $. Show that it is a colimit of $ F $ with the canonical maps fro $ F ( a ) $.
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that the disjoint union of sets defines a coproduct in the category of sets, i.e. show that for every family of sets $ ( U_i )_{ i \in I } $ their disjoint union $\coprod_{ i \in I } U_i $ together with the canonical inclusion $ U_j \subseteq \coprod_{ i \in I } U_i $ is the colimit of the functor $ U \colon I \to \Set $ assigning to each $ i \in I $ the set $ U_i $.
+        Here $ I $ is some indexing set.
+    
+        \item 
+        Show that any coequalizer (= colimit of the following diagram ) 
+        \[
+        \begin{tikzcd}
+            U 
+            \ar[r, shift left, " \phi "]
+            \ar[r, shift right, " \psi "']
+            & 
+            V
+        \end{tikzcd}
+        \]
+        exists in Set by considering the smallest equivalence relation on $ V $ such that $ v \sim v' $ whenever there is some $ u \in U $ such that $ \phi ( u ) $ and $ \psi ( u ) = v' $.
+    
+        \item 
+        Conclude using Exercise 2.3 that Set is cocomplete, i.e. every small colimit exists.
+    \end{enumerate}
+\end{Exercise}

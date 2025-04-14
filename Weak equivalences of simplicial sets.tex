@@ -69,7 +69,7 @@ Furthermore $f\colon X \to Y$ in $\SetD$ is a homtopy equivalence if there exist
 \end{cor}
 
 \begin{proof}
-    It is an application of \cref{homotopy equivalence of inner hom} and applying the definition of the weak equivalence.
+    It is an application of \cref{homotopy equivalence of inner hom} and applying the definition of weak equivalences.
 \end{proof}
 
 \begin{prop}
@@ -77,11 +77,10 @@ Furthermore $f\colon X \to Y$ in $\SetD$ is a homtopy equivalence if there exist
 \end{prop}
 
 \begin{proof}
-    Let $K$ be a Kan complex, then $i^* \colon \underline{\Hom}(Y,K) \to \Hom(X,K) $ is a trivial Kan fibration, then it is a homtopy equivalence, thus $\pi_0$ is an iso.
-    \todo{find the statements}
+    Let $K$ be a Kan complex, then $i^* \colon \underline{\Hom}(Y,K) \to \Hom(X,K) $ is a trivial Kan fibration, then it is a homotopy equivalence, thus $\pi_0$ is an iso.
 \end{proof}
 
-\begin{prop}{2 out of 3}
+\begin{prop}{(2 out of 3)}
 \label{2 out of 3 weak equivalences}
     Weak equivalences satisfy the 2 out of 3 property. 
     That is for every commutative diagram
@@ -104,7 +103,22 @@ Furthermore $f\colon X \to Y$ in $\SetD$ is a homtopy equivalence if there exist
 
 \begin{proof}
     Let $K \in \SetD$ be a Kan complex. 
-    \todo{too tired to understand the argument here, häääähhhhh}
+    Then we get a diagram induced by the morphisms $f,g$ and $gf$.
+    \[
+    \begin{tikzcd}
+        &
+        \pi_0(\underline{\Hom}(Y,K))
+        \ar[ld,"{\pi_0(f^*)}"']
+        &
+        \\
+        \pi_0(\underline{\Hom}(X,K))
+        &&
+        \pi_0(\underline{\Hom}(Z,K))
+        \ar[ll, "{\pi_0((g \circ f)^*)}"]
+        \ar[lu, "{\pi_0(g^*)}"']
+    \end{tikzcd}
+    \]
+    now if two of the morphisms are bijections, then so is the third, since bijections fullfill the 2 out of 3 property.
 \end{proof}
 
 \begin{prop}
@@ -192,7 +206,7 @@ Furthermore $f\colon X \to Y$ in $\SetD$ is a homtopy equivalence if there exist
         \pi_0(\underline{\Hom}(X, \underline{\Hom}(W,K)))
     \end{tikzcd}
     \]
-    Now all the inner $\Hom$ simplicial sets are Kan complexes and we are done by applying \cref{Homtopy eq. of Kan complexes are bij in pi_0}.
+    Now all the inner $\Hom$ simplicial sets are Kan complexes and we are done by applying \cref{Homtopy eq. of Kan complexes are bij in pi_0(weak eq.)}.
 \end{proof}
 
 \begin{cor}
@@ -234,10 +248,101 @@ Let $X \in \SetD$ such that
     \end{tikzcd}
 \]
 then $X$ is weakly equivalent to the Kan complex $\Tilde{X}$.
-Can do this functorially by small object argument.
 
-\todo{dk, what this means}
 
-Lecture 14.1
+\subsection{Exercises}
 
-\todo{Correction}
+\begin{Exercise}
+    Consider a Kan complex $ X $ such that $ f \colon X  \to \Delta^0 $ is a weak homotopy equivalence.
+    Our aim is to show that $ f $ is a trivial Kan fibration and thus in particular a homotopy equivalence.
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Construct a homotopy from $ \id_{\Delta^n}$ to a constant map.
+
+        \item 
+        Show that any morphism $ \Lambda_k^n \to X $ from a horn to a Kan complex is homotopic to a constant map.
+    \end{enumerate}
+
+    We now fix a lifting problem relative to a boundary inclusion
+    \[
+    \begin{tikzcd}
+        \partial \Delta^n
+        \ar[r, "g"]
+        \ar[d]
+        &
+        X
+        \ar[d, "f"]
+        \\
+        \Delta^n
+        \ar[r]
+        &
+        \Delta^0
+    \end{tikzcd}
+    \]
+
+    \begin{enumerate}[resume]
+        \item 
+        Use the homotopy lifting property to construct a morphism $ g' \colon \partial \Delta^n \to X $ which is homotopic to $ g $ and constant when restricted to $ \Lambda_n^n$.
+
+        \item 
+        Deduce from Exercise \cref{Exercise_11.2} that $ g' $ has a filling and construct a filling for $ g $.
+
+        \item 
+        Conclude that $ f $ is a trivial fibration.
+    \end{enumerate}
+
+\end{Exercise}
+
+\begin{Exercise}
+\label{Exercise commuting finite limits with colimits in set}
+    We say a category $ K $ is $ \kappa$-filtered for an infinite cardinality $ \kappa $ if for any set of objects $ \{ \alpha_i \}_{ i \in I}$ with $ \lvert I \rvert < \kappa $ there is a cocone, i.e. there exists some $ \beta \in K $ and morphisms $ \alpha_i \to \beta $ for every $ i \in I $.
+    Assume that $ K $ is $ \kappa $-complete and let $ J $ be a small category such that $ \lvert \Mor ( J ) \rvert < \kappa $.
+    Show that for every functor $ D \colon K \times J \to \Set $ the canonical morphism 
+    \[
+        \colim_K \lim_{j \in J} D ( - , j ) \to \lim_J \colim_{\alpha \in K } D ( \alpha ,  ? )
+    \]
+    indueced by the morphisms $ \{ D ( \gamma , j ) \to \colim_{ \alpha \in K } D ( \alpha , j ) \}_{ j \in J }$ is a bijection. Fot thi, use the explicit form of limits and colimits in $ \Set$.
+    Furthermore, describe the special case where $ \kappa = \lvert \mathbb{ N } \rvert$.
+\end{Exercise}
+
+\begin{Exercise}
+    Fix a small category $ A $ and consider a presheaf $ X \in \widehat{A}$.
+    Our gial is to show that $ X $ is $ \kappa$-compact for any sufficiently large regular cardinal $ \kappa $, i.e. the canonical map 
+    \[
+        \colim_{ \alpha \in \kappa } \Hom_{ \widehat{A}} ( X , D ( \alpha ) ) \to \Hom_{\widehat{ A }} ( X , \colim_{ \alpha \in \kappa } D ( \alpha ) )
+    \]
+    is an isomorphism for any $ \kappa $-indexed colimit $ D : \kappa \to \widehat{ A } $.
+    Here, we view the cardinal $ \kappa $ as a well ordered set representing it.
+    In particular, we may view $ \kappa $ as the category induced from the underlying partial order.
+    Furthermore, a cardinal $ \kappa $ is called regular if the category associated to $ \kappa $ is $ \kappa $-complete in the sense of \cref{Exercise commuting finite limits with colimits in set}.
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that if $ X $ is representable, then $ X $ is $ \kappa $-compact for arbitrary $ \kappa $.
+
+        \item 
+        Deduce that to show that $ X $ is $ \kappa $-compact for some cardinal $ \kappa $, it is sufficient to show that $ \kappa$-indexed colimits commute with $ \int^A X $-indexed limits in $\Set$.
+
+        \item 
+        Show that the category of elements $ \int^A X $ is small, i.e. $ \Mor ( \int^A X ) $ is a set and thus has a cardinality.
+
+        \item 
+        Combine the above with \cref{Exercise commuting finite limits with colimits in set} to give a sufficient condition on $\kappa $ for $ X $ to be $ \kappa $-compact.
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ A $ be a small category and $ \mathcal{  F } $ is a set of morphisms on $ \widehat{ A } $. 
+    Consider the set $ \dom ( \mathcal{ F } ) \coloneqq \{ Y \mid \exists f \in \mathcal{ F } f \colon Y \to Z \} $ of domains of morphisms in $\mathcal{F}$.
+
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Deduce from the Exercise above that there exists a cardinality $ \kappa $ such that every $ X \in \dom ( \mathcal{ F } ) $ is $ \kappa $-compact. 
+        Here, you may freely use the fact from set theory that for any cardinal there exists a larger cardinality which is regular.
+
+        \item
+        Conclude $ ( l ( r ( \mathcal{ F } ) ), r ( \mathcal{ F } ) )$ is a weak factorisation system.
+
+        \item 
+        Deduce that $ \overline{ \mathcal{ F } } = l ( r ( \mathcal{ F } ) ) $ where $ \overline{ \mathcal{ F }}$ is the saturated closure of $ \mathcal{ F }$.
+    \end{enumerate}
+\end{Exercise}

@@ -14,7 +14,74 @@ The aim of this chapter is to introduce a calss of simplicaial sets that behave 
 \end{rmk}
 
 \begin{exmp}
-    \todo{decide if you want the actual picture, i.e. do simplices in tikz, or just make a reduced version}
+    Let us give a list for the horns up to dimension 3
+    \begin{itemize}
+        \item 
+        For $ n = 1 $ we have the two horns $\Lambda_0^1 =0 $ and $\Lambda_1^1=1$.
+        \item 
+        For $ n = 2 $ we have the following 3 horns, given here with their embedding into the standard 2-simplex
+        \[
+        \Lambda_0^2 \colon 
+        \begin{tikzpicture}[baseline={(0,0.3)}]
+            \node (A) at (0,0.866) {$1$};
+            \node (B) at (-0.5,0) {$0$};
+            \node (C) at (0.5,0) {$2$};
+            \draw [->] (B) -- (A);
+            \draw [->] (B) -- (C);
+        \end{tikzpicture}
+        \hookrightarrow
+        \begin{tikzpicture}[baseline={(0,0.3)}]
+            \node (A) at (0,0.866) {$1$};
+            \node (B) at (-0.5,0) {$0$};
+            \node (C) at (0.5,0) {$2$};
+            \draw [->] (A) -- (C);
+            \draw [->] (B) -- (A);
+            \draw [->] (B) -- (C);
+            \draw [blue] plot [smooth cycle] coordinates {(A.north west)     (A.north east) (A.south east) (B.north east) (C.north east) (C.south east) (B.south west) (B.north west) };
+        \end{tikzpicture}
+        \]
+        \[
+        \Lambda_1^2 \colon 
+        \begin{tikzpicture}[baseline={(0,0.3)}]
+            \node (A) at (0,0.866) {$1$};
+            \node (B) at (-0.5,0) {$0$};
+            \node (C) at (0.5,0) {$2$};
+            \draw [->] (B) -- (A);
+            \draw [->] (A) -- (C);
+        \end{tikzpicture}
+        \hookrightarrow
+        \begin{tikzpicture}[baseline={(0,0.3)}]
+            \node (A) at (0,0.866) {$1$};
+            \node (B) at (-0.5,0) {$0$};
+            \node (C) at (0.5,0) {$2$};
+            \draw [->] (A) -- (C);
+            \draw [->] (B) -- (A);
+            \draw [->] (B) -- (C);
+            \draw [blue] plot [smooth cycle] coordinates {(A.north west) 
+            (A.north east) (C.north east) (C.south east) (C.south west) (A.south east) (A.south west) (B.north east) (B.south east) (B.south west) (B.north west) };
+        \end{tikzpicture}
+        \]
+        \[
+        \Lambda_2^2 \colon 
+        \begin{tikzpicture}[baseline={(0,0.3)}]
+            \node (A) at (0,0.866) {$1$};
+            \node (B) at (-0.5,0) {$0$};
+            \node (C) at (0.5,0) {$2$};
+            \draw [->] (A) -- (C);
+            \draw [->] (B) -- (C);
+        \end{tikzpicture}
+        \hookrightarrow
+        \begin{tikzpicture}[baseline={(0,0.3)}]
+            \node (A) at (0,0.866) {$1$};
+            \node (B) at (-0.5,0) {$0$};
+            \node (C) at (0.5,0) {$2$};
+            \draw [->] (A) -- (C);
+            \draw [->] (B) -- (A);
+            \draw [->] (B) -- (C);
+            \draw [blue] plot [smooth cycle] coordinates {(A.south west) (A.north west) (A.north east) (C.north east) (C.south east) (B.south west) (B.north west) (C.north west) };
+        \end{tikzpicture}
+        \]
+    \end{itemize}
 \end{exmp}
 
 \begin{rmk}
@@ -357,7 +424,6 @@ Recall the following adjunctions
     \]
     extend to 2-simplices of $N(\mathcal{C})$ since $N(\mathcal{C})$ is a Kan complex.
     So we get that $gf=\id_X$ and $fh=\id_Y$.
-    \todo{why is the inverse unique here? and why again does $1_X$ correspond to the identity}
     Thus $\mathcal{C}$ is a groupoid.
     "$1) \implies 2)$"
     We already know that $N(\mathcal{C})$ is an inner Kan complex.
@@ -463,30 +529,28 @@ Lecture 21.11
     \[
     \begin{tikzcd}
         &
-        X_1
+        x_1
         \arrow[rd, "x_{21}"]
         & \\
-        X_0
+        x_0
         \arrow[ru, "x_{10}"]
         \arrow[rr, dashed, "\exists w"']
         &&
-        X_2
+        x_2
     \end{tikzcd}
     \]
-    \todo{I think there is a notational flaw here, denoting the simplicial sets as well as the objects in the diagram by $X_n$}
-
     Form the degenerate $2$-simplex $y \eqqcolon s_0(x_{21})$
     \[
     \begin{tikzcd}
-        X_1
+        x_1
         \arrow[rd, "x_{21}"]
         &
         \\
-        X_1
-        \arrow[u, dashed, "1_{X_1}"]
+        x_1
+        \arrow[u, dashed, "1_{x_1}"]
         \arrow[r, "x_{21}"']
         &
-        X_2
+        x_2
     \end{tikzcd}
     \]
     Let $z \coloneqq d_2(y) = 1_{X_1} \in X_1$.
@@ -495,24 +559,24 @@ Lecture 21.11
     s_1(x_{10}z^{-1}):
     \begin{tikzcd}
         &
-        X_1X_1^{-1}=e_0
+        x_1x_1^{-1}=e_0
         \arrow[rd, "1_{e_0}=s_0(e_0)=e_1"]
         &
         \\
-        X_0X_1
-        \arrow[ru, "x_{10}1_{X_1}^{-1}"]
-        \arrow[rr, "x_{10}1_{X_1}^{-1}"]
+        x_0x_1
+        \arrow[ru, "x_{10}1_{x_1}^{-1}"]
+        \arrow[rr, "x_{10}1_{x_1}^{-1}"']
         &&
-        X_1X_1^{-1}=e_0
+        x_1x_1^{-1}=e_0
     \end{tikzcd}
     \]
-    Let $w \coloneqq s_1(x_{10}z^{-1})y\in X_2$ and we get the chain of equalities
+    Let $w \coloneqq s_1(x_{10}z^{-1})y\in x_2$ and we get the chain of equalities
     \[
         d_0(w)=d_0((s_1(x_{10}z^{-1}))y)=d_0(s_1(x_{10}z^{-1}))d_0(y)=e_1x_{21}=x_{21}
     \]
     as well as 
     \[
-    d_2(w)=d_2(s_1(x_0z^{-1}))d_2(y)=(x_{10}1_{X_1}^{-1})1_{X_1}=x_{10}e_1=x_{10}
+    d_2(w)=d_2(s_1(x_0z^{-1}))d_2(y)=(x_{10}1_{x_1}^{-1})1_{x_1}=x_{10}e_1=x_{10}
     \]
     For the general case, consider a horn 
     \[
@@ -550,8 +614,76 @@ Recall the Dold-Kan correspondence.
 \end{prop}
 
 \begin{proof}
-    \todo{tooooo tired and idk, emotionally hurt, struck ...smth. like that to get the proof}    
-    
-    
+    At first, when there is a $\sigma$ that relates $X$ to $Y$ we can complete this to 1-simplex
+    \[
+    \begin{tikzcd}
+        &
+        Y
+        \ar[rd, "d_0(\tau)"]
+        &
+        \\
+        X
+        \ar[ru,"\sigma"]
+        \ar[rr,"1_X"']
+        &&
+        X
+    \end{tikzcd}
+    \]
+    and obtain $d_0(\tau)$ that relates $Y$ to $X$.
+    Also if $X$ relates to $Y$ and $Y$ relates to $Z$, we obtain a $2$-simplex
+    \[
+    \begin{tikzcd}
+        &
+        Y
+        \ar[rd, "\tau"]
+        &
+        \\
+        X
+        \ar[ru,"\sigma"]
+        \ar[rr,"d_1(\alpha)"']
+        &&
+        Z
+    \end{tikzcd}
+    \]
+    where $d_1(\alpha)$ relates $X$ to $Z$.
 \end{proof}
 
+\subsection{Exercises}
+
+\begin{Exercise}
+    \begin{enumerate}[label=(\alph*)]
+        
+        \item 
+        Show that for $ n \in \mathbb{N}_0 $ we have $ \bold{sk}_n ( \Delta^{n+1} ) \cong \partial \Delta^{n+1}$.
+    
+        \item 
+        Show that for every horn $ \Lambda_k^m $ we have that 
+        \[
+            \bold{sk_n} ( \Lambda_k^m ) \cong 
+            \begin{cases}
+                \Lambda_k^m &\text{ if } m \leq n+1
+                \\
+                \bold{sk}_n ( \Delta^m ) &\text{ if } m > n+1
+            \end{cases}
+        \]
+        for $ 0 \leq k \leq m \in \mathbb{ N }_+$.
+    
+        \item 
+        Show that for a Kan comlex $ K $ and any $ n \in \mathbb{N}_0 $, the $ n $-coskeleton $\bold{cosk}_n ( K ) $ is a Kan complex.
+        
+    \end{enumerate}
+\end{Exercise}
+
+\begin{Exercise}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+        Show that the class of Kan complexes and the class of inner Kan complexes are closed under set indeced products.
+    
+        \item 
+        Show that a set indexed product of connected Kan complexes is connected.
+    
+        \item 
+        Give an example that an infinite product of connected inner Kan complexes is not necessarily connected. 
+        ( Recall that the nerve of a category is an inner Kan complex.)
+    \end{enumerate}
+\end{Exercise}

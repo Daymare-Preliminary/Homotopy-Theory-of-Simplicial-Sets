@@ -18,7 +18,7 @@ Let $\mathcal{C}$ be a category and $W$ a class of morphisms.
 \end{exmp}
 
 \begin{prop}
-    Let $\mathcal{C}[W^{-1}]$ as in \cref{localisation_morphisms}. 
+    Let $\mathcal{C}[W^{-1}]$ as in \Cref{localisation_morphisms}. 
     For any category $\mathcal{D}$ the functor 
         \begin{align*}
             j^*\colon\Fun(\mathcal{C}[W^{-1}], \mathcal{D}) 
@@ -30,18 +30,18 @@ Let $\mathcal{C}$ be a category and $W$ a class of morphisms.
             \mathcal{D})\longmapsto
             &
             (\mathcal{C} \xrightarrow{\gamma}
-            \mathcal{C[W^{-1}]}
+            \mathcal{C}[W^{-1}]
             \xrightarrow{F}
             \mathcal{D})
         \end{align*}
     is an equivalence.
 \end{prop}
 
-\begin{thm}[{\cite{Gabriel1967CalculusOF}}]
+\begin{thm}%[{\cite{Gabriel1967CalculusOF}}]
     Set-theoretic issues aside, loacalisations always exist. 
 \end{thm}
     
-\todo{where}
+%\todo{where}
 
 \begin{exmp}
     \begin{itemize}
@@ -66,3 +66,54 @@ Let $\mathcal{C}$ be a category and $W$ a class of morphisms.
     The takeaway is the general paradigm, that the localisation is the \underline{truncation} of a richer mathematical structure.
 \end{rmk}
 
+\subsection{Exercises}
+
+\begin{Exercise}
+    For a group $ G $ let $ \set_G $ be the category of sets with a right $ G $ action i.e. 
+    \begin{itemize}
+        \item 
+        the objects are tuples $ ( X , \rho_X ) $ where $ X $ is a set and $ \rho \colon X \times G \to X $ is a map satisfying for all $ g , h \in G $ and $ x \in X $ that $ \rho_X ( x , g h ) = \rho_X ( \rho_X ( x , g ) , h ) $ and furthermore $ \id_X = \rho_X ( - , e ) $ for $ e $ the neutral element of $ G $, and
+        \item 
+        a morphism $ \phi \colon ( X , \rho_X ) \to ( Y , \rho_Y ) $ is given by a map $ \phi \colon X \to Y $ satisfying $ \phi \circ \rho_X = \rho_Y \circ ( \phi \times \id_G ) $ .
+    \end{itemize}
+    Recall that we view $ G $ as a category $ B G $ with one object $ \star $ and  $ \Hom_{ B G } ( \star, \star ) = G $. 
+    Show that there is and isomorphism of categories between $ \set_G $ and $ \widehat{ BG } $, the category of presheaves over $ B G $.
+\end{Exercise}
+
+\begin{Exercise}
+    For a set $ Y $, show that there is an isomorphism of functors $ \set^{ \op } \times \set \to \set $
+    \[
+        \Hom_{ \set } ( - \times Y , ? ) \cong  \Hom_{ \Set } ( - , \Hom_{ \set } ( Y , ? ) ).
+    \]
+\end{Exercise}
+
+\begin{Exercise}
+    Let $ \eta \colon F \to G $ be a natural transformation of two functors $ F , G \colon \mathcal{ A } \to \mathcal{ B } $.
+    Show that $ \eta $ is a natural isomorphism, i.e. there exists a natural transformation $ \eta' \colon G \to F $ such that $ \eta' \circ \eta = \id_F $ and $ \eta \circ \eta' = \id_G $, if and only if for every $ a \in \mathcal{ A } $ the morphism $ \eta_a \colon F ( a ) \to G ( a ) $ is an isomorphism.
+\end{Exercise}
+
+\begin{Exercise}
+    Fix an object $ x \in \mathcal{ C } $ of a category $ \mathcal{ C } $. 
+    The slice category $ \mathcal{ C } / x $ of $ \mathcal{ C } $ over $ x $ is defined as follows.
+    \begin{itemize}
+        \item 
+        The objects are tuples $ ( a , \pi ) $ with $ a  \in \mathcal{ C } $ an object and a morphism $ \pi \colon a \to x $. 
+        \item 
+        A morphism $ f \colon ( a , \pi ) \to ( b , \rho ) $ is given by a morphism $ f \colon a \to b $ such that $ \pi = \rho \circ f $.
+    \end{itemize}
+
+    After convincing yourself that this defines a category, do the following.
+    
+    \begin{enumerate}[label=(\alph*)]
+    
+        \item 
+        Show that there exists a final object in $ \mathcal{ C } / x $, i.e. an object $ ( e , \rho ) $ such that for any object $ ( a , \pi ) $ there is a unique morphism $ f \colon ( a , \pi ) \to ( e , \rho ) $.
+        \item 
+        
+        Define the coslice category $ x / \mathcal{ C } $ of elements under $ x $.
+        
+        \item 
+        Describe $ ( \mathcal{ C } / x )^{ \op } $ as a slice or coslice category.
+        
+    \end{enumerate}
+\end{Exercise}
