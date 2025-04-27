@@ -72,7 +72,7 @@ The presheaf $X$ has a canonical cone structure under this diagram, which is wha
 \end{prop}
 
 \begin{proof}
-    Consider a cone $(Y \in \widehat{A} , (\mu_{a,s} \colon \widehat{a} \to Y)_{(a,s) \in \int^A})$, we need to prove that there exists a unique morphism of  cones $f \colon (X, (s)_{(a,s) \in \int^A}) \mapsto (Y, (\mu_{a,s})_{(a,s) \in \int^A})$.
+    Consider a cocone $(Y \in \widehat{A} , (\mu_{a,s} X \colon \widehat{a} \to Y)_{(a,s) \in \int^A})$, we need to prove that there exists a unique morphism of  cocones $f \colon (X, (s)_{(a,s) \in \int^A}) \mapsto (Y, (\mu_{a,s})_{(a,s) \in \int^A X})$.
     Consider the tuple:
     $f \colon (f_a \colon X_a \to Y_a \mid a  \in A)$ where $f_a\colon X_a \to Y_a$ and $f_a(s)=\mu_{(a,s)}$ to prove $f:X \to Y$ is a natural transformation.
     \[
@@ -109,7 +109,7 @@ The presheaf $X$ has a canonical cone structure under this diagram, which is wha
         \ar[u, mapsto, "u^*(\mu_{b,t})"]
     \end{tikzcd}
     \]
-    We need to prove that $f \colon (X, (s)_{(a,s) \in \int^A}) \to (Y,(\mu_{a,s}))$ is a morphism of cones.
+    We need to prove that $f \colon (X, (s)_{(a,s) \in \int^A X}) \to (Y,(\mu_{a,s})_{(a,s) \in \int^A X})$ is a morphism of cocones.
     That is to show, that for $(a,s) \in \int^AX$ 
     \[
     \begin{tikzcd}

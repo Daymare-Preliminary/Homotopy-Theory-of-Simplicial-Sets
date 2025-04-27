@@ -115,7 +115,8 @@ in $\mathcal{C}$, we get a diagram
     \end{enumerate}
 \end{defi}
 
-\begin{lem}{The retract argument}
+\begin{lem}
+\label{The retract argument}
 Suppose 
 $
 \begin{tikzcd}
@@ -210,8 +211,9 @@ to obtain the result.
 \end{proof}
 
 \begin{thm}{Quillen's small object argument}
+\cref{Riehl_2014}
 \label{Quillen's small object argument}
-    Let $\mathcal{C}$ be a cocomplete category, $J$ a set of morphisms in $\mathcal{C}$ suppose that for all $j \in J$ we have that $\Hom_{\mathcal{C}}(\dom j,-)\colon \mathcal{C} \to \Set$ preserve (countable) sequential colimits (shape $(\mathbb{N}, \leq )$.
+    Let $\mathcal{C}$ be a cocomplete category, $J$ a set of morphisms in $\mathcal{C}$ suppose that for all $j \in J$ we have that $\Hom_{\mathcal{C}}(\dom j,-)\colon \mathcal{C} \to \Set$ preserve (countable) sequential colimits (that is colimits of shape $(\mathbb{N}, \leq )$).
     Then there exists a functorial factorisation in $\mathcal{C}$ turning $(\prescript{\lift{}}{}{(J^{\lift{}})},J^{\lift{}})$ into a weak factorisation system.
     Moreover $\prescript{\lift{}}{}{(J^{\lift{}})}$ is the saturation of $J$.
 \end{thm}
@@ -222,7 +224,7 @@ to obtain the result.
     \left\{ 
         \begin{tikzcd}
         \bullet
-        \ar[d, "i"]
+        \ar[d, "j"]
         \ar[r]
         &
         \bullet
@@ -234,11 +236,12 @@ to obtain the result.
         \bullet
         \end{tikzcd}
     \right\}$
+    Take the following coproduct in the category of arrows 
     \[
     \coprod_{j\in J}\coprod_{S_q(j,f)}
     \begin{tikzcd}
         \bullet
-        \ar[d, "j"]
+        \ar[d, " \coprod_{j\in J}\coprod_{S_q(j,f)}j"']
         \ar[r, "d_f"]
         &
         \bullet
@@ -252,11 +255,10 @@ to obtain the result.
     \]
     Consider now the pushout:
     \[
-    \coprod_{j\in J}\coprod_{S_q(j,f)}
     \begin{tikzcd}
         \bullet
         \ar[r, "d_f"]
-        \ar[d, "j"']
+        \ar[d, " \coprod_{j\in J}\coprod_{S_q(j,f)}j"']
         \ar[r, phantom, shift right =3.4ex, "\PO" ]
         &
         \bullet
@@ -267,6 +269,7 @@ to obtain the result.
         \ar[d, "f"]
         \\
         \bullet
+        \ar[rr, bend right,"c_f"']
         \ar[r,"b_f"']
         &
         x_1 
@@ -275,7 +278,7 @@ to obtain the result.
         \bullet
     \end{tikzcd}
     \]
-    By construction $Lf \in \prescript{\lift{}}{}{(J^{\lift{}})}$, but we have no guarantee that $Rf \in J^{\lift{}}$.
+    By construction $Lf \in \prescript{\lift{}}{}{(J^{\lift{}})}$, since all of this is in the saturation of $ J $. but we have no guarantee that $Rf \in J^{\lift{}}$.
     Apply now the above construction to $Rf$ and thus we obtain a square:
     \[
     \begin{tikzcd}
@@ -325,10 +328,10 @@ to obtain the result.
     Where $L^wf$ is the transfinite composition of the $LR^if$ for $i \in \mathbb{N}$ and $R^{i+1}f \circ LR^if=R^if$, with $R^0f=f$.
 
     We claim that $R^wf \in J^{\lift{}}$.
-    Consider the square 
+    Consider the following lifting problem
     \[
     \begin{tikzcd}
-        j_w
+        j_0
         \ar[r,"u"]
         \ar[d,"j"]
         &
@@ -341,22 +344,110 @@ to obtain the result.
         \bullet
     \end{tikzcd}
     \]
-    Claim : $ R^w f \in J^{\lift{}} $.
-    Consider 
+    Per definition we have that $ \Hom_{\mathcal{C}} ( j_0 , x_w \cong \colim_n \Hom ( j_0 , x_n ))$ and with the square above we obtain the following commutative diagram
     \[
     \begin{tikzcd}
-        f_w 
-        \ar[r , " u "]
-        \ar[d, "j"]
-        &
-        X_w
-        \ar[d, "R^w f "]
-        \\
-        \cdot
-        \ar[r, " v"]
-        &
-        \cdot
+    	j_0
+    	\ar[r, "u"]
+    	\ar[d, "j"]
+    	\ar[rr, bend left, "u_w"]
+    	&
+    	x_n
+    	\ar[d, "R^nf"]
+    	\ar[r]
+    	&
+    	x_w
+    	\ar[d,"R^wf"]
+    	\\
+    	\bullet
+    	\ar[r, "v"]	
+    	&
+    	\bullet
+    	\ar[r, equal]
+    	&
+    	\bullet
     \end{tikzcd}
-    \]
-    %\todo{finish dis}
+	\]
+	We now toke the leftmost square in the diagram above, then include it into the coproduct of squares $\amalg_{j \in J} \amalg_{S_q(j',R^nf)}$, which leads to the following.  
+	\[
+	\begin{tikzcd}
+		j_0
+		\ar[r]
+		\ar[d,"j"']
+		\ar[rr, bend left, "u"]
+		&
+		\bullet
+		\ar[d, "\amalg_{j \in J} \amalg j'"']
+		\ar[r]
+		\ar[rd, phantom, "\PO"]
+		&
+		x_n
+		\ar[d, "LR^nf"]
+		\ar[r, equal]
+		&
+		\bullet
+		\ar[d, "R^nf"]
+		\\
+		\bullet
+		\ar[rrr, bend right=60, "v"']
+		\ar[r]
+		\ar[rr, bend right, red]
+		& 
+		\bullet
+		\ar[r]
+		&
+		x_{n+1}
+		\ar[r, "R^{n+1}f"']
+		&
+		\bullet
+	\end{tikzcd}
+	\]
+	We can now construct the diagram below, where the red arrow corresponds to the red arrow above, which is our desired lift.
+	\[
+	\begin{tikzcd}
+		j_0
+		\ar[r, "u"]
+		\ar[d]
+		&
+		x_n
+		\ar[r, "LR^nf"]
+		&
+		x_{n+1}
+		\ar[d, "R^{n+1}f"]
+		\ar[r]
+		&
+		x_w
+		\ar[d, "R^wf"]
+		\\
+		\bullet
+		\ar[rru, red]
+		\ar[r, "v"]
+		&
+		\bullet
+		\ar[r, equal]
+		&
+		\bullet 
+		\arrow[r, equal]
+		&
+		\bullet
+	\end{tikzcd}
+	\]
+	Remains to show that $\prescript{\lift{}}{}{(J^{\lift{}})}$ is the saturation of $ J $. Let for that $c \in \prescript{\lift{}}{}{(J^{\lift{}})}$ and 
+	\[
+	\begin{tikzcd}
+		\bullet
+		\ar[r, " L^wc"]
+		\ar[d, "c"]
+		&
+		\bullet
+		\ar[d,"R^wc \in J^{\lift{}}"]
+		\\
+		\bullet
+		\ar[r, equal]
+		&
+		\bullet
+	\end{tikzcd}
+	\] 
+ 	be a lifting diagram, that is $ c \lift{} R^wc$.
+	Now by the retract argument $c$ is a retract of $ L^w c $.
 \end{proof}

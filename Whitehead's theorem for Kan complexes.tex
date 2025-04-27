@@ -260,6 +260,102 @@
         \ar[rru, bend right, "\beta"']
     \end{tikzcd}
     \]
+    \[
+    \begin{tikzcd}
+    	\overline{\alpha}
+    	\ar[r, "\Tilde{h}"]
+    	\ar[d, mapsto,shift left=0.8cm, "p_*"]
+    	&
+    	\alpha
+    	\\
+    	c(y)
+    	\ar[r, "h"']
+    	&
+    	p_{\alpha}
+    \end{tikzcd}
+	\quad
+	\begin{tikzcd}
+		\Delta^{\{1\}}
+		\ar[r, "\alpha"]
+		\ar[d]
+		&
+		\underline{\Hom}(\partial \Delta^n , X )
+			\ar[d, "p_*"]
+		\\
+		\Delta^1
+		\ar[ru, dashed , "\Tilde{h}"]
+		\ar[r, "h"]
+		&
+		\underline{\Hom}(\partial \Delta^n , Y )
+	\end{tikzcd}
+	\]
+	where $ \Tilde{h} \colon \Delta^1 \times \partial \Delta^n \to X , h \colon \overline{ \alpha } \to \alpha , \overline{\alpha} \colon \Delta^n \to X $ and $ p \circ \overline{\alpha} = c( y)$.
+	\[
+	\begin{tikzcd}
+		\partial \Delta^n
+		\ar[r, dashed, "\exists"]
+		\ar[rr, bend left, "\overline{\alpha}"]
+		\ar[d, "i"]
+		&
+		X_y
+		\ar[d]
+		\ar[r]
+		\ar[d, shift left=0.7cm, phantom ,"\text{PB}"]
+		&
+		X
+		\ar[d, "p"]
+		\\
+		\Delta^n
+		\ar[r, "!"]
+		\ar[rr, bend right, " c ( y )"']
+		\ar[rru, "v"]
+		\ar[ru, dashed]
+		&
+		\Delta^0
+		\ar[r, "y"]
+		&
+		Y
+	\end{tikzcd}
+	\]
+	\[
+	\begin{tikzcd}
+		\partial \Delta^n
+		\ar[d, "i"]
+		\ar[r, "\alpha"]
+		&
+		X
+		\ar[d, "p"]
+		\\
+		\Delta^n
+		\ar[r, "\beta"]
+		&
+		Y
+	\end{tikzcd}
+	\quad
+		\begin{tikzcd}
+			\Delta^{\{0\}} \times \partial \Delta^n
+			\ar[rr, bend left, "\alpha"]
+			\ar[r]
+			\ar[d,hook]
+			&
+			( \Delta^{\{0\}} \times \Delta^n ) \cup ( \Delta^1 \times \partial \Delta^n )
+			\ar[r, " { ( v , \Tilde{h} ) } "]
+			\ar[d, hook, "\in \An"]
+			&
+			X
+			\ar[d, "p"]
+			\\
+			\Delta^{\{0\}} \times \Delta^n
+			\ar[r]
+			\ar[rr, bend right, "\beta"]
+			&
+			\Delta^1 \times \Delta^n
+			\ar[ru]
+			\ar[r, " \beta \circ H"]
+			&
+			Y
+		\end{tikzcd}
+	\]
 \end{itemize}
 \end{proof}
 
