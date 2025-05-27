@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.12)  27 APR 2025 10:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.12)  8 MAY 2025 12:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1079,7 +1079,20 @@ Package csquotes Info: ... none found.
 File: l3backend-pdftex.def 2025-03-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count342
 )
-(./main.aux (./Whitehead's theorem for Kan complexes.aux))
+(./main.aux (./Introduction.aux) (./Motivation.aux)
+(./Presheaves_and_the_Yoneda_lemma.aux) (./Limits_and_Colimits.aux)
+(./Adjunctions.aux) (./Extending_functors_by_colimits.aux)
+(./Simplicial_sets.aux) (./Connected_comp._fundamental_groupoid.aux)
+(./Kan_complexes.aux) (./Fundamental_groupoid_revisited.aux)
+(./Kan_Fibrations.aux) (./Anodyne_extensions.aux)
+(./Reminder: Function complexes.aux) (./Simplicial_Homotopy.aux)
+(./Trivial Kan fibrations, loop spaces and the Serre long exact sequence.aux)
+(./Quillens small object argument.aux)
+(./Weak equivalences of simplicial sets.aux)
+(./Whitehead's theorem for Kan complexes.aux)
+(./Modelcategories: Definition and Examples.aux)
+(./Kan-Quilllen_Model_Structure.aux) (./Kan's_ex_infty_functor.aux)
+(./Grothendieck's_Homotopy_Hypothesis.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
@@ -1177,17 +1190,659 @@ LaTeX Font Info:    Trying to load font information for U+lasy on input line 18
 (/home/user/texlive/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-Excluding 'comment' comment.
 
 [1
 
 {/home/user/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-\openout2 = `"Whitehead's theorem for Kan complexes.aux"'.
+\openout2 = `Introduction.aux'.
 
 
-(./Whitehead's theorem for Kan complexes.tex
+No file Introduction.tex.
+\openout2 = `Motivation.aux'.
+
+(./Motivation.tex
+
+LaTeX Warning: Cref reference format for label type `dummy' undefined on input 
+line 21.
+
+
 
 [2
+
+
+
+
+{/home/user/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}])
+
+[3]
+\openout2 = `Presheaves_and_the_Yoneda_lemma.aux'.
+
+ (./Presheaves_and_the_Yoneda_lemma.tex
+
+[4
+
+
+
+]
+
+[5]
+
+[6]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 373.
+
+
+
+[7]
+Overfull \hbox (18.11517pt too wide) in paragraph at lines 442--443
+\OT1/cmr/m/n/10 (-20) We call the pair $\U/matha/m/n/10 p\OML/cmm/m/it/10 a \U/
+matha/m/n/10 P \OMS/cmsy/m/n/10 A\OML/cmm/m/it/10 ; x \U/matha/m/n/10 P \OML/cm
+m/m/it/10 X[]\U/matha/m/n/10 q$ \OT1/cmr/m/n/10 (-20) a $[]$ of $\OML/cmm/m/it/
+10 X$ \OT1/cmr/m/n/10 (-20) and $\OML/cmm/m/it/10 a \U/matha/m/n/10 P \OMS/cmsy
+/m/n/10 A$ \OT1/cmr/m/n/10 (-20) a $[]$
+ []
+
+
+Overfull \hbox (8.80852pt too wide) in paragraph at lines 450--451
+[]\OT1/cmr/bx/n/10 (-20) Proposition 2.11. []\OT1/cmr/m/it/10 (-20) For an el-e
+-ment $\OML/cmm/m/it/10 a \U/matha/m/n/10 P \OMS/cmsy/m/n/10 A$ \OT1/cmr/m/it/1
+0 (-20) the iso-mor-phism $\OML/cmm/m/it/10 ^^^[] [] []  [][]\U/matha/m/n/10 p[
+]\OML/cmm/m/it/10 ; X\U/matha/m/n/10 q []
+ []
+
+
+
+[8]
+
+[9]
+Overfull \hbox (28.92755pt too wide) in paragraph at lines 625--627
+[]\OT1/cmr/m/n/10 (-20) Show that for any $\OML/cmm/m/it/10 R$\OT1/cmr/m/n/10 (
+-20) -$\OML/cmm/m/it/10 R$\OT1/cmr/m/n/10 (-20) -bimodule $\OML/cmm/m/it/10 N$ 
+\OT1/cmr/m/n/10 (-20) and any $\OML/cmm/m/it/10 M \U/matha/m/n/10 P []  []$ \OT
+1/cmr/m/n/10 (-20) that $[][]\U/matha/m/n/10 p\OML/cmm/m/it/10 N; M\U/matha/m/n
+/10 q$
+ []
+
+
+
+[10])
+
+[11]
+\openout2 = `Limits_and_Colimits.aux'.
+
+ (./Limits_and_Colimits.tex
+LaTeX Font Info:    Trying to load font information for U+dsrom on input line 7
+6.
+
+(/home/user/texlive/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+)
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/dsrom/m/n/10'
+(microtype)             (new value: 10.0pt) on input line 76.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/dsrom/m/n/7'
+(microtype)             (new value: 7.0pt) on input line 76.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/dsrom/m/n/5'
+(microtype)             (new value: 5.0pt) on input line 76.
+
+
+[12
+
+
+
+]
+
+[13]
+
+[14]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 349.
+
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 349.
+
+
+
+[15])
+
+[16]
+\openout2 = `Adjunctions.aux'.
+
+ (./Adjunctions.tex
+
+[17
+
+
+
+]
+
+[18]
+
+[19]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 418.
+
+
+
+[20]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 523.
+
+
+
+[21]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 561.
+
+
+
+[22]
+Overfull \hbox (1.47272pt too wide) in paragraph at lines 722--724
+[]\OT1/cmr/bx/n/10 (-20) Proposition 4.14. []\OT1/cmr/m/it/10 (-20) Sup-pose th
+at $\OMS/cmsy/m/n/10 C$ \OT1/cmr/m/it/10 (-20) has all col-im-its of shape $\OM
+L/cmm/m/it/10 A$\OT1/cmr/m/it/10 (-20) . Then $[][] [] [] \OMS/cmsy/m/n/10 C \U
+/matha/m/n/10 С
+ []
+
+
+Overfull \hbox (13.16109pt too wide) in paragraph at lines 727--728
+[]\OT1/cmr/m/n/10 (-20) For $\OML/cmm/m/it/10 X \U/matha/m/n/10 P []p\OML/cmm/m
+/it/10 A; \OMS/cmsy/m/n/10 C\U/matha/m/n/10 q$ \OT1/cmr/m/n/10 (-20) we have $[
+][]\U/matha/m/n/10 p[][] \OML/cmm/m/it/10 X; c\U/matha/m/n/10 q [] [][] [][]p\O
+ML/cmm/m/it/10 Xa; c\U/matha/m/n/10 q ^^P
+ []
+
+
+
+[23]
+
+[24])
+
+[25]
+\openout2 = `Extending_functors_by_colimits.aux'.
+
+ (./Extending_functors_by_colimits.tex
+
+[26
+
+
+
+]
+Overfull \hbox (7.16309pt too wide) in paragraph at lines 75--78
+\OT1/cmr/m/n/10 (-20) there ex-ists a unique mor-phism of co-cones $\OML/cmm/m/
+it/10 f [] [] \U/matha/m/n/10 p\OML/cmm/m/it/10 X; \U/matha/m/n/10 p\OML/cmm/m/
+it/10 s\U/matha/m/n/10 q[]q ЮС p\OML/cmm/m/it/10 Y; \U/matha/m/n/10 p\OML/cmm/m
+/it/10 ^^V[]\U/matha/m/n/10 q[]q$\OT1/cmr/m/n/10 (-20) .
+ []
+
+
+Overfull \hbox (16.52643pt too wide) in paragraph at lines 129--132
+[]\OT1/cmr/m/n/10 (-20) Remember that we have a nat-u-ral iso-mor-phism of func
+-tors $[][]\U/matha/m/n/10 p\OML/cmm/m/it/10 A\U/matha/m/n/10 p^^A\OML/cmm/m/it
+/10 ; \OT1/cmr/m/n/10 (-20) ?\U/matha/m/n/10 q\OML/cmm/m/it/10 ; X\U/matha/m/n/
+10 q []
+ []
+
+
+
+[27]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 163.
+
+
+Overfull \hbox (13.38571pt too wide) in paragraph at lines 177--180
+[]\OT1/cmr/m/n/10 (-20) For $\OML/cmm/m/it/10 X \U/matha/m/n/10 P []$\OT1/cmr/m
+/n/10 (-20) . We have $\OML/cmm/m/it/10 F\U/matha/m/n/10 p\OML/cmm/m/it/10 X\U/
+matha/m/n/10 q ^^P \OML/cmm/m/it/10 F\U/matha/m/n/10 p[][] []q [] [][] \OML/cmm
+/m/it/10 F\U/matha/m/n/10 p[]q ^^P
+ []
+
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 194.
+
+
+
+[28]
+Overfull \hbox (2.06532pt too wide) in paragraph at lines 263--264
+[]\OT1/cmr/m/n/10 (-20) For $\OML/cmm/m/it/10 d \U/matha/m/n/10 P \OMS/cmsy/m/n
+/10 D$ \OT1/cmr/m/n/10 (-20) de-scribe the cat-e-gory of el-e-ments of the pres
+heaf $[][]\U/matha/m/n/10 p\OML/cmm/m/it/10 L\U/matha/m/n/10 p^^Aq\OML/cmm/m/it
+/10 ; d\U/matha/m/n/10 q P
+ []
+
+
+
+[29]
+
+[30])
+
+[31]
+\openout2 = `Simplicial_sets.aux'.
+
+ (./Simplicial_sets.tex Excluding 'comment' comment.
+
+[32
+
+
+
+]
+
+[33]
+
+[34]
+
+[35]
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+Missing character: There is no ; in font nullfont!
+
+
+[36]
+
+[37]
+
+[38]
+Overfull \hbox (1.58893pt too wide) in paragraph at lines 799--801
+\OT1/cmr/bx/n/10 (-20) Exercise 3.  \OT1/cmr/m/n/10 (-20) Let $^^A[]$ be the fu
+ll sub-cat-e-gory of $^^A$ of the el-e-ments $\U/matha/m/n/10 r\OT1/cmr/m/n/10 
+(-20) 0\U/matha/m/n/10 s\OML/cmm/m/it/10 ; \U/matha/m/n/10 r\OT1/cmr/m/n/10 (-2
+0) 1\U/matha/m/n/10 s\OML/cmm/m/it/10 ; [] ; \U/matha/m/n/10 r\OML/cmm/m/it/10 
+n\U/matha/m/n/10 s$\OT1/cmr/m/n/10 (-20) .
+ []
+
+
+Package amsfonts Warning: Obsolete command \bold; \mathbf should be used instea
+d on input line 808.
+
+
+
+[39])
+
+[40]
+\openout2 = `Connected_comp._fundamental_groupoid.aux'.
+
+ (./Connected_comp._fundamental_groupoid.tex
+
+[41
+
+
+
+]
+
+[42]
+Overfull \hbox (9.78265pt too wide) detected at line 243
+[]
+ []
+
+
+
+[43]
+
+[44] Excluding 'comment' comment.
+
+[45]
+Overfull \hbox (4.81047pt too wide) in paragraph at lines 554--557
+\OT1/cmr/m/n/10 (-20) Here $\OML/cmm/m/it/10 X[] [][]\U/matha/m/n/10 ^^P \OML/c
+mm/m/it/10 X[]\U/matha/m/n/10 zp[]q[]$ \OT1/cmr/m/n/10 (-20) de-notes the set o
+f non-degenerate $\OML/cmm/m/it/10 n$\OT1/cmr/m/n/10 (-20) -simplicies
+ []
+
+)
+
+[46]
+\openout2 = `Kan_complexes.aux'.
+
+ (./Kan_complexes.tex
+
+[47
+
+
+
+]
+
+[48]
+
+[49]
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/dsrom/m/n/9'
+(microtype)             (new value: 9.0pt) on input line 365.
+Package microtype Info: Fixing zero \fontdimen 6 for font `U/dsrom/m/n/6'
+(microtype)             (new value: 6.0pt) on input line 365.
+
+
+[50]
+
+[51]
+
+[52]
+
+[53])
+
+[54]
+\openout2 = `Fundamental_groupoid_revisited.aux'.
+
+ (./Fundamental_groupoid_revisited.tex
+
+[55
+
+
+
+]
+
+[56]
+
+[57]
+
+[58]
+
+[59]
+Overfull \hbox (19.77747pt too wide) detected at line 589
+[]
+ []
+
+
+
+[60]
+
+[61])
+
+[62]
+\openout2 = `Kan_Fibrations.aux'.
+
+ (./Kan_Fibrations.tex
+
+[63
+
+
+
+]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 169.
+
+
+
+[64]
+
+[65]
+
+[66]
+
+[67])
+
+[68]
+\openout2 = `Anodyne_extensions.aux'.
+
+ (./Anodyne_extensions.tex
+Overfull \hbox (23.43323pt too wide) in paragraph at lines 44--45
+[]\OT1/cmr/bx/n/10 (-20) Definition 11.3. []\OT1/cmr/m/n/10 (-20) The class of 
+an-o-dyne ex-ten-sions is $[] \U/matha/m/n/10 ^^P
+ []
+
+
+
+[69
+
+
+
+]
+Overfull \hbox (8.40576pt too wide) detected at line 118
+\OMS/cmsy/m/n/10 B[] [][]\U/matha/m/n/10 ^^P tp\OT1/cmr/m/n/10 ^^A[] \U/matha/m
+/n/10 ^^B \OML/cmm/m/it/10 X\U/matha/m/n/10 q Y pt\OML/cmm/m/it/10 ^^O\U/matha/
+m/n/10 u ^^B \OML/cmm/m/it/10 Y\U/matha/m/n/10 q „ p\OT1/cmr/m/n/10 ^^A[] \U/ma
+tha/m/n/10 ^^B \OML/cmm/m/it/10 Y\U/matha/m/n/10 q | \OML/cmm/m/it/10 ^^O \U/ma
+tha/m/n/10 P \OT1/cmr/m/n/10 ^^A[] \U/matha/m/n/10 ^^P t\OT1/cmr/m/n/10 0\OML/c
+mm/m/it/10 ; \OT1/cmr/m/n/10 1\U/matha/m/n/10 u\OML/cmm/m/it/10 ; X \U/matha/m/
+n/10 С \OML/cmm/m/it/10 Y[]\U/matha/m/n/10 u\OML/cmm/m/it/10 :
+ []
+
+)
+
+[70]
+\openout2 = `"Reminder: Function complexes.aux"'.
+
+
+No file Reminder: Function complexes.tex.
+\openout2 = `Simplicial_Homotopy.aux'.
+
+(./Simplicial_Homotopy.tex
+
+[71
+
+
+
+
+
+
+]
+
+[72]
+
+[73]
+Overfull \hbox (2.25986pt too wide) detected at line 336
+[]
+ []
+
+
+
+[74]
+Overfull \hbox (39.68846pt too wide) detected at line 636
+\OML/cmm/m/it/10 s [] [] []
+ []
+
+
+
+[75]
+
+[76]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 840.
+
+
+
+[77]
+
+[78]
+
+[79]
+Overfull \hbox (33.77924pt too wide) detected at line 1139
+[]
+ []
+
+
+
+[80]
+Overfull \hbox (5.332pt too wide) in paragraph at lines 1157--1160
+[]\OT1/cmr/m/n/10 (-20) Let $\OML/cmm/m/it/10 ; ^^L [] [] \OT1/cmr/m/n/10 (-20
+) ^^A[] \U/matha/m/n/10 С \OML/cmm/m/it/10 X$ \OT1/cmr/m/n/10 (-20) be rep-re-s
+en-ta-tives of classes in $\OML/cmm/m/it/10 ^^Y[]\U/matha/m/n/10 p\OML/cmm/m/it
+/10 X; x\U/matha/m/n/10 q$ \OT1/cmr/m/n/10 (-20) and $\OML/cmm/m/it/10 w [] [] 
+\OT1/cmr/m/n/10 (-20) ^^A[] \U/matha/m/n/10 С
+ []
+
+
+
+[81])
+
+[82]
+\openout2 = `"Trivial Kan fibrations, loop spaces and the Serre long exact sequ
+ence.aux"'.
+
+
+(./Trivial Kan fibrations, loop spaces and the Serre long exact sequence.tex
+
+[83
+
+
+
+]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 134.
+
+
+
+[84]
+
+[85]
+
+[86]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 455.
+
+
+Overfull \hbox (34.33142pt too wide) in paragraph at lines 463--466
+[]\OT1/cmr/m/n/10 (-20) Let $\OML/cmm/m/it/10 ! [] [] \OT1/cmr/m/n/10 (-20) ^^A
+[] \U/matha/m/n/10 С \OML/cmm/m/it/10 Y$ \OT1/cmr/m/n/10 (-20) be an (n+1)-simp
+lex, such that $\U/matha/m/n/10 B\OML/cmm/m/it/10 ! \U/matha/m/n/10 ^^P p\OML/c
+mm/m/it/10 y; [] ; y; []; []; []\U/matha/m/n/10 q$\OT1/cmr/m/n/10 (-20) .
+ []
+
+
+
+[87]
+
+[88]
+
+[89]
+
+[90]
+Overfull \hbox (57.15169pt too wide) detected at line 975
+[] [] \OML/cmm/m/it/10 ^^Y[]\U/matha/m/n/10 p\OML/cmm/m/it/10 F; x\U/matha/m/n/
+10 q [] \OML/cmm/m/it/10 ^^Y[]\U/matha/m/n/10 p\OML/cmm/m/it/10 X; x\U/matha/m/
+n/10 q [] \OML/cmm/m/it/10 ^^Y[]\U/matha/m/n/10 p\OML/cmm/m/it/10 Y; p\U/matha/
+m/n/10 p\OML/cmm/m/it/10 x\U/matha/m/n/10 qq [] \OML/cmm/m/it/10 ^^Y[]\U/matha/
+m/n/10 p\OML/cmm/m/it/10 F; x\U/matha/m/n/10 q [] \OML/cmm/m/it/10 ^^Y[]\U/math
+a/m/n/10 p\OML/cmm/m/it/10 X; x\U/matha/m/n/10 q [] \OML/cmm/m/it/10 ^^Y[]\U/ma
+tha/m/n/10 p\OML/cmm/m/it/10 Y; p\U/matha/m/n/10 p\OML/cmm/m/it/10 x\U/matha/m/
+n/10 qq
+ []
+
+
+
+[91])
+
+[92]
+\openout2 = `"Quillens small object argument.aux"'.
+
+ (./Quillens small object argument.tex
+
+[93
+
+
+
+]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 186.
+
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 209.
+
+
+LaTeX Warning: Reference `Riehl_2014' on page 1 undefined on input line 214.
+
+
+
+[94]
+
+[95])
+
+[96]
+\openout2 = `"Weak equivalences of simplicial sets.aux"'.
+
+ (./Weak equivalences of simplicial sets.tex
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 72.
+
+
+
+[97
+
+
+
+]
+
+LaTeX Warning: Reference `Homtopy eq. of Kan complexes are bij in pi_0' on page
+ 1 undefined on input line 152.
+
+
+
+[98]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 209.
+
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 232.
+
+
+
+[99]
+
+LaTeX Warning: cref reference format for label type `Exercise' undefined on inp
+ut line 288.
+
+
+LaTeX Warning: cref reference format for label type `Exercise' undefined on inp
+ut line 317.
+
+
+
+[100]
+
+LaTeX Warning: cref reference format for label type `Exercise' undefined on inp
+ut line 329.
+
+)
+
+[101]
+\openout2 = `"Whitehead's theorem for Kan complexes.aux"'.
+
+ (./Whitehead's theorem for Kan complexes.tex
+
+[102
+
+
 
 ]
 
@@ -1200,34 +1855,131 @@ line 150.
 
 
 
-[3]
+[103]
 
 LaTeX Warning: cref reference format for label type `dummy' undefined on input 
 line 212.
 
 
 
-[4]
+[104]
 Overfull \hbox (11.13612pt too wide) detected at line 358
 [] []
  []
 
 
-LaTeX Warning: Reference `Quillen's small object argument' on page 1 undefined 
-on input line 380.
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 380.
 
 
-LaTeX Warning: Reference `Homtopy eq. of Kan complexes are bij in pi_0(weak eq.
-)' on page 1 undefined on input line 396.
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 396.
 
 
-LaTeX Warning: Reference `2 out of 3 weak equivalences' on page 1 undefined on 
-input line 397.
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 397.
 
 )
 
-[5] Excluding 'comment' comment. (./main.aux
-(./Whitehead's theorem for Kan complexes.aux))
+[105]
+\openout2 = `"Modelcategories: Definition and Examples.aux"'.
+
+
+No file Modelcategories: Definition and Examples.tex.
+\openout2 = `Kan-Quilllen_Model_Structure.aux'.
+
+(./Kan-Quilllen_Model_Structure.tex
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 85.
+
+
+
+[106
+
+
+
+
+
+
+]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 145.
+
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 163.
+
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 164.
+
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 179.
+
+
+
+[107]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 221.
+
+)
+
+[108]
+\openout2 = `Kan's_ex_infty_functor.aux'.
+
+ (./Kan's_ex_infty_functor.tex
+
+[109
+
+
+
+]
+
+[110]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 317.
+
+
+
+[111]
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 338.
+
+
+LaTeX Warning: cref reference format for label type `dummy' undefined on input 
+line 346.
+
+)
+
+[112]
+\openout2 = `Grothendieck's_Homotopy_Hypothesis.aux'.
+
+ (./Grothendieck's_Homotopy_Hypothesis.tex)
+
+[113
+
+
+
+] (./main.aux (./Introduction.aux) (./Motivation.aux)
+(./Presheaves_and_the_Yoneda_lemma.aux) (./Limits_and_Colimits.aux)
+(./Adjunctions.aux) (./Extending_functors_by_colimits.aux)
+(./Simplicial_sets.aux) (./Connected_comp._fundamental_groupoid.aux)
+(./Kan_complexes.aux) (./Fundamental_groupoid_revisited.aux)
+(./Kan_Fibrations.aux) (./Anodyne_extensions.aux)
+(./Reminder: Function complexes.aux) (./Simplicial_Homotopy.aux)
+(./Trivial Kan fibrations, loop spaces and the Serre long exact sequence.aux)
+(./Quillens small object argument.aux)
+(./Weak equivalences of simplicial sets.aux)
+(./Whitehead's theorem for Kan complexes.aux)
+(./Modelcategories: Definition and Examples.aux)
+(./Kan-Quilllen_Model_Structure.aux) (./Kan's_ex_infty_functor.aux)
+(./Grothendieck's_Homotopy_Hypothesis.aux))
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-03-26>
@@ -1237,34 +1989,51 @@ L3 programming layer <2025-03-26>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 23857A148FAB95C76B85F33FF8A17D2B;240.
+(rerunfilecheck)             Checksum: 2A4F5F7EFB4C256CBB4593B1A27EF69D;5852.
  ) 
 Here is how much of TeX's memory you used:
- 30718 strings out of 469626
- 601660 string characters out of 5473615
- 1019137 words of memory out of 5000000
- 56966 multiletter control sequences out of 15000+600000
- 643650 words of font info for 128 fonts, out of 8000000 for 9000
+ 47382 strings out of 469626
+ 1026663 string characters out of 5473615
+ 1292048 words of memory out of 5000000
+ 72690 multiletter control sequences out of 15000+600000
+ 657462 words of font info for 254 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 113i,15n,119p,1001b,1279s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 113i,26n,119p,1001b,1655s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </home/user/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></ho
 me/user/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/use
-r/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/user/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></home/user/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></home/user/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/user/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr12.pfb></home/user/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb></home/user/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr5.pfb></home/user/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmr7.pfb></home/user/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti1
-0.pfb></home/user/texlive/texmf-dist/fonts/type1/public/mathabx-type1/matha10.p
-fb></home/user/texlive/texmf-dist/fonts/type1/public/mathabx-type1/matha5.pfb><
-/home/user/texlive/texmf-dist/fonts/type1/public/mathabx-type1/matha7.pfb></hom
-e/user/texlive/texmf-dist/fonts/type1/public/mathabx-type1/mathb10.pfb>
-Output written on main.pdf (5 pages, 179154 bytes).
+r/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></home/user/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></home/user/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></home/user/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi6.pfb></home/user/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></home/user/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi9.pfb></home/user/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmr10.pfb></home/user/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr12.pfb></home/user/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+17.pfb></home/user/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><
+/home/user/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/us
+er/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/user/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></home/user/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home/user/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy5.pfb></home/user/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy7.pfb></home/user/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmti10.pfb></home/user/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmti7.pfb></home/user/texlive/texmf-dist/fonts/type1/public/doublest
+roke/dsrom10.pfb></home/user/texlive/texmf-dist/fonts/type1/public/doublestroke
+/dsrom8.pfb></home/user/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont
+/lasy10.pfb></home/user/texlive/texmf-dist/fonts/type1/public/mathabx-type1/mat
+ha10.pfb></home/user/texlive/texmf-dist/fonts/type1/public/mathabx-type1/matha5
+.pfb></home/user/texlive/texmf-dist/fonts/type1/public/mathabx-type1/matha6.pfb
+></home/user/texlive/texmf-dist/fonts/type1/public/mathabx-type1/matha7.pfb></h
+ome/user/texlive/texmf-dist/fonts/type1/public/mathabx-type1/mathb10.pfb></home
+/user/texlive/texmf-dist/fonts/type1/public/mathabx-type1/mathx10.pfb></home/us
+er/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></home/use
+r/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></home/user
+/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></home/user/t
+exlive/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on main.pdf (113 pages, 839325 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
- 22 named destinations out of 1000 (max. 500000)
- 22549 words of extra memory for PDF output out of 24883 (max. 10000000)
+ 1384 PDF objects out of 1440 (max. 8388607)
+ 1191 compressed objects within 12 object streams
+ 599 named destinations out of 1000 (max. 500000)
+ 47421 words of extra memory for PDF output out of 51595 (max. 10000000)
 
