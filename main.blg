@@ -13,76 +13,73 @@ A level-1 auxiliary file: Kan_complexes.aux
 A level-1 auxiliary file: Fundamental_groupoid_revisited.aux
 A level-1 auxiliary file: Kan_Fibrations.aux
 A level-1 auxiliary file: Anodyne_extensions.aux
-White space in argument---line 20 of file main.aux
+White space in argument---line 17 of file main.aux
  : \@input{Reminder:
  :                   Function complexes.aux}
 I'm skipping whatever remains of this command
 A level-1 auxiliary file: Simplicial_Homotopy.aux
-White space in argument---line 22 of file main.aux
+White space in argument---line 19 of file main.aux
  : \@input{Trivial
  :                 Kan fibrations, loop spaces and the Serre long exact sequence.aux}
 I'm skipping whatever remains of this command
-White space in argument---line 26 of file main.aux
+White space in argument---line 20 of file main.aux
  : \@input{Quillens
  :                  small object argument.aux}
 I'm skipping whatever remains of this command
-White space in argument---line 30 of file main.aux
+White space in argument---line 21 of file main.aux
  : \@input{Weak
  :              equivalences of simplicial sets.aux}
 I'm skipping whatever remains of this command
-White space in argument---line 31 of file main.aux
+White space in argument---line 22 of file main.aux
  : \@input{Whitehead's
  :                     theorem for Kan complexes.aux}
 I'm skipping whatever remains of this command
-White space in argument---line 32 of file main.aux
- : \@input{Modelcategories:
- :                          Definition and Examples.aux}
-I'm skipping whatever remains of this command
+A level-1 auxiliary file: Modelcategories_Definition_and_Examples.aux
 A level-1 auxiliary file: Kan-Quilllen_Model_Structure.aux
 A level-1 auxiliary file: Kan's_ex_infty_functor.aux
 A level-1 auxiliary file: Grothendieck's_Homotopy_Hypothesis.aux
-I found no \citation commands---while reading file main.aux
-I found no \bibdata command---while reading file main.aux
-I found no \bibstyle command---while reading file main.aux
-You've used 0 entries,
-            0 wiz_defined-function locations,
-            99 strings with 888 characters,
-and the built_in function-call counts, 0 in all, are:
-= -- 0
-> -- 0
+The style file: plain.bst
+Database file #1: mybib.bib
+Warning--empty booktitle in Riehl2011ALI
+You've used 6 entries,
+            2118 wiz_defined-function locations,
+            553 strings with 5124 characters,
+and the built_in function-call counts, 1390 in all, are:
+= -- 129
+> -- 48
 < -- 0
-+ -- 0
-- -- 0
-* -- 0
-:= -- 0
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 21
+- -- 14
+* -- 57
+:= -- 249
+add.period$ -- 20
+call.type$ -- 6
+change.case$ -- 21
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 0
-format.name$ -- 0
-if$ -- 0
+cite$ -- 7
+duplicate$ -- 68
+empty$ -- 137
+format.name$ -- 14
+if$ -- 298
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 0
-num.names$ -- 0
-pop$ -- 0
-preamble$ -- 0
-purify$ -- 0
+int.to.str$ -- 6
+missing$ -- 9
+newline$ -- 33
+num.names$ -- 12
+pop$ -- 43
+preamble$ -- 1
+purify$ -- 19
 quote$ -- 0
-skip$ -- 0
+skip$ -- 39
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 31
+swap$ -- 6
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 0
-(There were 9 error messages)
+type$ -- 16
+warning$ -- 1
+while$ -- 12
+width$ -- 7
+write$ -- 66
+(There were 5 error messages)

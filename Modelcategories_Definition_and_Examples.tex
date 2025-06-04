@@ -1,0 +1,63 @@
+\section{Modelcategories: Defintion and Examples}
+
+Lecture 16.01
+
+For references for this section see \cite[Section 2.2]{Cisinski_2019}, \cite[Section I.11]{GoerSimp1999}, \cite[Section 3.3.7]{kerodon} and \cite[Chapter 3]{Model_category_Hovey}.
+
+\begin{defi}{Quillen}
+    A \underline{model category structure} on $\mathcal{C}$ is a triple $(W, \Cofib, \Fib)$ consisting of three classes of morphisms in $\mathcal{C}$.
+    \begin{itemize}[label={}]
+        \item 
+        $W$: weak equivalences
+        \item 
+        $\Cofib$: Cofibrations
+        \item  
+        $\Fib$: Fibrations
+        \item 
+        $W \cap \Cofib$: trivial Cofibrations
+        \item 
+        $W \cap \Fib$: trivial Fibrations
+    \end{itemize}
+    subject to the following axioms:
+    \begin{enumerate}
+        \item 
+        $W$ has the 2 out of 3 property,
+        \item
+        the triples $(\Cofib, W \cap \Fib)$ and $( \Cofib \cap W, \Fib)$ are weak factorisation systems.
+    \end{enumerate}
+    We call $(\mathcal{C}, W, \Cofib, \Fib )$ a \underline{model category}.
+\end{defi}
+
+\begin{rmk}
+    Let us introduce some more convenient terminology.
+    \begin{itemize}
+        \item 
+        We call $\mathcal{C}_{\Cofib} \coloneqq \{ A \in \mathcal{C} \mid \emptyset \to A \in \Cofib\}$ the \underline{cofibrant objects},
+        \item 
+        $\mathcal{C}_{\Fib} \coloneqq \{ A \in \mathcal{C} \mid A \to * \in \Fib\}$ the \underline{fibrant objects} and 
+        \item   
+        $\mathcal{C}_{\Bifib} \coloneqq \mathcal{C}_{\Cofib} \cap \mathcal{C}_{\Fib}$ the \underline{bifibrant objects}.
+    \end{itemize}
+\end{rmk}
+
+\begin{thm}{Quillen}
+    The quadruple $( \SetD ,$ Weq, Monos, Kanfib $)$ is a model category, it is called the Kan-Quillen model structure.
+    We have the equalities $\An=$Weq $\cap$ Monos and TrivKan$=$ Weq $\cap$ KanFib. 
+\end{thm}
+
+\begin{rmk}
+    Notice that for an $X \in \SetD$ is fibrant is per defintion equivalent to it being a Kan complex.
+\end{rmk}
+
+\begin{thm}
+    Let $f\colon X  \to Y$ be a morphism in $\SetD$ then the following are equivalent:
+    \begin{enumerate}
+        \item 
+        for all Kan complexes $K$ the induced morphism $f^*\colon \pi_0(\underline{\Hom}(Y,K)) \isomorphism \pi_0(\underline{\Hom}(X,K))$ is an isomorphism,
+        \item 
+        the morphism $f$ is a homotopy equivalence after applying the geometric realisation functor
+        $\lvert f \rvert : \lvert X \rvert \to \lvert Y \rvert$,
+        \item 
+        for all $x \in X$ and all $n \geq 0$ the induced morphism on homotopy groups of the geometric realisation is an isomorphism $\lvert f \rvert^* \colon  \pi_n(\lvert X \rvert, x) \isomorphism \pi_n(\lvert Y \rvert, f(x))$.
+    \end{enumerate}
+\end{thm}

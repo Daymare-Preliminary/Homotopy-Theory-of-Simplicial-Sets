@@ -3,6 +3,7 @@
 \usepackage{graphicx}
 \usepackage{Style_Homotopy_Theory}
 \usepackage{hyperref}
+\hypersetup{linkcolor = blue}
 \usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
 \usepackage{todonotes}
 \usepackage{dsfont}
@@ -15,7 +16,7 @@
 \begin{document}
 
 \maketitle
-
+\tableofcontents
 %done
 
 \include{Introduction}
@@ -24,11 +25,13 @@
 \include{Limits_and_Colimits}   
 \include{Adjunctions}
 
+
 %done
 
 \include{Extending_functors_by_colimits}
 \include{Simplicial_sets}
 \include{Connected_comp._fundamental_groupoid}
+
 
 %done
 
@@ -63,13 +66,16 @@
 
 %done
 
-\include{Modelcategories: Definition and Examples}
+\include{Modelcategories_Definition_and_Examples}
 \include{Kan-Quilllen_Model_Structure}
 
 
 \include{Kan's_ex_infty_functor}
 \include{Grothendieck's_Homotopy_Hypothesis}
 %\include{Exercises}
+
+\bibliography{mybib}{}
+\bibliographystyle{plain}
 %\printbibliography
 
 \end{document}
