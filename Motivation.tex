@@ -1,121 +1,106 @@
 \section{Motivation}
 
-For reference to this section see \cite[Preface]{Cisinski_2019}.
+Fix $ 0 \leq m \leq n \leq \infty $. 
+An $ ( n , m ) $ category is a "category-like" structure consisting of a class of objects, notions of 1- morphism, 2-morphism, ... , n-morphism (i.e. k-morphsim $ 0 < k \leq n )$ with a "suitable composition law" (satisfying "suitable axioms") and such that $ \forall m < k \leq n $ the k-morphisms are "invertible".
+\begin{align*}
+    &( 0 , 0 ) \text{-cat. = set}
+    \\
+    &( 1 , 0 ) \text{-cat. = groupoid, i.e. 1-groupoid}
+    \\
+    &( 1 , 1 ) \text{-cat. = category, i.e. 1-category}
+    \\
+    &( 2 , 0 ) \text{-cat. = 2-groupoids}
+    \\
+    &( 2 , 1 ) \text{-cat.}
+    \\
+    &( 2 , 2 ) \text{-cat. = 2-categories}
+    \\
+    &\vdots
+    \\
+    &( n , 0 ) \text{-cat. = n-groupoid}
+    \\
+    &( n , n ) \text{-cat. = n-cat.}
+    \\
+    &\vdots
+    \\
+    &( \infty , 0 ) = \infty \text{-groupoids}
+    \\
+    &( \infty , 1 ) = \infty \text{-categories (see. Boardman-Vogt)}
+\end{align*}
 
-Let $\mathcal{C}$ be a category and $W$ a class of morphisms.
+\begin{rmd}
+    A map $ f \colon X \to Y $ between topological spaces is a weak homotopy equivalence if $ \forall x \in X, \forall n \in \mathbb{ N } $ the map
+    \[
+        \pi_n ( f ) \colon \pi_n ( X , x ) \xrightarrow{} \pi_n ( Y , f ( x ) ) 
+    \]
+    is a bijection.
+\end{rmd}
 
-\begin{defi}
-\label{localisation_morphisms}
-    A localisation of $\mathcal{C}$ at $W$ is a category $\mathcal{C}[W^{-1}]$ together with a functor $\gamma\colon \mathcal{C} \to \mathcal{C}[W^{-1}]$ such that $\forall f \in W$, we get that $\gamma(f)$ is an isomorphism in $\mathcal{C}[W^{-1}]$.
-\end{defi}
-
-\begin{exmp}
-    \begin{itemize}
-        \item 
-        A ring considered as category and the localisation at an ideal.
-        Can this be extended to rings with more than one object?
-        \item 
-        The derived category of an abelian category is the localisation with respect to the quasi isomorphisms.
-    \end{itemize}
-\end{exmp}
-
-\begin{prop}
-    Let $\mathcal{C}[W^{-1}]$ as in \Cref{localisation_morphisms}. 
-    For any category $\mathcal{D}$ the functor 
-        \begin{align*}
-            j^*\colon\Fun(\mathcal{C}[W^{-1}], \mathcal{D}) 
-            \to
-            &
-            \Fun(\mathcal{C},\mathcal{D})
-            \\
-            (\mathcal{C}[W^{-1}] \to 
-            \mathcal{D})\longmapsto
-            &
-            (\mathcal{C} \xrightarrow{\gamma}
-            \mathcal{C}[W^{-1}]
-            \xrightarrow{F}
-            \mathcal{D})
-        \end{align*}
-    is an equivalence.
-\end{prop}
-
-\begin{thm}%[{\cite{Gabriel1967CalculusOF}}]
-    Set-theoretic issues aside, loacalisations always exist. 
+\begin{thm}[ Grothendieck's Homotopy Hypothesis ]
+     There is an $ ( \infty , 1 ) $-category of topological spaces up to weak  homotopy equivalence and there is an $ ( \infty , 1 ) $-category of $ \infty $-groupoids up to eqivalence.
+    There is furthermore an $ \infty $-functor assigning to each topological space $ X $ its Poincare $ \infty $-groupoid $ \pi_{ \infty } ( X ) $, this is an equivalence.
 \end{thm}
-    
-%\todo{where}
-
-\begin{exmp}
-    \begin{itemize}
-        \item 
-        Let $\Top$ be the category with objects given by topological spaces and morphisms given by continuous maps.
-        Let $W$ be the weak homotopy equivalences, that is morphisms $f:X \to Y$ such that the induced maps on path components 
-        \[
-        \pi_0(f) \colon\pi_0(X) \isomorphism \pi_0(Y)
-        \]
-        and for all points $x \in X$ and for all $n\geq1$ with $n \in \mathbb{N}$ the morphism $f$ induces an an isomorphism on homotopy groups
-        \[
-        \pi_n(f,x) \colon \pi_n(X,x) \isomorphism \pi_n(Y,f(x))
-        \]
-        in $\Grp$.
-        The result of the localisation is called the homotopy category $\mathcal{H}: \Top[W^{-1}]$.
-        \item 
-        The localisation at all morphism of the category $\mathcal{C}[\mathcal{C}^{-1}]$ is a groupoid.
-    \end{itemize}
-\end{exmp}
 
 \begin{rmk}
-    The takeaway is the general paradigm, that the localisation is the \underline{truncation} of a richer mathematical structure.
+    Let $ \mathcal{ C } $ be an $ ( \infty , 1 ) $-category, then for all $ X , Y \in \Ob ( \mathcal{ C } ) $ we get that $ \Hom_{ \mathcal{ C } } ( X , Y )$ is an $\infty$-groupoid/ "space".
+    We have the homtopy category of $ \mathcal{ C } $ denoted by $ \Ho ( \mathcal{ C } )$ whose objects are those of $ \mathcal{ C } $ and for all objects $ X , Y \in \Ho ( \mathcal{ C } ) $ we have that $ \Hom_{ \Ho ( \mathcal{ C } ) } ( X , Y ) = \pi_0 ( \Hom_{ \mathcal{ C } } ( X , Y ) $.
 \end{rmk}
 
-\subsection{Exercises}
-
-\begin{Exercise}
-    For a group $ G $ let $ \set_G $ be the category of sets with a right $ G $ action i.e. 
+\begin{Warning}
+    The passage from $ \mathcal{ C } $ often results in a tremendous loss of information, that is essential for various purposes.
     \begin{itemize}
         \item 
-        the objects are tuples $ ( X , \rho_X ) $ where $ X $ is a set and $ \rho \colon X \times G \to X $ is a map satisfying for all $ g , h \in G $ and $ x \in X $ that $ \rho_X ( x , g h ) = \rho_X ( \rho_X ( x , g ) , h ) $ and furthermore $ \id_X = \rho_X ( - , e ) $ for $ e $ the neutral element of $ G $, and
+        Computing co-/limits within $ \mathcal{ C } $.
+
         \item 
-        a morphism $ \phi \colon ( X , \rho_X ) \to ( Y , \rho_Y ) $ is given by a map $ \phi \colon X \to Y $ satisfying $ \phi \circ \rho_X = \rho_Y \circ ( \phi \times \id_G ) $ .
+        Computing co-/limits with $ \mathcal{ C } $.
+
+        \item 
+        Define invariants associated to $ \mathcal{ C } $ ( f.e. Hochschild cohomology).
     \end{itemize}
-    Recall that we view $ G $ as a category $ B G $ with one object $ \star $ and  $ \Hom_{ B G } ( \star, \star ) = G $. 
-    Show that there is and isomorphism of categories between $ \set_G $ and $ \widehat{ BG } $, the category of presheaves over $ B G $.
-\end{Exercise}
+\end{Warning}
 
-\begin{Exercise}
-    For a set $ Y $, show that there is an isomorphism of functors $ \set^{ \op } \times \set \to \set $
-    \[
-        \Hom_{ \set } ( - \times Y , ? ) \cong  \Hom_{ \Set } ( - , \Hom_{ \set } ( Y , ? ) ).
-    \]
-\end{Exercise}
 
-\begin{Exercise}
-    Let $ \eta \colon F \to G $ be a natural transformation of two functors $ F , G \colon \mathcal{ A } \to \mathcal{ B } $.
-    Show that $ \eta $ is a natural isomorphism, i.e. there exists a natural transformation $ \eta' \colon G \to F $ such that $ \eta' \circ \eta = \id_F $ and $ \eta \circ \eta' = \id_G $, if and only if for every $ a \in \mathcal{ A } $ the morphism $ \eta_a \colon F ( a ) \to G ( a ) $ is an isomorphism.
-\end{Exercise}
+\begin{rmd}
+    Many important 1-categories arise as homotopy categories of genuine $ ( \infty , 1 ) $-categories, that is derived categories
+    Recall for $ R \colon $ ring, $ \Mod_R $ its category of right $ R $-modules and $ \Ch ( \Mod_R ) $ the category of chain complexes in $ \Mod_R $, that a morphism of chain complexes $ f^\bullet \colon X^\bullet \to Y^\bullet $ in $ \Ch ( \Mod_R ) $ is a quasi-isomorphism if $ \forall n \in \mathbb{ Z } $ we have that $ H_n ( f^\bullet ) = H_n ( X^\bullet ) \isomorphism H_n ( Y^\bullet ) $ is an isomorphism.
+    The derived category is defined as follows $ D ( \Mod_R ) \coloneqq \Ch ( \Mod_R ) [qiso^{-1}] $ the localisation at the quasi-isomorphisms.
+    Furthermore we have that $ \Ho ( \mathcal{ D } ( \Mod_R ) ) = D ( \Mod_R) $.
+    In the first case we obtain it by building it from the ground up so to say and in the second case we obtain by forgetting information from a higher structure.
+\end{rmd}
 
-\begin{Exercise}
-    Fix an object $ x \in \mathcal{ C } $ of a category $ \mathcal{ C } $. 
-    The slice category $ \mathcal{ C } / x $ of $ \mathcal{ C } $ over $ x $ is defined as follows.
+\begin{Warning}
+    The homotopy theory of $ ( \infty ,1 ) $-categories has many equivalent (Quillen) implementations:
     \begin{itemize}
         \item 
-        The objects are tuples $ ( a , \pi ) $ with $ a  \in \mathcal{ C } $ an object and a morphism $ \pi \colon a \to x $. 
+        Topological categories (Ilias)
+
         \item 
-        A morphism $ f \colon ( a , \pi ) \to ( b , \rho ) $ is given by a morphism $ f \colon a \to b $ such that $ \pi = \rho \circ f $.
+        Simplicial categories (Bergner)
+
+        \item 
+        Complete Segal spaces (Rezk)
+
+        \item 
+        Relative categories (Barwick-Kan)
+
+        \item 
+        Pre-derivations
+
+        \item 
+        $\infty$-categories ( Joyal, Lurie )
     \end{itemize}
 
-    After convincing yourself that this defines a category, do the following.
-    
-    \begin{enumerate}[label=(\alph*)]
-    
+    In the $k$-linear setting, for $k$ a field we have:
+
+    \begin{enumerate}[resume]
         \item 
-        Show that there exists a final object in $ \mathcal{ C } / x $, i.e. an object $ ( e , \rho ) $ such that for any object $ ( a , \pi ) $ there is a unique morphism $ f \colon ( a , \pi ) \to ( e , \rho ) $.
+        Differentially graded $k$-categories
+
         \item 
-        
-        Define the coslice category $ x / \mathcal{ C } $ of elements under $ x $.
-        
-        \item 
-        Describe $ ( \mathcal{ C } / x )^{ \op } $ as a slice or coslice category.
-        
+        $A_\infty$-categories (Lefèvre-Hasegawa)
     \end{enumerate}
-\end{Exercise}
+    
+\end{Warning}
+
+The Plan for the lecture is to start of with investigating 2-categories, then give definition and examples of $ \infty $-categories, then do enriched category theory and end on the homotopy theory of $\infty$-categories.

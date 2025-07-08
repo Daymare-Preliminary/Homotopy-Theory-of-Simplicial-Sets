@@ -4,8 +4,8 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage{mathtools}
-%\usepackage[backend = biber]{biblatex}
-%\addbibresource{References.bib}
+\usepackage[backend = biber]{biblatex}
+\addbibresource{References.bib}
 \usepackage[colorlinks=true,unicode]{hyperref}
 \usepackage[capitalise]{cleveref}
 \usepackage{microtype}
@@ -13,6 +13,12 @@
 \usepackage{dsfont}
 \usepackage{mathabx}
 \usepackage{comment}
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+
+
+
 
 
 
@@ -29,8 +35,10 @@
 
 
 %New Commands
-\newcounter{dummy} \numberwithin{dummy}{section}
+\newcounter{dummy} 
+\numberwithin{dummy}{section}
 \newtheorem{qu}[dummy]{Question}
+\newtheorem{rmd}[dummy]{Reminder}
 \newtheorem{prop}[dummy]{Proposition}
 \newtheorem{thm}[dummy]{Theorem}
 \newtheorem{cor}[dummy]{Corollary}
@@ -43,6 +51,8 @@
 \newtheorem{construction}[dummy]{Construction}
 \newtheorem{problem}[dummy]{Problem}
 \newtheorem{Warning}[dummy]{Warning!}
+\newtheorem{Interlude}[dummy]{Interlude}
+\newtheorem{Idea}[dummy]{Idea}
 
 \newcounter{Exercise}[subsection]
 \newenvironment{Exercise}[1][]{\refstepcounter{Exercise}\par\medskip
@@ -57,6 +67,7 @@
 
 \DeclareMathOperator{\pr}{pr}
 \DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\twoHom}{\underline{Hom}}
 \DeclareMathOperator{\proj}{proj}
 \DeclareMathOperator{\inj}{inj}
 \DeclareMathOperator{\tr}{Tr}
@@ -77,6 +88,7 @@
 \DeclareMathOperator{\add}{add}
 \DeclareMathOperator{\stab}{Stab}
 \DeclareMathOperator{\Pos}{Pos}
+\DeclareMathOperator{\Ring}{Ring}
 \DeclareMathOperator{\Hasse}{Hasse}
 \DeclareMathOperator{\pd}{pd}
 \DeclareMathOperator{\ann}{ann}
@@ -109,6 +121,7 @@
 \DeclareMathOperator{\cosk}{cosk}
 \DeclareMathOperator{\tru}{tr}
 \DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Nat}{Nat}
 \DeclareMathOperator{\Cat}{Cat}
 \DeclareMathOperator{\Spur}{Spur}
 \DeclareMathOperator{\sSet}{sSet}
@@ -140,20 +153,24 @@
 \DeclareMathOperator{\Sd}{Sd}
 \DeclareMathOperator{\Ex}{Ex}
 \DeclareMathOperator{\Weq}{Weq}
+\DeclareMathOperator{\Bim}{Bim}
+\DeclareMathOperator{\Vect}{Vect}
+\DeclareMathOperator{\comp}{(-\circ-)}
+\DeclareMathOperator{\Pith}{Pith}
+\DeclareMathOperator{\dgMod}{\underline{dgMod}_k}
+\DeclareMathOperator{\hPith}{hPith}
+\DeclareMathOperator{\intHom}{\bold{Hom}}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Pathdg}{\bold{Path}_{dg}}
+\DeclareMathOperator{\poSet}{\bold{poSet}}
+\DeclareMathOperator{\catdg}{\bold{cat}_{dg}}
+\DeclareMathOperator{\Path}{\underline{\Path}}
+\DeclareMathOperator{\twocatlax}{twocat_{lax}}
 
 
 
 
 
-
-
-
-
-
-
-\newcommand{\ured}[1]{{\color{red}\ul{#1}}}
-\newcommand{\ublue}[1]{{\color{SteelBlue}\ul{#1}}}
-\newcommand{\ugreen}[1]{{\color{green}\ul{#1}}}
 
 \tikzset{%
     symbol/.style={%
@@ -173,6 +190,7 @@
 \newcommand{\adj}{\rotatebox[origin=c]{90}{$\vdash$}}
 \newcommand{\iu}{\mathrm{i}\mkern1mu}
 \newcommand{\isomorphism}{\overset{\smash{\raisebox{-0.2ex}{$\scriptstyle\sim$}}}{\longrightarrow}}
+\newcommand\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
 
 \tikzcdset{
   diagrams={>={Straight Barb[scale=0.5]}}
